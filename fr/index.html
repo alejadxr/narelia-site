@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Narelia : l’app santé Apple Watch qui vous compare à vous</title>
+<meta name="description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Bêta ouverte sur TestFlight.">
+<link rel="canonical" href="https://alejadxr.github.io/narelia-site/fr/">
+<link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/">
+<link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/">
+<link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/">
+<link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Narelia">
+<meta property="og:title" content="Narelia · Vos données, comparées à vous">
+<meta property="og:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Bêta ouverte sur TestFlight.">
+<meta property="og:url" content="https://alejadxr.github.io/narelia-site/fr/">
+<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Narelia · Vos données, comparées à vous">
+<meta name="twitter:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Bêta ouverte sur TestFlight.">
+<meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta name="theme-color" content="#F5F6F8">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/screens/fr/1-hoy.webp" fetchpriority="high">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Narelia",
+  "url": "https://alejadxr.github.io/narelia-site/fr/",
+  "description": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Bêta ouverte sur TestFlight.",
+  "inLanguage": "fr",
+  "operatingSystem": "iOS 26",
+  "applicationCategory": "HealthApplication",
+  "applicationSubCategory": "Apple Watch",
+  "image": "https://alejadxr.github.io/narelia-site/assets/og.jpg",
+  "screenshot": [
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/1-hoy.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/2-recuperacion.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/3-noche.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/4-forma-fisica.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/5-registro.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/fr/6-privacidad.webp"
+  ],
+  "installUrl": "https://testflight.apple.com/join/KAwauxRQ",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">
+  Aller au contenu
+</a>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="Narelia">
+    <img src="../assets/mark.svg" alt="" width="28" height="28">
+    <span>Narelia</span>
+  </a>
+  <nav class="top-actions" aria-label="Langue et bêta">
+    <div class="langs" role="group" aria-label="Langue"><a href="../" hreflang="es" lang="es" title="Español">ES</a><a href="../en/" hreflang="en" lang="en" title="English">EN</a><a href="../fr/" hreflang="fr" lang="fr" title="Français" aria-current="page">FR</a></div>
+    <a class="cta cta-small" href="https://testflight.apple.com/join/KAwauxRQ">
+      Rejoindre la bêta
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- El héroe: la barra de rango personal, el instrumento que sólo tiene esta app. -->
+  <section class="hero" id="top">
+    <div class="hero-mesh" aria-hidden="true"></div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>
+          
+          
+          Vos données, comparées à vous.
+        </h1>
+        <figure class="range" aria-labelledby="range-caption">
+          <div class="range-figure" aria-hidden="true">
+            <div class="range-track"></div>
+            <div class="range-band"></div>
+            <div class="range-dot">
+              <span class="range-reading"><b>48</b><small>ms</small></span>
+            </div>
+          </div>
+          <figcaption id="range-caption" class="range-caption">
+            <span class="range-key range-key-band">
+              
+              
+              Votre plage habituelle, selon vos nuits
+            </span>
+            <span class="range-key range-key-dot">
+              
+              
+              Votre variabilité du jour
+            </span>
+          </figcaption>
+        </figure>
+        <p class="lede">
+          
+          
+          Narelia lit votre Apple Watch et vous compare à vous-même : vos nuits, vos semaines, votre plage habituelle. Pas à une table de population, et sans prétendre savoir ce qu’elle ne sait pas.
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+            
+            
+            Rejoindre la bêta sur TestFlight
+          </a>
+          <p class="fine">
+            
+            
+            Gratuite pendant la bêta. Sans compte. iPhone sous iOS 26 ; Apple Watch recommandée.
+          </p>
+        </div>
+      </div>
+
+      <figure class="hero-phone">
+        <img class="shot" data-shot="1-hoy" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." fetchpriority="high">
+      </figure>
+    </div>
+
+  </section>
+
+  <!-- Las seis capturas de la ficha, con los rótulos de la guía de la tienda. -->
+  <section class="screens" aria-labelledby="screens-title">
+    <div class="section-head">
+      <h2 id="screens-title">
+        
+        
+        Chaque chiffre montre le calcul qui l’a produit.
+      </h2>
+      <p>
+        
+        
+        Pas de score opaque. Chaque écran montre de quoi son chiffre est fait et à quels jours il est comparé.
+      </p>
+    </div>
+
+    <div class="strip-wrap">
+      <ol class="strip" tabindex="0" aria-label="Captures de Narelia">
+        <li>
+          <p class="strip-caption">Vos chiffres face à votre propre histoire</p>
+          <img class="shot" data-shot="1-hoy" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Chaque chiffre avec son calcul</p>
+          <img class="shot" data-shot="2-recuperacion" src="../assets/screens/fr/2-recuperacion.webp" width="663" height="1300" alt="Écran de récupération : le chiffre, les signaux qui le composent et son évolution jour après jour." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Ce que votre montre mesure pendant votre sommeil</p>
+          <img class="shot" data-shot="3-noche" src="../assets/screens/fr/3-noche.webp" width="663" height="1300" alt="Écran de stress avec les mesures de la nuit et de la journée le long de l’horloge." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Votre effort face à vos propres semaines</p>
+          <img class="shot" data-shot="4-forma-fisica" src="../assets/screens/fr/4-forma-fisica.webp" width="663" height="1300" alt="Écran de forme : l’effort de la semaine face à vos semaines habituelles." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Eau, caféine, créatine, protéines et repas</p>
+          <img class="shot" data-shot="5-registro" src="../assets/screens/fr/5-registro.webp" width="663" height="1300" alt="Journal d’eau avec le récipient dessiné et les quantités rapides." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Sans compte, sans serveur</p>
+          <img class="shot" data-shot="6-privacidad" src="../assets/screens/fr/6-privacidad.webp" width="663" height="1300" alt="Réglages de Narelia avec la section confidentialité : sans compte ni serveurs." loading="lazy">
+        </li>
+      </ol>
+      <div class="strip-nav">
+        <button type="button" class="strip-btn" data-strip="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="strip-btn" data-strip="1" aria-label="Suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo que la hace distinta, en cuatro frases con su barra. -->
+  <section class="principles" aria-labelledby="principles-title">
+    <h2 id="principles-title" class="visually-hidden">
+      Principes
+    </h2>
+    <div class="principle" style="--tint: var(--violet); --from: .30; --to: .58">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Des données, pas des verdicts</h3>
+      <p>Elle écrit « 47 minutes de moins que votre médiane », pas « votre récupération est mauvaise ». L’app fait le calcul ; l’interprétation vous appartient.</p>
+    </div>
+    <div class="principle" style="--tint: var(--teal); --from: .42; --to: .70">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Honnête pendant qu’elle apprend</h3>
+      <p>Une référence a besoin d’historique. Tant que la vôtre se forme, l’écran compte les nuits acquises et celles qui manquent, au lieu d’afficher un chiffre qui ne veut encore rien dire.</p>
+    </div>
+    <div class="principle" style="--tint: var(--orange); --from: .22; --to: .50">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Vos jours, face à face</h3>
+      <p>Notez eau, caféine, THC ou créatine, et elle met côte à côte vos jours avec et sans. Quand elle trouve une différence, elle vous montre les deux groupes de jours et la part qui peut relever du hasard.</p>
+    </div>
+    <div class="principle" style="--tint: var(--azure); --from: .36; --to: .64">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Elle connaît ses limites</h3>
+      <p>Un écran silencieux ne prouve pas qu’il n’y a rien. Quand les données ne suffisent pas à conclure, Narelia le dit, chiffre à l’appui, au lieu de combler le vide.</p>
+    </div>
+  </section>
+
+  <!-- Los widgets, sobre un fondo como el de una pantalla de inicio. -->
+  <section class="widgets" aria-labelledby="widgets-title">
+    <div class="section-head">
+      <h2 id="widgets-title">
+        
+        
+        Au-delà de l’app.
+      </h2>
+      <p>
+        
+        
+        Readiness, fréquence cardiaque heure par heure, stress, sommeil, constantes, eau et activité, sur l’écran d’accueil, l’écran verrouillé et l’Apple Watch. Quatre styles au choix : Narelia, Nuit, Éditorial et Classique.
+      </p>
+    </div>
+
+    <div class="homescreen">
+      <img class="w w-m" src="../assets/widgets/pulso-mediano-noche.webp" width="1014" height="474" alt="Widget de fréquence cardiaque : la mesure actuelle, le pic, le minimum et la journée en bougies horaires." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/readiness-pequeno-clasico.webp" width="474" height="474" alt="Widget Readiness en style Classique, avec son arc et l’état des constantes, du sommeil et du stress." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/estres-pequeno-narelia.webp" width="474" height="474" alt="Widget de stress : une colonne par heure, de la couleur de sa zone." loading="lazy">
+      <img class="w w-m" src="../assets/widgets/sueno-mediano-narelia.webp" width="1014" height="474" alt="Widget de sommeil : la nuit par phases et la durée de chacune." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/agua-pequeno-noche.webp" width="474" height="474" alt="Widget d’eau : le niveau face à l’objectif du jour." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/actividad-pequeno-editorial.webp" width="474" height="474" alt="Widget d’activité en style Éditorial : les pas en trame de points." loading="lazy">
+      <img class="w w-m" src="../assets/widgets/vitales-mediano-clasico.webp" width="1014" height="474" alt="Widget des constantes : chacune sur sa plage personnelle." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/pulso-pequeno-clasico.webp" width="474" height="474" alt="Petit widget de fréquence cardiaque en style Classique." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/sueno-pequeno-noche.webp" width="474" height="474" alt="Petit widget de sommeil en style Nuit." loading="lazy">
+    </div>
+  </section>
+
+  <!-- La privacidad, dicha con lo que es literalmente cierto. -->
+  <section class="privacy" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">
+      
+      
+      Sans compte. Sans serveur.
+    </h2>
+    <div class="privacy-facts">
+      <p>
+        
+        
+        Toute l’analyse se fait sur votre iPhone. Les photos de vos repas sont lues par le modèle d’Apple, sur le téléphone même ; elles ne partent nulle part.
+      </p>
+      <p>
+        
+        
+        Vos données restent sur votre iPhone et dans l’app Santé. La copie iCloud est facultative, va sur votre propre compte, et reste désactivée tant que vous ne l’activez pas.
+      </p>
+      <p>
+        
+        
+        Pas d’analytique ni d’identifiants publicitaires. La personne qui fait l’app n’a aucune copie de vos données.
+      </p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <h2 id="closing-title">
+      
+      
+      Découvrez-la avec vos propres données.
+    </h2>
+    <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+      
+      
+      Rejoindre la bêta sur TestFlight
+    </a>
+    <p class="fine">
+      
+      
+      Elle s’installe via l’app TestFlight d’Apple. Les références commencent à se former dès vos premières nuits avec la montre.
+    </p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="disclaimer">
+    
+    
+    Narelia n’est pas un dispositif médical et son auteur n’est pas professionnel de santé. Rien de ce qu’elle affiche n’est un diagnostic ni un conseil clinique : les chiffres viennent d’une montre grand public et servent à vous comparer à vous-même dans le temps.
+  </p>
+  <p class="foot-links">
+    <a href="https://alejadxr.github.io/narelia-privacy/">Confidentialité</a>
+    <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources et responsabilité</a>
+    <span class="contact">alejandxr@icloud.com</span>
+  </p>
+  <p class="colophon">© 2026 Narelia</p>
+</footer>
+
+<script src="../main.js" defer></script>
+</body>
+</html>

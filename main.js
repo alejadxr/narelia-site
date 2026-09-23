@@ -1,54 +1,8 @@
-// Narelia — la página. Tres cosas y ninguna más: el idioma, la tira de capturas y el borde
-// de la cabecera al desplazarse.
+// Narelia — la página. Dos cosas y ninguna más: la tira de capturas y el borde de la
+// cabecera al desplazarse. El idioma ya no lo cambia un script: cada idioma es su propia
+// página (`tools/build.py`), que es lo que un buscador puede leer.
 
 (() => {
-  const root = document.documentElement;
-  const languages = ["es", "en", "fr"];
-
-  const titles = {
-    es: "Narelia · Tus datos, no los de nadie",
-    en: "Narelia · Your data, measured against you",
-    fr: "Narelia · Vos données, comparées à vous",
-  };
-
-  // El idioma guardado, si lo hay; si no, el del navegador; si no, español.
-  function initialLanguage() {
-    try {
-      const saved = localStorage.getItem("narelia-lang");
-      if (languages.includes(saved)) return saved;
-    } catch (_) { /* navegación privada: se sigue sin recordar */ }
-    const preferred = (navigator.languages || [navigator.language || "es"])
-      .map((tag) => String(tag).slice(0, 2).toLowerCase())
-      .find((code) => languages.includes(code));
-    return preferred || "es";
-  }
-
-  function setLanguage(lang, remember) {
-    root.dataset.lang = lang;
-    root.lang = lang;
-    document.title = titles[lang];
-
-    document.querySelectorAll("[data-set-lang]").forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
-    });
-
-    // Las capturas de la app, en el mismo idioma que la página: la app las dibuja en los tres.
-    document.querySelectorAll("img[data-shot]").forEach((img) => {
-      const src = `assets/screens/${lang}/${img.dataset.shot}.webp`;
-      if (!img.src.endsWith(src)) img.src = src;
-    });
-
-    if (remember) {
-      try { localStorage.setItem("narelia-lang", lang); } catch (_) { /* sin almacenamiento */ }
-    }
-  }
-
-  setLanguage(initialLanguage(), false);
-
-  document.querySelectorAll("[data-set-lang]").forEach((button) => {
-    button.addEventListener("click", () => setLanguage(button.dataset.setLang, true));
-  });
-
   // La tira: los botones avanzan una captura y se apagan en los extremos.
   const strip = document.querySelector(".strip");
   const buttons = document.querySelectorAll("[data-strip]");

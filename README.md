@@ -6,9 +6,20 @@ HTML, CSS y un poco de JavaScript, sin compilación. Se publica con GitHub Pages
 
 ## Qué hay
 
-- `index.html`: la página, en español, inglés y francés. El idioma se elige solo según el navegador y se puede cambiar arriba a la derecha.
+- `src/page.html`: **la plantilla**, con los tres idiomas de cada texto uno junto a otro. Es el único sitio donde se edita el texto.
+- `tools/build.py`: genera `index.html` (español), `en/index.html` y `fr/index.html` desde la plantilla, con el título, la descripción, el `hreflang`, las etiquetas para redes, los datos estructurados de app (`MobileApplication`) y los textos alternativos de cada idioma, y escribe `sitemap.xml`. **Después de tocar la plantilla: `python3 tools/build.py`** y se suben también los ficheros generados.
 - `styles.css`: la paleta y el tipo. Los colores son los de la app: el blanco frío de su fondo, la tinta índigo, el violeta y el naranja de su malla, el azul de acento y el turquesa.
-- `main.js`: el cambio de idioma (texto y capturas), la tira de capturas y la cabecera.
+- `main.js`: la tira de capturas y la cabecera.
+
+## SEO
+
+Una URL por idioma y no un idioma cambiado por JavaScript, porque un buscador indexa el HTML, no lo que un script enseña después. Cada página lleva su `<html lang>`, su título y su descripción con las palabras que se buscan de verdad («app de salud», «Apple Watch», «VFC»), `canonical`, `hreflang` con `x-default`, Open Graph y Twitter, `MobileApplication` en JSON-LD y un `alt` descriptivo en cada imagen. La primera captura se precarga.
+
+Pendiente fuera de este repo, porque necesita la cuenta del dueño:
+
+- Dar de alta la web en **Google Search Console** y enviar `sitemap.xml`.
+- Un **dominio propio**. En `github.io/narelia-site/` el `robots.txt` no cuenta (los buscadores sólo leen el de la raíz del dominio) y la autoridad es la de GitHub, no la de Narelia. Con un dominio basta con un fichero `CNAME` y cambiar `SITE` en `tools/build.py`.
+- El **banner de la App Store** (`apple-itunes-app`), cuando la app esté publicada: hoy apuntaría a una ficha que todavía no existe.
 - `assets/screens/{es,en,fr}/`: las seis capturas de la ficha, dibujadas por `StoreScreenshotTests` en el repositorio de la app con datos simulados, **dentro de un iPhone 17** de SutoScreen, en WebP con transparencia (663 × 1300).
 - `assets/widgets/`: los widgets, recortados de `WidgetCatalogRenderTests` y `ReadinessWidgetRenderTests`.
 

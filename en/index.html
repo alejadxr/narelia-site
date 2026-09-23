@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Narelia: the Apple Watch health app measured against you</title>
+<meta name="description" content="Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Open beta on TestFlight.">
+<link rel="canonical" href="https://alejadxr.github.io/narelia-site/en/">
+<link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/">
+<link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/">
+<link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/">
+<link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Narelia">
+<meta property="og:title" content="Narelia · Your data, measured against you">
+<meta property="og:description" content="Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Open beta on TestFlight.">
+<meta property="og:url" content="https://alejadxr.github.io/narelia-site/en/">
+<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Narelia · Your data, measured against you">
+<meta name="twitter:description" content="Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Open beta on TestFlight.">
+<meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta name="theme-color" content="#F5F6F8">
+<link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../assets/screens/en/1-hoy.webp" fetchpriority="high">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Narelia",
+  "url": "https://alejadxr.github.io/narelia-site/en/",
+  "description": "Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Open beta on TestFlight.",
+  "inLanguage": "en",
+  "operatingSystem": "iOS 26",
+  "applicationCategory": "HealthApplication",
+  "applicationSubCategory": "Apple Watch",
+  "image": "https://alejadxr.github.io/narelia-site/assets/og.jpg",
+  "screenshot": [
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/1-hoy.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/2-recuperacion.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/3-noche.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/4-forma-fisica.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/5-registro.webp",
+    "https://alejadxr.github.io/narelia-site/assets/screens/en/6-privacidad.webp"
+  ],
+  "installUrl": "https://testflight.apple.com/join/KAwauxRQ",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">
+  Skip to content
+</a>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="Narelia">
+    <img src="../assets/mark.svg" alt="" width="28" height="28">
+    <span>Narelia</span>
+  </a>
+  <nav class="top-actions" aria-label="Language and beta">
+    <div class="langs" role="group" aria-label="Language"><a href="../" hreflang="es" lang="es" title="Español">ES</a><a href="../en/" hreflang="en" lang="en" title="English" aria-current="page">EN</a><a href="../fr/" hreflang="fr" lang="fr" title="Français">FR</a></div>
+    <a class="cta cta-small" href="https://testflight.apple.com/join/KAwauxRQ">
+      Join the beta
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- El héroe: la barra de rango personal, el instrumento que sólo tiene esta app. -->
+  <section class="hero" id="top">
+    <div class="hero-mesh" aria-hidden="true"></div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>
+          
+          Your data, measured against you.
+          
+        </h1>
+        <figure class="range" aria-labelledby="range-caption">
+          <div class="range-figure" aria-hidden="true">
+            <div class="range-track"></div>
+            <div class="range-band"></div>
+            <div class="range-dot">
+              <span class="range-reading"><b>48</b><small>ms</small></span>
+            </div>
+          </div>
+          <figcaption id="range-caption" class="range-caption">
+            <span class="range-key range-key-band">
+              
+              Your usual range, from your own nights
+              
+            </span>
+            <span class="range-key range-key-dot">
+              
+              Today’s variability
+              
+            </span>
+          </figcaption>
+        </figure>
+        <p class="lede">
+          
+          Narelia reads your Apple Watch and compares you with yourself: your nights, your weeks, your usual range. Not with a population chart, and never claiming more than it knows.
+          
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+            
+            Join the beta on TestFlight
+            
+          </a>
+          <p class="fine">
+            
+            Free during the beta. No account. iPhone with iOS 26; Apple Watch recommended.
+            
+          </p>
+        </div>
+      </div>
+
+      <figure class="hero-phone">
+        <img class="shot" data-shot="1-hoy" src="../assets/screens/en/1-hoy.webp" width="663" height="1300" alt="Narelia’s Today screen on an iPhone: the Readiness figure on its dial and the day’s heart rate." fetchpriority="high">
+      </figure>
+    </div>
+
+  </section>
+
+  <!-- Las seis capturas de la ficha, con los rótulos de la guía de la tienda. -->
+  <section class="screens" aria-labelledby="screens-title">
+    <div class="section-head">
+      <h2 id="screens-title">
+        
+        Every number shows the arithmetic behind it.
+        
+      </h2>
+      <p>
+        
+        No black-box scores. Every screen shows what its figure is made of and which of your days it is compared with.
+        
+      </p>
+    </div>
+
+    <div class="strip-wrap">
+      <ol class="strip" tabindex="0" aria-label="Narelia screenshots">
+        <li>
+          <p class="strip-caption">Your numbers against your own history</p>
+          <img class="shot" data-shot="1-hoy" src="../assets/screens/en/1-hoy.webp" width="663" height="1300" alt="Narelia’s Today screen on an iPhone: the Readiness figure on its dial and the day’s heart rate." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Every number shows the arithmetic behind it</p>
+          <img class="shot" data-shot="2-recuperacion" src="../assets/screens/en/2-recuperacion.webp" width="663" height="1300" alt="Recovery screen: the figure, the signals it is made of and its day-by-day trend." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">What your watch measures while you sleep</p>
+          <img class="shot" data-shot="3-noche" src="../assets/screens/en/3-noche.webp" width="663" height="1300" alt="Stress screen with the night’s and the day’s readings along the clock." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Your effort against your own weeks</p>
+          <img class="shot" data-shot="4-forma-fisica" src="../assets/screens/en/4-forma-fisica.webp" width="663" height="1300" alt="Fitness screen: the week’s effort against your usual weeks." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">Water, caffeine, creatine, protein and meals</p>
+          <img class="shot" data-shot="5-registro" src="../assets/screens/en/5-registro.webp" width="663" height="1300" alt="Water log with the drawn vessel and quick amounts." loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption">No account, no server</p>
+          <img class="shot" data-shot="6-privacidad" src="../assets/screens/en/6-privacidad.webp" width="663" height="1300" alt="Narelia settings with the privacy section: no account and no servers." loading="lazy">
+        </li>
+      </ol>
+      <div class="strip-nav">
+        <button type="button" class="strip-btn" data-strip="-1" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="strip-btn" data-strip="1" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo que la hace distinta, en cuatro frases con su barra. -->
+  <section class="principles" aria-labelledby="principles-title">
+    <h2 id="principles-title" class="visually-hidden">
+      Principles
+    </h2>
+    <div class="principle" style="--tint: var(--violet); --from: .30; --to: .58">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Data, not verdicts</h3>
+      <p>It writes “47 minutes less than your median”, not “your recovery is bad”. The app does the arithmetic; the interpretation is yours.</p>
+    </div>
+    <div class="principle" style="--tint: var(--teal); --from: .42; --to: .70">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Honest while it learns</h3>
+      <p>A baseline needs history. While yours forms, the screen counts the nights it has and the nights it needs, instead of showing a figure that doesn’t mean anything yet.</p>
+    </div>
+    <div class="principle" style="--tint: var(--orange); --from: .22; --to: .50">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>Your days, side by side</h3>
+      <p>Log water, caffeine, THC or creatine and it lines up your days with and without them. When it finds a difference, it shows you both groups of days and how much of it could be chance.</p>
+    </div>
+    <div class="principle" style="--tint: var(--azure); --from: .36; --to: .64">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3>It knows its limits</h3>
+      <p>A quiet screen is not proof that nothing is there. When the data can’t support a conclusion, Narelia says so, with the number, instead of filling the gap.</p>
+    </div>
+  </section>
+
+  <!-- Los widgets, sobre un fondo como el de una pantalla de inicio. -->
+  <section class="widgets" aria-labelledby="widgets-title">
+    <div class="section-head">
+      <h2 id="widgets-title">
+        
+        Beyond the app.
+        
+      </h2>
+      <p>
+        
+        Readiness, heart rate hour by hour, stress, sleep, vitals, water and activity, on your Home Screen, Lock Screen and Apple Watch. Four styles to choose from: Narelia, Night, Editorial and Classic.
+        
+      </p>
+    </div>
+
+    <div class="homescreen">
+      <img class="w w-m" src="../assets/widgets/pulso-mediano-noche.webp" width="1014" height="474" alt="Heart rate widget: the latest reading, peak, low and the day as hourly candles." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/readiness-pequeno-clasico.webp" width="474" height="474" alt="Readiness widget in the Classic style, with its arc and the status of vitals, sleep and stress." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/estres-pequeno-narelia.webp" width="474" height="474" alt="Stress widget: one column per hour in the colour of its band." loading="lazy">
+      <img class="w w-m" src="../assets/widgets/sueno-mediano-narelia.webp" width="1014" height="474" alt="Sleep widget: the night by stage and how long each lasted." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/agua-pequeno-noche.webp" width="474" height="474" alt="Water widget: the level against the day’s goal." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/actividad-pequeno-editorial.webp" width="474" height="474" alt="Activity widget in the Editorial style: steps as a dot pattern." loading="lazy">
+      <img class="w w-m" src="../assets/widgets/vitales-mediano-clasico.webp" width="1014" height="474" alt="Vitals widget: each one on its personal range." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/pulso-pequeno-clasico.webp" width="474" height="474" alt="Small heart rate widget in the Classic style." loading="lazy">
+      <img class="w w-s" src="../assets/widgets/sueno-pequeno-noche.webp" width="474" height="474" alt="Small sleep widget in the Night style." loading="lazy">
+    </div>
+  </section>
+
+  <!-- La privacidad, dicha con lo que es literalmente cierto. -->
+  <section class="privacy" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">
+      
+      No account. No server.
+      
+    </h2>
+    <div class="privacy-facts">
+      <p>
+        
+        All analysis happens on your iPhone. Your meal photos are read by Apple’s on-device model, on the phone itself; they are not uploaded anywhere.
+        
+      </p>
+      <p>
+        
+        Your data lives on your iPhone and in the Health app. The iCloud copy is optional, goes to your own account, and stays off until you turn it on.
+        
+      </p>
+      <p>
+        
+        No analytics and no advertising identifiers. The person who makes the app has no copy of anything of yours.
+        
+      </p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <h2 id="closing-title">
+      
+      Discover it with your own data.
+      
+    </h2>
+    <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+      
+      Join the beta on TestFlight
+      
+    </a>
+    <p class="fine">
+      
+      It installs through Apple’s TestFlight app. Baselines start forming with your first nights wearing the watch.
+      
+    </p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="disclaimer">
+    
+    Narelia is not a medical device and its author is not a healthcare professional. Nothing it shows is a diagnosis or clinical advice: the figures come from a consumer watch and are for comparing yourself with yourself over time.
+    
+  </p>
+  <p class="foot-links">
+    <a href="https://alejadxr.github.io/narelia-privacy/">Privacy</a>
+    <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources and responsibility</a>
+    <span class="contact">alejandxr@icloud.com</span>
+  </p>
+  <p class="colophon">© 2026 Narelia</p>
+</footer>
+
+<script src="../main.js" defer></script>
+</body>
+</html>

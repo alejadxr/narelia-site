@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alejadxr.github.io/narelia-site/sitemap.xml
