@@ -29,7 +29,6 @@
   --gutter: clamp(18px, 4vw, 40px);
   --measure: 34rem;
   --max: 1180px;
-  --radius-screen: 11%;
 }
 
 *,
@@ -170,16 +169,13 @@ h1 {
   text-wrap: pretty;
 }
 
-.hero-phone { margin: 0; justify-self: center; width: min(100%, 330px); }
+.hero-phone { margin: 0; justify-self: center; width: min(100%, 370px); }
 
-.shot {
-  border-radius: var(--radius-screen) / calc(var(--radius-screen) * 660 / 1434);
-  box-shadow:
-    0 0 0 1px rgba(26, 27, 51, 0.06),
-    0 30px 60px -28px rgba(26, 27, 51, 0.45),
-    0 12px 24px -16px rgba(26, 27, 51, 0.25);
-  background: var(--paper-2);
-}
+/* Las capturas van dentro de un iPhone 17 de verdad, con su marco, su isla y su sombra:
+   las dibuja SutoScreen (`--render … --bezel black`) y la transparencia sale de renderizar
+   dos veces, sobre blanco y sobre negro. Así el teléfono se asienta en cualquier fondo de
+   la página sin una caja alrededor. */
+.shot { width: 100%; }
 
 /* ── La barra de rango personal ─────────────────────────────────────────── */
 
