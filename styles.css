@@ -1,0 +1,420 @@
+/* Narelia — la página.
+ *
+ * La paleta y el instrumento son los de la app, no unos de catálogo: el blanco frío del
+ * fondo (`MyHealthBackdrop`), la tinta índigo, el violeta y el naranja de la malla, el
+ * azul de acento y el turquesa de las bandas. La barra de rango personal es el héroe
+ * porque es lo único que esta app dibuja y las demás no: la franja es lo habitual para
+ * ti y el punto, hoy.
+ */
+
+:root {
+  color-scheme: light;
+  --paper: #f5f6f8;
+  --paper-2: #eceef3;
+  --ink: #1a1b33;
+  --ink-2: #4a4d68;
+  --ink-3: #767a94;
+  --rule: rgba(26, 27, 51, 0.12);
+  --violet: #7354f5;
+  --orange: #ff8a40;
+  --azure: #387afa;
+  --teal: #14b3a8;
+  --crimson: #d43d3d;
+
+  --sans: "Bricolage Grotesque", ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Las cifras, en la redondeada fina de la app. En un iPhone o un Mac esto es SF Rounded,
+     la misma letra que la cifra de Readiness dentro de Narelia. */
+  --figure: ui-rounded, "SF Pro Rounded", "Nunito", var(--sans);
+
+  --gutter: clamp(18px, 4vw, 40px);
+  --measure: 34rem;
+  --max: 1180px;
+  --radius-screen: 11%;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--azure);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Idioma ─────────────────────────────────────────────────────────────── */
+
+html[data-lang="es"] [lang="en"],
+html[data-lang="es"] [lang="fr"],
+html[data-lang="en"] [lang="es"],
+html[data-lang="en"] [lang="fr"],
+html[data-lang="fr"] [lang="es"],
+html[data-lang="fr"] [lang="en"] { display: none; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.skip {
+  position: absolute; left: 12px; top: -60px; z-index: 20;
+  background: var(--ink); color: #fff; padding: 10px 14px; border-radius: 10px;
+  text-decoration: none;
+}
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+
+/* ── Cabecera ───────────────────────────────────────────────────────────── */
+
+.top {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) var(--gutter) 12px;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  -webkit-backdrop-filter: saturate(1.6) blur(18px);
+  backdrop-filter: saturate(1.6) blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.top.is-scrolled { border-bottom-color: var(--rule); }
+
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; font-weight: 650; font-size: 19px; letter-spacing: -0.02em;
+}
+.brand img { border-radius: 7px; }
+
+.top-actions { display: flex; align-items: center; gap: 14px; }
+
+.langs {
+  display: inline-flex; padding: 3px; border-radius: 999px;
+  background: rgba(26, 27, 51, 0.06);
+}
+.langs button {
+  font: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--ink-3); background: none; border: 0; cursor: pointer;
+  padding: 6px 10px; border-radius: 999px; min-height: 32px;
+}
+.langs button[aria-pressed="true"] { color: var(--ink); background: #fff; box-shadow: 0 1px 3px rgba(26, 27, 51, 0.12); }
+
+/* ── Botón ──────────────────────────────────────────────────────────────── */
+
+.cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 54px; padding: 0 26px; border-radius: 999px;
+  background: var(--ink); color: #fff; text-decoration: none;
+  font-weight: 600; font-size: 17px; letter-spacing: -0.005em;
+  box-shadow: 0 10px 30px -12px rgba(26, 27, 51, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -12px rgba(26, 27, 51, 0.6); }
+.cta:active { transform: translateY(0); }
+.cta-small { min-height: 40px; padding: 0 16px; font-size: 15px; box-shadow: none; }
+
+.fine { color: var(--ink-3); font-size: 15px; margin: 14px 0 0; max-width: var(--measure); }
+
+/* ── Héroe ──────────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative; overflow: hidden;
+  padding: clamp(28px, 6vw, 72px) var(--gutter) clamp(40px, 7vw, 88px);
+}
+
+/* La malla de la app: el violeta y el naranja de la casa, difuminados, detrás de todo. */
+.hero-mesh {
+  position: absolute; inset: -10% -10% 30% -10%; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 78% 30%, rgba(115, 84, 245, 0.22), transparent 70%),
+    radial-gradient(30% 40% at 58% 12%, rgba(56, 122, 250, 0.16), transparent 70%),
+    radial-gradient(34% 40% at 92% 64%, rgba(255, 138, 64, 0.18), transparent 70%),
+    radial-gradient(40% 50% at 10% 0%, rgba(20, 179, 168, 0.08), transparent 70%);
+  filter: blur(20px);
+}
+
+.hero-grid {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center; gap: clamp(28px, 5vw, 72px);
+}
+
+h1 {
+  margin: 0 0 22px;
+  font-size: clamp(46px, 7.4vw, 96px);
+  line-height: 0.96;
+  font-weight: 580;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+  max-width: 11ch;
+}
+
+.lede {
+  margin: 0 0 32px; max-width: var(--measure);
+  font-size: clamp(19px, 1.7vw, 22px); line-height: 1.5; color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.hero-phone { margin: 0; justify-self: center; width: min(100%, 330px); }
+
+.shot {
+  border-radius: var(--radius-screen) / calc(var(--radius-screen) * 660 / 1434);
+  box-shadow:
+    0 0 0 1px rgba(26, 27, 51, 0.06),
+    0 30px 60px -28px rgba(26, 27, 51, 0.45),
+    0 12px 24px -16px rgba(26, 27, 51, 0.25);
+  background: var(--paper-2);
+}
+
+/* ── La barra de rango personal ─────────────────────────────────────────── */
+
+.range {
+  --from: 0.36;
+  --to: 0.64;
+  --at: 0.57;
+  --track-h: 18px;
+  max-width: 34rem; margin: 6px 0 30px;
+}
+
+.range-figure { position: relative; height: calc(var(--track-h) + 80px); }
+
+.range-track,
+.range-band {
+  position: absolute; bottom: 0; height: var(--track-h); border-radius: 999px;
+}
+
+.range-track {
+  left: 0; right: 0;
+  background: linear-gradient(90deg,
+    rgba(115, 84, 245, 0.14), rgba(115, 84, 245, 0.30), rgba(115, 84, 245, 0.14));
+}
+
+.range-band {
+  left: calc(var(--from) * 100%);
+  width: calc((var(--to) - var(--from)) * 100%);
+  background: rgba(115, 84, 245, 0.52);
+  transform-origin: 50% 50%;
+  animation: band-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both;
+}
+
+/* El punto viaja dentro de una capa del ancho entero: `translateX` en porcentaje es del
+   ancho de la propia capa, así que el 57 % de ella es el 57 % de la barra. */
+.range-dot {
+  position: absolute; left: 0; right: 0; bottom: 0; height: var(--track-h);
+  transform: translateX(calc(var(--at) * 100%));
+  animation: dot-in 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+  pointer-events: none;
+}
+.range-dot::before {
+  content: ""; position: absolute; left: -17px; top: 50%;
+  width: 34px; height: 34px; margin-top: -17px; border-radius: 50%;
+  background: #fff; border: 8px solid var(--violet);
+  box-shadow: 0 6px 18px -4px rgba(115, 84, 245, 0.55);
+}
+
+.range-reading {
+  position: absolute; bottom: 34px; left: 0; transform: translateX(-50%);
+  display: inline-flex; align-items: baseline; gap: 4px; white-space: nowrap;
+  font-family: var(--figure); color: var(--ink);
+  animation: reading-in 0.6s ease 1.5s both;
+}
+.range-reading b { font-weight: 300; font-size: clamp(46px, 5vw, 64px); line-height: 1; letter-spacing: -0.02em; }
+.range-reading small { font-size: 20px; color: var(--ink-3); font-weight: 400; }
+
+.range-caption {
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  margin-top: 16px; font-size: 14px; color: var(--ink-2);
+}
+.range-key { display: inline-flex; align-items: center; gap: 10px; }
+.range-key::before {
+  content: ""; flex: none; width: 26px; height: 10px; border-radius: 999px;
+  background: rgba(115, 84, 245, 0.52);
+}
+.range-key-dot::before {
+  width: 14px; height: 14px; background: #fff; border: 4px solid var(--violet);
+}
+
+@keyframes band-in { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes dot-in { from { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } to { transform: translateX(calc(var(--at) * 100%)); opacity: 1; } }
+@keyframes reading-in { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* ── Secciones ──────────────────────────────────────────────────────────── */
+
+section { padding-inline: var(--gutter); }
+
+.section-head { max-width: var(--max); margin: 0 auto clamp(26px, 4vw, 44px); }
+
+h2 {
+  margin: 0 0 14px; max-width: 18ch;
+  font-size: clamp(32px, 4.4vw, 56px); line-height: 1.02;
+  font-weight: 600; letter-spacing: -0.03em; text-wrap: balance;
+}
+
+.section-head p { margin: 0; max-width: var(--measure); color: var(--ink-2); font-size: 19px; text-wrap: pretty; }
+
+/* ── Capturas ───────────────────────────────────────────────────────────── */
+
+.screens { padding-block: clamp(56px, 9vw, 120px) clamp(40px, 6vw, 80px); padding-inline: 0; }
+.screens .section-head { padding-inline: var(--gutter); }
+
+.strip-wrap { position: relative; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; }
+
+.strip {
+  list-style: none; margin: 0; padding: 8px var(--gutter) 34px;
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(74vw, 290px); gap: clamp(18px, 2.4vw, 30px);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar { display: none; }
+.strip li { scroll-snap-align: start; }
+
+.strip-caption {
+  margin: 0 0 14px; min-height: 2.6em;
+  font-size: 18px; line-height: 1.3; font-weight: 560; letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.strip-nav {
+  display: flex; justify-content: flex-end; gap: 10px;
+  padding-inline: var(--gutter);
+}
+.strip-btn {
+  width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--rule); background: #fff; color: var(--ink);
+  display: grid; place-items: center;
+  transition: background 0.15s;
+}
+.strip-btn:hover { background: var(--paper-2); }
+.strip-btn:disabled { opacity: 0.35; cursor: default; }
+.strip-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Principios ─────────────────────────────────────────────────────────── */
+
+.principles {
+  max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto;
+  padding-block: clamp(40px, 7vw, 96px);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 6vw, 96px); row-gap: clamp(40px, 5vw, 64px);
+}
+
+.principle h3 {
+  margin: 18px 0 10px; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15;
+  font-weight: 600; letter-spacing: -0.02em;
+}
+.principle p { margin: 0; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; }
+
+/* Cada principio lleva encima su propia barra: el mismo instrumento del héroe, en pequeño
+   y en el color de otra métrica de la app. */
+.mini-range {
+  position: relative; height: 8px; border-radius: 999px; max-width: 220px;
+  background: color-mix(in srgb, var(--tint) 16%, transparent);
+}
+.mini-range i {
+  position: absolute; top: 0; bottom: 0; border-radius: 999px;
+  left: calc(var(--from) * 100%); width: calc((var(--to) - var(--from)) * 100%);
+  background: color-mix(in srgb, var(--tint) 55%, transparent);
+}
+.mini-range::after {
+  content: ""; position: absolute; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  left: calc((var(--from) + (var(--to) - var(--from)) * 0.8) * 100%);
+  border-radius: 50%; background: #fff; border: 3px solid var(--tint);
+}
+
+/* ── Widgets ────────────────────────────────────────────────────────────── */
+
+.widgets { padding-block: clamp(40px, 7vw, 96px); }
+
+.homescreen {
+  position: relative; isolation: isolate;
+  max-width: 900px; margin: 0 auto; padding: clamp(18px, 3.4vw, 40px);
+  border-radius: clamp(28px, 4vw, 48px);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2.4vw, 26px);
+  background:
+    radial-gradient(60% 70% at 18% 12%, rgba(115, 84, 245, 0.55), transparent 70%),
+    radial-gradient(50% 60% at 88% 30%, rgba(56, 122, 250, 0.45), transparent 70%),
+    radial-gradient(60% 60% at 70% 100%, rgba(255, 138, 64, 0.42), transparent 70%),
+    #202142;
+  box-shadow: 0 40px 80px -40px rgba(26, 27, 51, 0.6);
+}
+
+.w { width: 100%; box-shadow: 0 16px 34px -18px rgba(0, 0, 0, 0.55); }
+.w-s { grid-column: span 1; border-radius: 14%; }
+.w-m { grid-column: span 2; border-radius: 6.5% / 14%; }
+
+/* ── Privacidad ─────────────────────────────────────────────────────────── */
+
+.privacy {
+  max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto;
+  padding-block: clamp(56px, 9vw, 120px);
+}
+.privacy h2 { font-size: clamp(40px, 6vw, 76px); max-width: none; margin-bottom: clamp(28px, 4vw, 44px); }
+
+.privacy-facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 4vw, 56px);
+}
+.privacy-facts p {
+  margin: 0; padding-top: 18px; border-top: 2px solid var(--ink);
+  color: var(--ink-2); text-wrap: pretty;
+}
+
+/* ── Cierre y pie ───────────────────────────────────────────────────────── */
+
+.closing {
+  text-align: center;
+  padding-block: clamp(56px, 9vw, 120px);
+  background:
+    radial-gradient(50% 80% at 50% 100%, rgba(115, 84, 245, 0.14), transparent 70%),
+    var(--paper);
+}
+.closing h2 { margin-inline: auto; margin-bottom: 30px; }
+.closing .fine { margin-inline: auto; }
+
+.foot {
+  padding: 40px var(--gutter) calc(48px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--rule);
+  font-size: 14px; color: var(--ink-3);
+}
+.foot > * { max-width: var(--max); margin-inline: auto; }
+.disclaimer { margin-top: 0; margin-bottom: 18px; max-width: 60rem; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 auto 10px; }
+.foot-links a { color: var(--ink-2); text-underline-offset: 3px; }
+.colophon { margin-bottom: 0; }
+
+/* ── Anchos ─────────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-phone { width: min(78%, 320px); }
+  .principles { grid-template-columns: 1fr; }
+  .privacy-facts { grid-template-columns: 1fr; }
+  .homescreen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .top-actions .cta-small { display: none; }
+  .range-figure { height: calc(var(--track-h) + 70px); }
+  .range-caption { flex-direction: column; gap: 10px; }
+  .strip-nav { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .range-band, .range-dot, .range-reading { animation: none; }
+  .cta, .top { transition: none; }
+}

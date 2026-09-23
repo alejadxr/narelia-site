@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Narelia · Tus datos, no los de nadie</title>
+<meta name="description" content="Narelia lee tu Apple Watch y te compara contigo: tus noches, tus semanas, tu rango habitual. Todo el análisis ocurre en tu iPhone. Beta abierta en TestFlight.">
+<meta property="og:title" content="Narelia · Tus datos, no los de nadie">
+<meta property="og:description" content="Una app de salud para iPhone y Apple Watch que te compara contigo, no con una tabla de población. Sin cuenta y sin servidor.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta property="og:url" content="https://alejadxr.github.io/narelia-site/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://alejadxr.github.io/narelia-site/">
+<meta name="theme-color" content="#F5F6F8">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">
+  <span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span><span lang="fr">Aller au contenu</span>
+</a>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Narelia">
+    <img src="assets/mark.svg" alt="" width="28" height="28">
+    <span>Narelia</span>
+  </a>
+  <nav class="top-actions" aria-label="Idioma / Language">
+    <div class="langs" role="group" aria-label="Idioma">
+      <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-set-lang="fr" aria-pressed="false">FR</button>
+    </div>
+    <a class="cta cta-small" href="https://testflight.apple.com/join/KAwauxRQ">
+      <span lang="es">Probar la beta</span><span lang="en">Try the beta</span><span lang="fr">Essayer la bêta</span>
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- El héroe: la barra de rango personal, el instrumento que sólo tiene esta app. -->
+  <section class="hero" id="top">
+    <div class="hero-mesh" aria-hidden="true"></div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>
+          <span lang="es">Tus datos, no los de nadie.</span>
+          <span lang="en">Your data, measured against you.</span>
+          <span lang="fr">Vos données, comparées à vous.</span>
+        </h1>
+        <figure class="range" aria-labelledby="range-caption">
+          <div class="range-figure" aria-hidden="true">
+            <div class="range-track"></div>
+            <div class="range-band"></div>
+            <div class="range-dot">
+              <span class="range-reading"><b>48</b><small>ms</small></span>
+            </div>
+          </div>
+          <figcaption id="range-caption" class="range-caption">
+            <span class="range-key range-key-band">
+              <span lang="es">Tu rango habitual: tus últimas noches</span>
+              <span lang="en">Your usual range: your own recent nights</span>
+              <span lang="fr">Votre plage habituelle : vos dernières nuits</span>
+            </span>
+            <span class="range-key range-key-dot">
+              <span lang="es">Hoy, tu variabilidad cardiaca</span>
+              <span lang="en">Today, your heart rate variability</span>
+              <span lang="fr">Aujourd’hui, votre variabilité cardiaque</span>
+            </span>
+          </figcaption>
+        </figure>
+        <p class="lede">
+          <span lang="es">Narelia lee tu Apple Watch y te compara contigo: tus noches, tus semanas, tu rango habitual. No con una tabla de población, y sin decirte lo que no sabe.</span>
+          <span lang="en">Narelia reads your Apple Watch and compares you with yourself: your nights, your weeks, your usual range. Not with a population chart, and never claiming more than it knows.</span>
+          <span lang="fr">Narelia lit votre Apple Watch et vous compare à vous-même : vos nuits, vos semaines, votre plage habituelle. Pas à une table de population, et sans prétendre savoir ce qu’elle ne sait pas.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+            <span lang="es">Probar la beta en TestFlight</span>
+            <span lang="en">Try the beta on TestFlight</span>
+            <span lang="fr">Essayer la bêta sur TestFlight</span>
+          </a>
+          <p class="fine">
+            <span lang="es">Gratis durante la beta. Sin cuenta. iPhone con iOS 26; Apple Watch recomendado.</span>
+            <span lang="en">Free during the beta. No account. iPhone with iOS 26; Apple Watch recommended.</span>
+            <span lang="fr">Gratuite pendant la bêta. Sans compte. iPhone sous iOS 26 ; Apple Watch recommandée.</span>
+          </p>
+        </div>
+      </div>
+
+      <figure class="hero-phone">
+        <img class="shot" data-shot="1-hoy" src="assets/screens/es/1-hoy.webp" width="660" height="1434" alt="" fetchpriority="high">
+      </figure>
+    </div>
+
+  </section>
+
+  <!-- Las seis capturas de la ficha, con los rótulos de la guía de la tienda. -->
+  <section class="screens" aria-labelledby="screens-title">
+    <div class="section-head">
+      <h2 id="screens-title">
+        <span lang="es">Cada número trae la cuenta que lo produjo.</span>
+        <span lang="en">Every number shows the arithmetic behind it.</span>
+        <span lang="fr">Chaque chiffre montre le calcul qui l’a produit.</span>
+      </h2>
+      <p>
+        <span lang="es">Nada de puntuaciones de caja negra. Cada pantalla enseña de qué está hecha su cifra y contra qué días se compara.</span>
+        <span lang="en">No black-box scores. Every screen shows what its figure is made of and which of your days it is compared with.</span>
+        <span lang="fr">Pas de score opaque. Chaque écran montre de quoi son chiffre est fait et à quels jours il est comparé.</span>
+      </p>
+    </div>
+
+    <div class="strip-wrap">
+      <ol class="strip" tabindex="0" aria-label="Capturas">
+        <li>
+          <p class="strip-caption"><span lang="es">Tus cifras contra tu propia historia</span><span lang="en">Your numbers against your own history</span><span lang="fr">Vos chiffres face à votre propre histoire</span></p>
+          <img class="shot" data-shot="1-hoy" src="assets/screens/es/1-hoy.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Cada número trae la cuenta que lo produjo</span><span lang="en">Every number shows the arithmetic behind it</span><span lang="fr">Chaque chiffre avec son calcul</span></p>
+          <img class="shot" data-shot="2-recuperacion" src="assets/screens/es/2-recuperacion.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Lo que tu reloj mide mientras duermes</span><span lang="en">What your watch measures while you sleep</span><span lang="fr">Ce que votre montre mesure pendant votre sommeil</span></p>
+          <img class="shot" data-shot="3-noche" src="assets/screens/es/3-noche.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Tu esfuerzo contra tus propias semanas</span><span lang="en">Your effort against your own weeks</span><span lang="fr">Votre effort face à vos propres semaines</span></p>
+          <img class="shot" data-shot="4-forma-fisica" src="assets/screens/es/4-forma-fisica.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Agua, cafeína, creatina, proteína y comidas</span><span lang="en">Water, caffeine, creatine, protein and meals</span><span lang="fr">Eau, caféine, créatine, protéines et repas</span></p>
+          <img class="shot" data-shot="5-registro" src="assets/screens/es/5-registro.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Sin cuenta y sin servidor</span><span lang="en">No account, no server</span><span lang="fr">Sans compte, sans serveur</span></p>
+          <img class="shot" data-shot="6-privacidad" src="assets/screens/es/6-privacidad.webp" width="660" height="1434" alt="" loading="lazy">
+        </li>
+      </ol>
+      <div class="strip-nav">
+        <button type="button" class="strip-btn" data-strip="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="strip-btn" data-strip="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lo que la hace distinta, en cuatro frases con su barra. -->
+  <section class="principles" aria-labelledby="principles-title">
+    <h2 id="principles-title" class="visually-hidden">
+      <span lang="es">Cómo trabaja</span><span lang="en">How it works</span><span lang="fr">Comment elle fonctionne</span>
+    </h2>
+    <div class="principle" style="--tint: var(--violet); --from: .30; --to: .58">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3><span lang="es">Informa, no diagnostica</span><span lang="en">It informs, it doesn’t diagnose</span><span lang="fr">Elle informe, elle ne diagnostique pas</span></h3>
+      <p><span lang="es">Escribe «47 minutos menos que tu mediana», no «tu recuperación es mala». La aritmética la hace la app; la interpretación es tuya.</span><span lang="en">It writes “47 minutes less than your median”, not “your recovery is bad”. The app does the arithmetic; the interpretation is yours.</span><span lang="fr">Elle écrit « 47 minutes de moins que votre médiane », pas « votre récupération est mauvaise ». L’app fait le calcul ; l’interprétation vous appartient.</span></p>
+    </div>
+    <div class="principle" style="--tint: var(--teal); --from: .42; --to: .70">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3><span lang="es">Te dice cuántos días le faltan</span><span lang="en">It tells you how many days it still needs</span><span lang="fr">Elle vous dit combien de jours il lui manque</span></h3>
+      <p><span lang="es">Una línea base necesita historia. Mientras la tuya se forma, la pantalla cuenta las noches que lleva y las que necesita, en vez de enseñar una cifra que todavía no significa nada.</span><span lang="en">A baseline needs history. While yours forms, the screen counts the nights it has and the nights it needs, instead of showing a figure that doesn’t mean anything yet.</span><span lang="fr">Une référence a besoin d’historique. Tant que la vôtre se forme, l’écran compte les nuits acquises et celles qui manquent, au lieu d’afficher un chiffre qui ne veut encore rien dire.</span></p>
+    </div>
+    <div class="principle" style="--tint: var(--orange); --from: .22; --to: .50">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3><span lang="es">Compara tus días contigo</span><span lang="en">It compares your days with each other</span><span lang="fr">Elle compare vos jours entre eux</span></h3>
+      <p><span lang="es">Apunta agua, cafeína, THC o creatina y pone tus días con y sin ellos uno al lado del otro. Si encuentra una diferencia, te enseña los dos grupos de días y cuánto puede ser casualidad.</span><span lang="en">Log water, caffeine, THC or creatine and it lines up your days with and without them. When it finds a difference, it shows you both groups of days and how much of it could be chance.</span><span lang="fr">Notez eau, caféine, THC ou créatine, et elle met côte à côte vos jours avec et sans. Quand elle trouve une différence, elle vous montre les deux groupes de jours et la part qui peut relever du hasard.</span></p>
+    </div>
+    <div class="principle" style="--tint: var(--azure); --from: .36; --to: .64">
+      <div class="mini-range" aria-hidden="true"><i></i></div>
+      <h3><span lang="es">Dice cuándo no sabe</span><span lang="en">It says when it doesn’t know</span><span lang="fr">Elle dit quand elle ne sait pas</span></h3>
+      <p><span lang="es">Una pantalla callada no es prueba de que no haya nada. Cuando los datos no alcanzan para una conclusión, Narelia lo dice con su número, en vez de rellenar el hueco.</span><span lang="en">A quiet screen is not proof that nothing is there. When the data can’t support a conclusion, Narelia says so, with the number, instead of filling the gap.</span><span lang="fr">Un écran silencieux ne prouve pas qu’il n’y a rien. Quand les données ne suffisent pas à conclure, Narelia le dit, chiffre à l’appui, au lieu de combler le vide.</span></p>
+    </div>
+  </section>
+
+  <!-- Los widgets, sobre un fondo como el de una pantalla de inicio. -->
+  <section class="widgets" aria-labelledby="widgets-title">
+    <div class="section-head">
+      <h2 id="widgets-title">
+        <span lang="es">También fuera de la app.</span>
+        <span lang="en">Outside the app, too.</span>
+        <span lang="fr">Aussi hors de l’app.</span>
+      </h2>
+      <p>
+        <span lang="es">Readiness, pulso hora a hora, estrés, sueño, constantes vitales, agua y actividad, en la pantalla de inicio, en la de bloqueo y en el Apple Watch. Cuatro estilos para elegir: Narelia, Noche, Editorial y Clásico.</span>
+        <span lang="en">Readiness, heart rate hour by hour, stress, sleep, vitals, water and activity, on your Home Screen, Lock Screen and Apple Watch. Four styles to choose from: Narelia, Night, Editorial and Classic.</span>
+        <span lang="fr">Readiness, fréquence cardiaque heure par heure, stress, sommeil, constantes, eau et activité, sur l’écran d’accueil, l’écran verrouillé et l’Apple Watch. Quatre styles au choix : Narelia, Nuit, Éditorial et Classique.</span>
+      </p>
+    </div>
+
+    <div class="homescreen">
+      <img class="w w-m" src="assets/widgets/pulso-mediano-noche.webp" width="1014" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/readiness-pequeno-clasico.webp" width="474" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/estres-pequeno-narelia.webp" width="474" height="474" alt="" loading="lazy">
+      <img class="w w-m" src="assets/widgets/sueno-mediano-narelia.webp" width="1014" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/agua-pequeno-noche.webp" width="474" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/actividad-pequeno-editorial.webp" width="474" height="474" alt="" loading="lazy">
+      <img class="w w-m" src="assets/widgets/vitales-mediano-clasico.webp" width="1014" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/pulso-pequeno-clasico.webp" width="474" height="474" alt="" loading="lazy">
+      <img class="w w-s" src="assets/widgets/sueno-pequeno-noche.webp" width="474" height="474" alt="" loading="lazy">
+    </div>
+  </section>
+
+  <!-- La privacidad, dicha con lo que es literalmente cierto. -->
+  <section class="privacy" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">
+      <span lang="es">Sin cuenta. Sin servidor.</span>
+      <span lang="en">No account. No server.</span>
+      <span lang="fr">Sans compte. Sans serveur.</span>
+    </h2>
+    <div class="privacy-facts">
+      <p>
+        <span lang="es">Todo el análisis ocurre en tu iPhone. Las fotos de tus comidas las lee el modelo de Apple en el propio teléfono; no se suben a ningún sitio.</span>
+        <span lang="en">All analysis happens on your iPhone. Your meal photos are read by Apple’s on-device model, on the phone itself; they are not uploaded anywhere.</span>
+        <span lang="fr">Toute l’analyse se fait sur votre iPhone. Les photos de vos repas sont lues par le modèle d’Apple, sur le téléphone même ; elles ne partent nulle part.</span>
+      </p>
+      <p>
+        <span lang="es">Tus datos viven en tu iPhone y en la app Salud. La copia en iCloud es opcional, va a tu propia cuenta y está apagada hasta que la enciendas.</span>
+        <span lang="en">Your data lives on your iPhone and in the Health app. The iCloud copy is optional, goes to your own account, and stays off until you turn it on.</span>
+        <span lang="fr">Vos données restent sur votre iPhone et dans l’app Santé. La copie iCloud est facultative, va sur votre propre compte, et reste désactivée tant que vous ne l’activez pas.</span>
+      </p>
+      <p>
+        <span lang="es">Sin analítica y sin identificadores publicitarios. Quien hace la app no tiene copia de nada tuyo.</span>
+        <span lang="en">No analytics and no advertising identifiers. The person who makes the app has no copy of anything of yours.</span>
+        <span lang="fr">Pas d’analytique ni d’identifiants publicitaires. La personne qui fait l’app n’a aucune copie de vos données.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <h2 id="closing-title">
+      <span lang="es">Pruébala con tus propios datos.</span>
+      <span lang="en">Try it with your own data.</span>
+      <span lang="fr">Essayez-la avec vos propres données.</span>
+    </h2>
+    <a class="cta" href="https://testflight.apple.com/join/KAwauxRQ">
+      <span lang="es">Probar la beta en TestFlight</span>
+      <span lang="en">Try the beta on TestFlight</span>
+      <span lang="fr">Essayer la bêta sur TestFlight</span>
+    </a>
+    <p class="fine">
+      <span lang="es">Se instala desde la app TestFlight de Apple. Las líneas base empiezan a formarse con las primeras noches con el reloj puesto.</span>
+      <span lang="en">It installs through Apple’s TestFlight app. Baselines start forming with your first nights wearing the watch.</span>
+      <span lang="fr">Elle s’installe via l’app TestFlight d’Apple. Les références commencent à se former dès vos premières nuits avec la montre.</span>
+    </p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="disclaimer">
+    <span lang="es">Narelia no es un dispositivo médico y su autor no es profesional sanitario. Nada de lo que muestra es un diagnóstico ni un consejo clínico: las cifras vienen de un reloj de consumo y sirven para compararte contigo a lo largo del tiempo.</span>
+    <span lang="en">Narelia is not a medical device and its author is not a healthcare professional. Nothing it shows is a diagnosis or clinical advice: the figures come from a consumer watch and are for comparing yourself with yourself over time.</span>
+    <span lang="fr">Narelia n’est pas un dispositif médical et son auteur n’est pas professionnel de santé. Rien de ce qu’elle affiche n’est un diagnostic ni un conseil clinique : les chiffres viennent d’une montre grand public et servent à vous comparer à vous-même dans le temps.</span>
+  </p>
+  <p class="foot-links">
+    <a href="https://alejadxr.github.io/narelia-privacy/"><span lang="es">Privacidad</span><span lang="en">Privacy</span><span lang="fr">Confidentialité</span></a>
+    <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html"><span lang="es">Fuentes y responsabilidad</span><span lang="en">Sources and responsibility</span><span lang="fr">Sources et responsabilité</span></a>
+    <span class="contact">alejandxr@icloud.com</span>
+  </p>
+  <p class="colophon">© 2026 Narelia</p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
