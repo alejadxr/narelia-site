@@ -8,16 +8,26 @@ Google veía una página mezclada, con un solo título y una sola descripción. 
 tiene su URL, su título, su descripción, su `hreflang` y su `lang`, y el texto sigue viviendo
 en un único sitio: la plantilla.
 
-    python3 tools/build.py
+    python3 tools/build.py                  # lo que lleva la versión de la App Store
+    python3 tools/build.py --actualizacion  # además, lo que sólo trae la próxima actualización
+
+Lo que la app todavía no lleva en la tienda va en la plantilla entre `<!--next-->` y
+`<!--/next-->`: sin `--actualizacion` se quita, con ella se deja. Así la página no promete
+nada que quien la descarga hoy no encuentre.
 """
 
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://alejadxr.github.io/narelia-site/"
-TESTFLIGHT = "https://testflight.apple.com/join/KAwauxRQ"
+APP_ID = "6809521455"
+APPSTORE = f"https://apps.apple.com/app/narelia/id{APP_ID}"
+PRIVACY = "https://alejadxr.github.io/narelia-privacy/"
+LAUNCH_DATE = "2026-10-04"
+PRO_PRICE = "4.99"
 
 LANGS = ["es", "en", "fr"]
 PATH = {"es": "", "en": "en/", "fr": "fr/"}
@@ -32,9 +42,9 @@ TITLE = {
     "fr": "Narelia : l’app santé Apple Watch qui vous compare à vous",
 }
 DESCRIPTION = {
-    "es": "Recuperación, VFC, sueño y estrés de tu Apple Watch, medidos frente a tu propia historia y no frente a una tabla de población. Todo el análisis en tu iPhone, sin cuenta. Beta abierta en TestFlight.",
-    "en": "Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Open beta on TestFlight.",
-    "fr": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Bêta ouverte sur TestFlight.",
+    "es": "Recuperación, VFC, sueño y estrés de tu Apple Watch, medidos frente a tu propia historia y no frente a una tabla de población. Todo el análisis en tu iPhone, sin cuenta. Ya disponible en la App Store.",
+    "en": "Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Now available on the App Store.",
+    "fr": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.",
 }
 OG_TITLE = {
     "es": "Narelia · Tus datos, no los de nadie",
@@ -56,9 +66,9 @@ ALT = {
         "fr": "Écran de récupération : le chiffre, les signaux qui le composent et son évolution jour après jour.",
     },
     "3-noche": {
-        "es": "Pantalla de estrés con las lecturas de la noche y del día sobre el reloj.",
-        "en": "Stress screen with the night’s and the day’s readings along the clock.",
-        "fr": "Écran de stress avec les mesures de la nuit et de la journée le long de l’horloge.",
+        "es": "Pantalla de estrés: el día lectura a lectura sobre el reloj, con sus marcas de lo que registraste y la noche medida aparte.",
+        "en": "Stress screen: the day reading by reading along the clock, with marks for what you logged and the night measured apart.",
+        "fr": "Écran de stress : la journée mesure par mesure le long de l’horloge, avec les repères de ce que vous avez noté et la nuit mesurée à part.",
     },
     "4-forma-fisica": {
         "es": "Pantalla de forma física: el esfuerzo de la semana frente a tus semanas habituales.",
@@ -66,15 +76,21 @@ ALT = {
         "fr": "Écran de forme : l’effort de la semaine face à vos semaines habituelles.",
     },
     "5-registro": {
-        "es": "Registro de agua con el recipiente dibujado y las cantidades rápidas.",
-        "en": "Water log with the drawn vessel and quick amounts.",
-        "fr": "Journal d’eau avec le récipient dessiné et les quantités rapides.",
+        "es": "Registro de agua: tus recipientes (vaso con pajita, botella, termo, lata, taza) y las cantidades rápidas.",
+        "en": "Water log: your vessels (tumbler with straw, bottle, flask, can, cup) and quick amounts.",
+        "fr": "Journal d’eau : vos récipients (verre avec paille, bouteille, thermos, canette, tasse) et les quantités rapides.",
     },
     "6-privacidad": {
-        "es": "Ajustes de Narelia con la sección de privacidad: sin cuenta y sin servidores.",
-        "en": "Narelia settings with the privacy section: no account and no servers.",
-        "fr": "Réglages de Narelia avec la section confidentialité : sans compte ni serveurs.",
+        "es": "Ajustes de Narelia, sección Datos y privacidad: sincronizar con iCloud, apagado, y la política de privacidad.",
+        "en": "Narelia settings, Data and privacy section: sync with iCloud, switched off, and the privacy policy.",
+        "fr": "Réglages de Narelia, section Données et confidentialité : synchroniser avec iCloud, désactivé, et la politique de confidentialité.",
     },
+}
+# El texto de la insignia oficial de Apple, tal como ella lo dice en cada idioma.
+ALT["badge"] = {
+    "es": "Descargar en el App Store",
+    "en": "Download on the App Store",
+    "fr": "Télécharger dans l’App Store",
 }
 ALTW = {
     "pulso-mediano-noche": {"es": "Widget de frecuencia cardiaca: la lectura actual, el pico, el mínimo y el día en velas por hora.", "en": "Heart rate widget: the latest reading, peak, low and the day as hourly candles.", "fr": "Widget de fréquence cardiaque : la mesure actuelle, le pic, le minimum et la journée en bougies horaires."},
@@ -92,7 +108,7 @@ UI = {
     "Anterior": {"es": "Anterior", "en": "Previous", "fr": "Précédent"},
     "Siguiente": {"es": "Siguiente", "en": "Next", "fr": "Suivant"},
     "Capturas": {"es": "Capturas de Narelia", "en": "Narelia screenshots", "fr": "Captures de Narelia"},
-    "Idioma / Language": {"es": "Idioma y beta", "en": "Language and beta", "fr": "Langue et bêta"},
+    "Idioma / Language": {"es": "Idioma y descarga", "en": "Language and download", "fr": "Langue et téléchargement"},
 }
 SHOTS = ["1-hoy", "2-recuperacion", "3-noche", "4-forma-fisica", "5-registro", "6-privacidad"]
 
@@ -117,8 +133,21 @@ def head(lang: str, base: str) -> str:
         "applicationSubCategory": "Apple Watch",
         "image": SITE + "assets/og.jpg",
         "screenshot": [SITE + f"assets/screens/{lang}/{s}.webp" for s in SHOTS],
-        "installUrl": TESTFLIGHT,
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "installUrl": APPSTORE,
+        "downloadUrl": APPSTORE,
+        "sameAs": [APPSTORE],
+        "datePublished": LAUNCH_DATE,
+        "softwareVersion": "1.0",
+        "isAccessibleForFree": True,
+        # Gratis, y la suscripción opcional que sólo quita el tope de comidas al día.
+        "offers": [
+            {"@type": "Offer", "name": "Narelia", "price": "0", "priceCurrency": "USD",
+             "url": APPSTORE, "availability": "https://schema.org/InStock"},
+            {"@type": "Offer", "name": "Narelia Pro", "price": PRO_PRICE, "priceCurrency": "USD",
+             "url": APPSTORE, "availability": "https://schema.org/InStock",
+             "priceSpecification": {"@type": "UnitPriceSpecification", "price": PRO_PRICE,
+                                    "priceCurrency": "USD", "billingDuration": "P1M"}},
+        ],
     }
     return f"""<!doctype html>
 <html lang="{lang}">
@@ -144,6 +173,7 @@ def head(lang: str, base: str) -> str:
 <meta name="twitter:description" content="{DESCRIPTION[lang]}">
 <meta name="twitter:image" content="{SITE}assets/og.jpg">
 <meta name="theme-color" content="#F5F6F8">
+<meta name="apple-itunes-app" content="app-id={APP_ID}">
 <link rel="icon" href="{base}assets/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{base}assets/mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,17 +197,30 @@ def language_links(lang: str, base: str) -> str:
     return f'<div class="langs" role="group" aria-label="{LANG_GROUP[lang]}">' + "".join(links) + "</div>"
 
 
-def render(template: str, lang: str) -> str:
+def badge_width(lang: str, height: int = 54) -> str:
+    """El ancho de la insignia a su alto, de su propio viewBox: se escala sin deformarla."""
+    svg = (ROOT / "assets" / "badges" / f"{lang}.svg").read_text(encoding="utf-8")
+    w, h = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', svg).groups()
+    return f"{float(w) * height / float(h):.1f}".rstrip("0").rstrip(".")
+
+
+def render(template: str, lang: str, update: bool = False) -> str:
     base = "" if lang == "es" else "../"
+    if update:
+        template = template.replace("<!--next-->", "").replace("<!--/next-->", "")
+    else:
+        template = re.sub(r"[ \t]*<!--next-->.*?<!--/next-->\n?", "", template, flags=re.S)
     page = template.replace("{{HEAD}}", head(lang, base))
+    page = page.replace("{{APPSTORE}}", APPSTORE).replace("{{BADGEW}}", badge_width(lang))
     page = page.replace("{{LANGS}}", language_links(lang, base))
     page = page.replace("{{HOME}}", "./")
     page = page.replace("{{BASE}}", base).replace("{{LANG}}", lang)
     page = re.sub(r"\{\{ALT:([^}]+)\}\}", lambda m: ALT[m.group(1)][lang], page)
     page = re.sub(r"\{\{ALTW:([^}]+)\}\}", lambda m: ALTW[m.group(1)][lang], page)
     # De cada trío de traducciones, sólo la de esta página, sin su envoltorio.
-    page = re.sub(r'<span lang="(es|en|fr)">([^<]*)</span>',
-                  lambda m: m.group(2) if m.group(1) == lang else "", page)
+    # (con etiquetas dentro, como <strong> o un enlace, sin saltar a otro <span>)
+    page = re.sub(r'<span lang="(es|en|fr)">((?:(?!</span>).)*)</span>',
+                  lambda m: m.group(2) if m.group(1) == lang else "", page, flags=re.S)
     for key, words in UI.items():
         page = page.replace(f'aria-label="{key}"', f'aria-label="{words[lang]}"')
     leftover = re.findall(r"\{\{[^}]+\}\}", page)
@@ -202,11 +245,12 @@ def sitemap() -> str:
 
 
 def main() -> None:
+    update = "--actualizacion" in sys.argv[1:]
     template = (ROOT / "src" / "page.html").read_text(encoding="utf-8")
     for lang in LANGS:
         out = ROOT / PATH[lang] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(render(template, lang), encoding="utf-8")
+        out.write_text(render(template, lang, update), encoding="utf-8")
         print("escrita", out.relative_to(ROOT))
     (ROOT / "sitemap.xml").write_text(sitemap(), encoding="utf-8")
     print("escrito sitemap.xml")
