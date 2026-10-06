@@ -10,6 +10,7 @@ HTML, CSS y un poco de JavaScript, sin compilación. Se publica con GitHub Pages
 - `tools/build.py`: genera `index.html` (español), `en/index.html` y `fr/index.html` desde la plantilla, con el título, la descripción, el `hreflang`, las etiquetas para redes, el banner de la App Store (`apple-itunes-app`), los datos estructurados de app (`MobileApplication`, con su URL de la App Store, la oferta gratuita y la de Narelia Pro) y los textos alternativos de cada idioma, y escribe `sitemap.xml`. **Después de tocar la plantilla: `python3 tools/build.py`** y se suben también los ficheros generados.
 - `styles.css`: la paleta y el tipo. Los colores son los de la app: el blanco frío de su fondo, la tinta índigo, el violeta y el naranja de su malla, el azul de acento y el turquesa.
 - `main.js`: la tira de capturas y la cabecera.
+- `assets/film/narelia-{es,en}.{mp4,jpg}`: la película de lanzamiento en 16:9 (2 min 14 s), comprimida para la web desde `~/myhealth/motion-lanzamiento/narelia-lanzamiento-wide-*.mp4` (ffmpeg: 1280 px, H.264 CRF 25, 60 fps, AAC 64k, `+faststart`; ~8 MB) con su póster. La española va en la raíz; la inglesa en /en/ y /fr/. `main.js` la reproduce sin sonido y en bucle sólo mientras está a la vista, y no arranca sola con «reducir movimiento».
 - `assets/badges/{es,en,fr}.svg`: la insignia oficial «Download on the App Store» de Apple, negra y sin tocar (de `toolbox.marketingtools.apple.com`, ver más abajo).
 
 ## SEO

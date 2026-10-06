@@ -27,7 +27,31 @@
     update();
   }
 
-  // La cabecera gana su borde en cuanto hay contenido pasando por debajo.
+  // La película: sin sonido y en bucle sólo mientras está a la vista. Hasta acercarse no se
+  // descarga (preload="none"); con «reducir movimiento» no arranca sola, y si quien mira la
+  // pausa o la toca, ya no se le vuelve a poner en marcha.
+  const film = document.querySelector("video[data-autoplay]");
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (film && !calm && "IntersectionObserver" in window) {
+    let touched = false;
+    let ours = false; // la pausa la puso la página al salir de la vista, no quien mira
+    film.addEventListener("pause", () => { if (ours) ours = false; else touched = true; });
+    film.addEventListener("volumechange", () => { touched = true; });
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (touched) return;
+        if (entry.isIntersecting) {
+          film.muted = true;
+          film.play().catch(() => {});
+        } else if (!film.paused) {
+          ours = true;
+          film.pause();
+        }
+      });
+    }, { threshold: 0.45 }).observe(film);
+  }
+
+  // La cabecera gana su borde  // La cabecera gana su borde en cuanto hay contenido pasando por debajo.
   const top = document.querySelector(".top");
   if (top) {
     const onScroll = () => top.classList.toggle("is-scrolled", window.scrollY > 8);

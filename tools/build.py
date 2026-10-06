@@ -109,7 +109,11 @@ UI = {
     "Siguiente": {"es": "Siguiente", "en": "Next", "fr": "Suivant"},
     "Capturas": {"es": "Capturas de Narelia", "en": "Narelia screenshots", "fr": "Captures de Narelia"},
     "Idioma / Language": {"es": "Idioma y descarga", "en": "Language and download", "fr": "Langue et téléchargement"},
+    "Película": {"es": "Película de lanzamiento de Narelia", "en": "Narelia launch film", "fr": "Film de lancement de Narelia (en anglais)"},
 }
+# La película de lanzamiento (16:9, comprimida para la web en assets/film/): en español en la
+# raíz; la inglesa sirve a /en/ y a /fr/, que no tiene versión propia.
+FILM = {"es": "es", "en": "en", "fr": "en"}
 SHOTS = ["1-hoy", "2-recuperacion", "3-noche", "4-forma-fisica", "5-registro", "6-privacidad"]
 
 
@@ -214,7 +218,7 @@ def render(template: str, lang: str, update: bool = False) -> str:
     page = page.replace("{{APPSTORE}}", APPSTORE).replace("{{BADGEW}}", badge_width(lang))
     page = page.replace("{{LANGS}}", language_links(lang, base))
     page = page.replace("{{HOME}}", "./")
-    page = page.replace("{{BASE}}", base).replace("{{LANG}}", lang)
+    page = page.replace("{{BASE}}", base).replace("{{LANG}}", lang).replace("{{FILM}}", FILM[lang])
     page = re.sub(r"\{\{ALT:([^}]+)\}\}", lambda m: ALT[m.group(1)][lang], page)
     page = re.sub(r"\{\{ALTW:([^}]+)\}\}", lambda m: ALTW[m.group(1)][lang], page)
     # De cada trío de traducciones, sólo la de esta página, sin su envoltorio.

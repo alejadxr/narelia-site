@@ -173,6 +173,30 @@
 
   </section>
 
+  <!-- La película de lanzamiento (2 min 14 s, 16:9). Sin sonido y en bucle mientras está a la
+       vista; con los controles del navegador se pausa o se le da sonido. No se descarga hasta que
+       se acerca a la pantalla (main.js), y con «reducir movimiento» no arranca sola. -->
+  <section class="film" aria-labelledby="film-title">
+    <div class="section-head">
+      <h2 id="film-title">
+        Mírala en dos minutos.
+        
+        
+      </h2>
+      <p>
+        La película de lanzamiento: la app entera, pantalla a pantalla, con datos simulados.
+        
+        
+      </p>
+    </div>
+    <figure class="film-frame">
+      <video class="film-video" width="1280" height="720" muted loop playsinline controls preload="none"
+             poster="assets/film/narelia-es.jpg" aria-label="Película de lanzamiento de Narelia" data-autoplay>
+        <source src="assets/film/narelia-es.mp4" type="video/mp4">
+      </video>
+    </figure>
+  </section>
+
   <!-- Las seis capturas de la ficha, con los rótulos de la guía de la tienda. -->
   <section class="screens" aria-labelledby="screens-title">
     <div class="section-head">
