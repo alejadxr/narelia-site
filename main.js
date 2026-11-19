@@ -84,3 +84,9 @@
     });
   });
 })();
+
+// En la guía, cada captura se abre a tamaño completo al tocarla (en el móvil se ven pequeñas).
+document.querySelectorAll(".cap img").forEach((img) => {
+  img.style.cursor = "zoom-in";
+  img.addEventListener("click", () => window.open(img.currentSrc || img.src, "_blank", "noopener"));
+});

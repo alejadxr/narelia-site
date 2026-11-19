@@ -15,7 +15,7 @@
 <meta property="og:title" content="Narelia · Your data, measured against you">
 <meta property="og:description" content="Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history. All analysis on your iPhone, no account. And now Narelia for Mac brings your figures to the AI you already use, with no server in between.">
 <meta property="og:url" content="https://alejadxr.github.io/narelia-site/en/">
-<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Narelia · Your data, measured against you">
 <meta name="twitter:description" content="Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history. All analysis on your iPhone, no account. And now Narelia for Mac brings your figures to the AI you already use, with no server in between.">
-<meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og-en.jpg">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)">
@@ -47,7 +47,7 @@
   "operatingSystem": "iOS 26",
   "applicationCategory": "HealthApplication",
   "applicationSubCategory": "Apple Watch",
-  "image": "https://alejadxr.github.io/narelia-site/assets/og.jpg",
+  "image": "https://alejadxr.github.io/narelia-site/assets/og-en.jpg",
   "screenshot": [
     "https://alejadxr.github.io/narelia-site/assets/screens/en/1-hoy.webp",
     "https://alejadxr.github.io/narelia-site/assets/screens/en/3-noche.webp",
@@ -89,7 +89,7 @@
     <nav class="nav" aria-label="Navigation">
       <a href="../en/" aria-current="page">The app</a>
       <a href="../en/desktop/">For Mac</a>
-      <a href="../en/connect-your-ai/">Connect your AI</a>
+      <a href="../en/guia-ia.html">Connect your AI</a>
     </nav>
     <div class="top-actions">
       <div class="langs" role="group" aria-label="Language"><a href="../" hreflang="es" lang="es" title="Español">ES</a><a href="../en/" hreflang="en" lang="en" title="English" aria-current="page">EN</a><a href="../fr/" hreflang="fr" lang="fr" title="Français">FR</a></div>
@@ -103,7 +103,7 @@
 
 <main id="main">
 
-  <!-- El héroe. A la derecha, el hueco del iPhone en 3D (img/3d-iphone.webp): si el fichero
+  <!-- El héroe. A la derecha, el iPhone en 3D (img/3d-iphone.png, de SutoScreen): si el fichero
        está, se ve él; si no, la captura de la ficha. Ver «Huecos 3D» en el README. -->
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
@@ -142,8 +142,8 @@
         </p>
       </div>
 
-      <figure class="slot slot-iphone" data-slot="img/3d-iphone.webp">
-        <img class="slot-3d" src="../img/3d-iphone.webp" alt="Narelia on an iPhone, showing the Today screen." onload="this.parentNode.classList.add('has-3d')">
+      <figure class="slot slot-iphone" data-slot="img/3d-iphone.png">
+        <img class="slot-3d" src="../img/3d-iphone.png" alt="Narelia on an iPhone, showing the Today screen." onload="this.parentNode.classList.add('has-3d')">
         <img class="slot-fallback shot" src="../assets/screens/en/1-hoy.webp" width="663" height="1300" alt="Narelia’s Today screen on an iPhone: the Readiness figure on its dial and the day’s heart rate." fetchpriority="high">
       </figure>
     </div>
@@ -308,17 +308,16 @@
     </div>
   </section>
 
-  <!-- Narelia para Mac. A la izquierda, el hueco de la ventana en 3D (img/3d-escritorio.webp);
-       mientras no está, la ventana real renderizada con datos de ejemplo. -->
+  <!-- Narelia para Mac. A la izquierda, la ventana montada en HTML y CSS con perspectiva, con la
+       captura real de «Conectar con tu IA» (arnés de maquetas de narelia-escritorio, datos de ejemplo). -->
   <section class="desk" id="mac" aria-labelledby="desk-title">
     <div class="wrap desk-grid">
-      <figure class="slot slot-window" data-slot="img/3d-escritorio.webp">
-        <img class="slot-3d" src="../img/3d-escritorio.webp" alt="The Narelia for Mac window on its Today screen: Readiness, recovery and the week’s figures, with sample data." onload="this.parentNode.classList.add('has-3d')">
-        <div class="slot-fallback window">
+      <figure class="mac3d">
+        <div class="window">
           <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
           <picture>
-            <source srcset="../assets/escritorio/inicio-en-oscuro.jpg" media="(prefers-color-scheme: dark)">
-            <img src="../assets/escritorio/inicio-en-claro.jpg" width="1920" height="1080" alt="The Narelia for Mac window on its Today screen: Readiness, recovery and the week’s figures, with sample data." loading="lazy">
+            <source srcset="../assets/guia/mac-4-conectar-en-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="../assets/guia/mac-4-conectar-en-claro.jpg" width="1600" height="900" alt="The Narelia for Mac window on “Connect with your AI”: Claude Desktop connected; LM Studio, Hermes Agent and Cursor with their “Connect” button; Claude Code and OpenClaw, by hand." loading="lazy">
           </picture>
         </div>
       </figure>
@@ -336,7 +335,7 @@
         </ul>
         <div class="row">
           <a class="btn btn-teal" href="../en/desktop/">Download for Mac</a>
-          <a class="link-arrow" href="../en/connect-your-ai/">How to connect your AI</a>
+          <a class="link-arrow" href="../en/guia-ia.html">How to connect your AI</a>
         </div>
       </div>
     </div>
@@ -370,7 +369,7 @@
           <span class="lg lg-sola">Set up for you with “Connect”</span>
           <span class="lg lg-mano">By hand: Narelia gives you what to paste</span>
         </p>
-        <a class="link-arrow" href="../en/connect-your-ai/">The step-by-step guide</a>
+        <a class="link-arrow" href="../en/guia-ia.html">The step-by-step guide</a>
       </div>
     </div>
   </section>
@@ -460,7 +459,7 @@
     <nav class="foot-links" aria-label="Navigation">
       <a href="../en/">The app</a>
       <a href="../en/desktop/">Narelia for Mac</a>
-      <a href="../en/connect-your-ai/">Connect your AI</a>
+      <a href="../en/guia-ia.html">Connect your AI</a>
       <a href="https://alejadxr.github.io/narelia-privacy/">Privacy</a>
       <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources and responsibility</a>
     </nav>

@@ -6,27 +6,29 @@ HTML, CSS y un poco de JavaScript, sin compilación. Se publica con GitHub Pages
 
 ## Qué hay
 
-Tres páginas, cada una en es (raíz), en (`/en/`) y fr (`/fr/`):
+Tres páginas, en es (raíz), en (`/en/`) y fr (`/fr/`):
 
 | Página | Plantilla | URLs |
 | --- | --- | --- |
 | Portada | `src/inicio.html` | `/`, `/en/`, `/fr/` |
 | Narelia para Mac (descarga) | `src/escritorio.html` | `/escritorio/`, `/en/desktop/`, `/fr/bureau/` |
-| Guía «Conecta tu IA» | `src/guia.html` | `/conecta-tu-ia/`, `/en/connect-your-ai/`, `/fr/connecter-votre-ia/` |
+| Guía visual «Conecta Narelia con tu IA» | `src/guia.html` | `/guia-ia.html`, `/en/guia-ia.html` (sólo es y en; la francesa enlaza a la inglesa) |
 
 - `src/*.html`: **las plantillas**, con los tres idiomas de cada texto uno junto a otro. `_cabecera.html` y `_pie.html` son la barra de arriba y el pie, comunes a todas. Es el único sitio donde se edita el texto.
 - `src/clientes.json`: las 22 apps de IA de la guía, con su grupo, el fichero que Narelia escribe en el Mac y, en las 7 de paso a mano, el texto exacto. **No se edita a mano**: sale del código de Narelia para escritorio (`crates/nucleo/src/clientes.rs`, funciones `fichero_en` y `a_mano`) con `tools/fragmentos` (ver más abajo).
 - `tools/build.py`: genera las nueve páginas y `sitemap.xml`, con título, descripción, `hreflang`, Open Graph y datos estructurados por página. **Después de tocar una plantilla: `python3 tools/build.py`** y se suben también los ficheros generados. Se niega a escribir una página que nombre el THC, el cannabis o el alcohol.
 - `styles.css`: la paleta y el tipo. Los colores son los de las apps: el blanco frío del iPhone, la tinta índigo, el verde azulado y el resplandor de Narelia para escritorio, el violeta de la VFC. Letra: Source Serif 4 (la serif de la ventana de escritorio), Inter y JetBrains Mono. Claro y oscuro según el sistema.
 - `main.js`: la tira de capturas, el borde de la cabecera, las animaciones de «El camino» y de la barra de rango (una vez, al verse; quietas con «reducir movimiento») y los botones de copiar de la guía.
-- `assets/escritorio/`: la ventana real de Narelia para Mac (pantalla Hoy, datos de ejemplo), de las maquetas `promo-fullhd` de narelia-escritorio, en claro y oscuro.
 - `assets/slint/`: la insignia oficial «Made with Slint». La licencia royalty-free 2.0 de Slint (§2(b)) la pide en la página pública de descarga; va en `/escritorio/`, junto al botón.
 - `assets/badges/{es,en,fr}.svg`: la insignia oficial «Download on the App Store» de Apple, negra y sin tocar.
-- `assets/film/`: la película de lanzamiento. **Ya no se enseña** en la portada: está pendiente de revisar que no salga en ella nada de lo que la página pública no puede nombrar.
+- `assets/film/`: la película de lanzamiento. **Fuera de la web** (decidido el 19 nov).
 
-## Huecos 3D
+## Imágenes
 
-Dos imágenes que llegan aparte: **`img/3d-iphone.webp`** (héroe de la portada) e **`img/3d-escritorio.webp`** (sección «Narelia para Mac» y página de descarga). Basta con dejarlas en `img/`: cada hueco intenta cargar su fichero y, si está, lo enseña; si no, enseña lo de debajo (la captura de la ficha y la ventana real). En local (`localhost`/`127.0.0.1`) cada hueco vacío lleva una etiqueta con el nombre que espera; en la web publicada, no.
+- **El iPhone del héroe** es `img/3d-iphone.png` (PNG transparente de SutoScreen, 1600 px): basta con dejarlo en `img/`. Mientras no está, se ve la captura de la ficha; en local (`localhost`), el hueco lleva una etiqueta con el nombre del fichero.
+- **La ventana de Mac** no es un render 3D: es una ventana montada en HTML y CSS (`.mac3d`, perspectiva sutil) con la captura real de «Conectar con tu IA».
+- **Capturas de la guía** (`assets/guia/`): las del Mac salen del arnés de maquetas de narelia-escritorio (`NARELIA_PROMO=1 target/release/examples/maquetas <carpeta>`, datos de ejemplo, sin tocar la app instalada); las del iPhone, de los renders de «1.1.21 Conectar con tu IA» en iCloud, recortadas por arriba con ffmpeg (`crop=804:1700:0:0`; `sips --cropOffset` recorta centrado). No se usa `conectar-a-mano`, porque enseña la ruta con el usuario de la demo. Ninguna enseña THC ni alcohol.
+- **og.jpg / og-en.jpg**: 1200 × 630, con el diseño actual y sin cifras de salud; la inglesa sirve a /en/ y /fr/.
 
 ## La descarga de escritorio
 
@@ -54,7 +56,7 @@ Pendiente fuera de este repo, porque necesita la cuenta del dueño:
 
 ## La App Store
 
-La app está en https://apps.apple.com/app/narelia/id6809521455 (id `6809521455`, constantes `APP_ID` y `APPSTORE` en `tools/build.py`). La beta de TestFlight (`https://testflight.apple.com/join/KAwauxRQ`, constante `TESTFLIGHT`) se enlaza sólo desde la descarga de escritorio y la guía, para «Conectar con tu IA» mientras la 1.1.21 no está en la tienda.
+La app está en https://apps.apple.com/app/narelia/id6809521455 (id `6809521455`, constantes `APP_ID` y `APPSTORE` en `tools/build.py`). La beta pública de TestFlight ya no se usa ni se enlaza: todo va a la App Store.
 
 - **La insignia** es de Apple y no se modifica: negra (la preferida), una por página, a 54 px de alto (el mínimo en pantalla son 40) y con un cuarto de su alto de espacio libre. Se baja de `https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/<es-es|en-us|fr-fr>`. El resto de llamadas a la acción (cabecera y cierre) son botones de texto, no una segunda insignia. Los créditos de marcas de Apple van una sola vez, en el pie.
 

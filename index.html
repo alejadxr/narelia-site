@@ -89,7 +89,7 @@
     <nav class="nav" aria-label="Navegación">
       <a href="./" aria-current="page">La app</a>
       <a href="escritorio/">Para Mac</a>
-      <a href="conecta-tu-ia/">Conecta tu IA</a>
+      <a href="guia-ia.html">Conecta tu IA</a>
     </nav>
     <div class="top-actions">
       <div class="langs" role="group" aria-label="Idioma"><a href="./" hreflang="es" lang="es" title="Español" aria-current="page">ES</a><a href="en/" hreflang="en" lang="en" title="English">EN</a><a href="fr/" hreflang="fr" lang="fr" title="Français">FR</a></div>
@@ -103,7 +103,7 @@
 
 <main id="main">
 
-  <!-- El héroe. A la derecha, el hueco del iPhone en 3D (img/3d-iphone.webp): si el fichero
+  <!-- El héroe. A la derecha, el iPhone en 3D (img/3d-iphone.png, de SutoScreen): si el fichero
        está, se ve él; si no, la captura de la ficha. Ver «Huecos 3D» en el README. -->
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
@@ -142,8 +142,8 @@
         </p>
       </div>
 
-      <figure class="slot slot-iphone" data-slot="img/3d-iphone.webp">
-        <img class="slot-3d" src="img/3d-iphone.webp" alt="Narelia en un iPhone, con la pantalla Hoy." onload="this.parentNode.classList.add('has-3d')">
+      <figure class="slot slot-iphone" data-slot="img/3d-iphone.png">
+        <img class="slot-3d" src="img/3d-iphone.png" alt="Narelia en un iPhone, con la pantalla Hoy." onload="this.parentNode.classList.add('has-3d')">
         <img class="slot-fallback shot" src="assets/screens/es/1-hoy.webp" width="663" height="1300" alt="Pantalla Hoy de Narelia en un iPhone: la cifra de Readiness en su dial y el pulso del día." fetchpriority="high">
       </figure>
     </div>
@@ -308,17 +308,16 @@
     </div>
   </section>
 
-  <!-- Narelia para Mac. A la izquierda, el hueco de la ventana en 3D (img/3d-escritorio.webp);
-       mientras no está, la ventana real renderizada con datos de ejemplo. -->
+  <!-- Narelia para Mac. A la izquierda, la ventana montada en HTML y CSS con perspectiva, con la
+       captura real de «Conectar con tu IA» (arnés de maquetas de narelia-escritorio, datos de ejemplo). -->
   <section class="desk" id="mac" aria-labelledby="desk-title">
     <div class="wrap desk-grid">
-      <figure class="slot slot-window" data-slot="img/3d-escritorio.webp">
-        <img class="slot-3d" src="img/3d-escritorio.webp" alt="La ventana de Narelia para Mac, en la pantalla Hoy: Readiness, recuperación y las cifras de la semana, con datos de ejemplo." onload="this.parentNode.classList.add('has-3d')">
-        <div class="slot-fallback window">
+      <figure class="mac3d">
+        <div class="window">
           <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
           <picture>
-            <source srcset="assets/escritorio/inicio-es-oscuro.jpg" media="(prefers-color-scheme: dark)">
-            <img src="assets/escritorio/inicio-es-claro.jpg" width="1920" height="1080" alt="La ventana de Narelia para Mac, en la pantalla Hoy: Readiness, recuperación y las cifras de la semana, con datos de ejemplo." loading="lazy">
+            <source srcset="assets/guia/mac-4-conectar-es-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="assets/guia/mac-4-conectar-es-claro.jpg" width="1600" height="900" alt="La ventana de Narelia para Mac en «Conectar con tu IA»: Claude Desktop conectada; LM Studio, Hermes Agent y Cursor con su botón «Conectar»; Claude Code y OpenClaw, a mano." loading="lazy">
           </picture>
         </div>
       </figure>
@@ -336,7 +335,7 @@
         </ul>
         <div class="row">
           <a class="btn btn-teal" href="escritorio/">Descargar para Mac</a>
-          <a class="link-arrow" href="conecta-tu-ia/">Cómo conectar tu IA</a>
+          <a class="link-arrow" href="guia-ia.html">Cómo conectar tu IA</a>
         </div>
       </div>
     </div>
@@ -370,7 +369,7 @@
           <span class="lg lg-sola">Se configura sola, con «Conectar»</span>
           <span class="lg lg-mano">A mano: Narelia te da lo que hay que pegar</span>
         </p>
-        <a class="link-arrow" href="conecta-tu-ia/">La guía, paso a paso</a>
+        <a class="link-arrow" href="guia-ia.html">La guía, paso a paso</a>
       </div>
     </div>
   </section>
@@ -460,7 +459,7 @@
     <nav class="foot-links" aria-label="Navegación">
       <a href="./">La app</a>
       <a href="escritorio/">Narelia para Mac</a>
-      <a href="conecta-tu-ia/">Conecta tu IA</a>
+      <a href="guia-ia.html">Conecta tu IA</a>
       <a href="https://alejadxr.github.io/narelia-privacy/">Privacidad</a>
       <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Fuentes y responsabilidad</a>
     </nav>

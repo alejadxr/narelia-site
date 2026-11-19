@@ -1,94 +1,248 @@
 {{HEAD}}
 <body class="p-guia">
-{{TOP}}
+{{TOPMIN}}
+
+<!-- La guía visual «Conecta Narelia con tu IA»: una página suelta, para mandarla por enlace a
+     quien pide el MCP. Se entiende sin el resto de la web. Las capturas de Mac salen del arnés de
+     maquetas de narelia-escritorio (NARELIA_PROMO=1, datos de ejemplo); las del iPhone, de los
+     renders de «Conectar con tu IA» de la 1.1.21. Ninguna enseña datos reales. -->
 
 <main id="main">
 
   <section class="hero hero-guide">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="kicker"><span lang="es">Guía · narelia-mcp</span><span lang="en">Guide · narelia-mcp</span><span lang="fr">Guide · narelia-mcp</span></p>
+      <p class="kicker"><span lang="es">Guía visual · 5 pasos · unos 10 minutos</span><span lang="en">Visual guide · 5 steps · about 10 minutes</span></p>
       <h1 class="display">
         <span lang="es">Conecta Narelia <em>con tu IA.</em></span>
         <span lang="en">Connect Narelia <em>to your AI.</em></span>
-        <span lang="fr">Connectez Narelia <em>à votre IA.</em></span>
       </h1>
       <p class="lede">
-        <span lang="es">Narelia para Mac trae narelia-mcp, un servidor MCP que tu app de IA arranca en tu propio ordenador, por stdio. Con él, la IA que ya usas lee tus cifras de Narelia y puede proponer registros, que sólo se guardan cuando los confirmas en el iPhone.</span>
-        <span lang="en">Narelia for Mac comes with narelia-mcp, an MCP server your AI app starts on your own computer, over stdio. With it, the AI you already use reads your Narelia figures and can propose logs, which are only saved when you confirm them on the iPhone.</span>
-        <span lang="fr">Narelia pour Mac est livrée avec narelia-mcp, un serveur MCP que votre app d’IA lance sur votre propre ordinateur, en stdio. Avec lui, l’IA que vous utilisez déjà lit vos chiffres Narelia et peut proposer des enregistrements, qui ne sont gardés que lorsque vous les confirmez sur l’iPhone.</span>
+        <span lang="es">Con Narelia para Mac, la IA que ya usas —Claude, Codex, Cursor, OpenClaw y 18 más— lee tus cifras de Narelia y puede proponer registros. Lo hace con narelia-mcp, un servidor MCP que corre en tu propio Mac. Nada pasa por un servidor de Narelia, y nada se guarda hasta que lo confirmas en el iPhone.</span>
+        <span lang="en">With Narelia for Mac, the AI you already use (Claude, Codex, Cursor, OpenClaw and 18 more) reads your Narelia figures and can propose logs. It does so through narelia-mcp, an MCP server that runs on your own Mac. Nothing goes through a Narelia server, and nothing is saved until you confirm it on the iPhone.</span>
       </p>
-      <nav class="toc" aria-label="Navegación">
-        <a href="#antes"><span lang="es">Antes de empezar</span><span lang="en">Before you start</span><span lang="fr">Avant de commencer</span></a>
-        <a href="#pasos"><span lang="es">Los pasos</span><span lang="en">The steps</span><span lang="fr">Les étapes</span></a>
-        <a href="#apps"><span lang="es">Las 22 apps</span><span lang="en">The 22 apps</span><span lang="fr">Les 22 apps</span></a>
-        <a href="#problemas"><span lang="es">Si algo no va</span><span lang="en">If something’s off</span><span lang="fr">En cas de souci</span></a>
+
+      <div class="needs-box">
+        <h2 class="needs-title"><span lang="es">Lo que necesitas</span><span lang="en">What you need</span></h2>
+        <ul class="needs-grid">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg>
+            <b><span lang="es">Un Mac con macOS 13 o posterior</span><span lang="en">A Mac with macOS 13 or later</span></b>
+            <span lang="es">Apple silicon o Intel.</span><span lang="en">Apple silicon or Intel.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M10.5 5h3"/></svg>
+            <b><span lang="es">Narelia 1.1.21 o posterior con Pro</span><span lang="en">Narelia 1.1.21 or later with Pro</span></b>
+            <span lang="es">En tu iPhone, desde la <a href="{{APPSTORE}}">App Store</a>.</span><span lang="en">On your iPhone, from the <a href="{{APPSTORE}}">App Store</a>.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18.5h10.5a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 7.5 9.2 4.66 4.66 0 0 0 7 18.5z"/></svg>
+            <b><span lang="es">iCloud Drive en los dos</span><span lang="en">iCloud Drive on both</span></b>
+            <span lang="es">Con la misma cuenta de Apple.</span><span lang="en">With the same Apple Account.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/></svg>
+            <b><span lang="es">Una app de IA con MCP</span><span lang="en">An AI app with MCP</span></b>
+            <span lang="es">Cualquiera de las <a href="#apps">22 de la lista</a>.</span><span lang="en">Any of the <a href="#apps">22 on the list</a>.</span>
+          </li>
+        </ul>
+      </div>
+
+      <nav class="toc" aria-label="Pasos">
+        <a href="#paso-1"><b>1</b> <span lang="es">Instalar</span><span lang="en">Install</span></a>
+        <a href="#paso-2"><b>2</b> <span lang="es">Emparejar</span><span lang="en">Pair</span></a>
+        <a href="#paso-3"><b>3</b> <span lang="es">Elegir tu IA</span><span lang="en">Pick your AI</span></a>
+        <a href="#paso-4"><b>4</b> <span lang="es">Conectar</span><span lang="en">Connect</span></a>
+        <a href="#paso-5"><b>5</b> <span lang="es">Comprobar</span><span lang="en">Check</span></a>
+        <a href="#apps"><span lang="es">Las 22 apps</span><span lang="en">The 22 apps</span></a>
+        <a href="#problemas"><span lang="es">Si no funciona</span><span lang="en">If it doesn’t work</span></a>
       </nav>
     </div>
   </section>
 
-  <section class="guide-sec" id="antes" aria-labelledby="antes-title">
-    <div class="wrap split split-top">
-      <h2 id="antes-title" class="h2"><span lang="es">Antes de empezar</span><span lang="en">Before you start</span><span lang="fr">Avant de commencer</span></h2>
-      <ul class="needs">
-        <li>
-          <b><span lang="es">Narelia 1.1.21 o posterior en el iPhone, con Narelia Pro.</span><span lang="en">Narelia 1.1.21 or later on the iPhone, with Narelia Pro.</span><span lang="fr">Narelia 1.1.21 ou ultérieure sur l’iPhone, avec Narelia Pro.</span></b>
-          <span lang="es">Conectar con tu IA llega con esa versión. Mientras sale en la App Store, está en la <a href="{{TESTFLIGHT}}">beta de TestFlight</a>.</span><span lang="en">“Connect with your AI” arrives with that version. Until it is out on the App Store, it is in the <a href="{{TESTFLIGHT}}">TestFlight beta</a>.</span><span lang="fr">La connexion à votre IA arrive avec cette version. En attendant sa sortie sur l’App Store, elle est dans la <a href="{{TESTFLIGHT}}">bêta TestFlight</a>.</span>
-        </li>
-        <li>
-          <b><span lang="es">Narelia para Mac.</span><span lang="en">Narelia for Mac.</span><span lang="fr">Narelia pour Mac.</span></b>
-          <span lang="es"><a href="{{URL:escritorio}}">Descárgala aquí</a>; trae la ventana y narelia-mcp.</span><span lang="en"><a href="{{URL:escritorio}}">Download it here</a>; it includes the window and narelia-mcp.</span><span lang="fr"><a href="{{URL:escritorio}}">Téléchargez-la ici</a> ; elle contient la fenêtre et narelia-mcp.</span>
-        </li>
-        <li>
-          <b><span lang="es">iCloud Drive en los dos, con la misma cuenta de Apple.</span><span lang="en">iCloud Drive on both, with the same Apple Account.</span><span lang="fr">iCloud Drive sur les deux, avec le même compte Apple.</span></b>
-          <span lang="es">Es por donde viaja el fichero cifrado. También vale otra carpeta de Archivos que tu Mac sincronice, como Dropbox.</span><span lang="en">It is how the encrypted file travels. Another Files folder your Mac syncs, such as Dropbox, also works.</span><span lang="fr">C’est par là que voyage le fichier chiffré. Un autre dossier de Fichiers que votre Mac synchronise, comme Dropbox, convient aussi.</span>
-        </li>
-        <li>
-          <b><span lang="es">Una app de IA con MCP.</span><span lang="en">An AI app with MCP.</span><span lang="fr">Une app d’IA compatible MCP.</span></b>
-          <span lang="es">Cualquiera de las <a href="#apps">22 de la lista</a>.</span><span lang="en">Any of the <a href="#apps">22 on the list</a>.</span><span lang="fr">N’importe laquelle des <a href="#apps">22 de la liste</a>.</span>
-        </li>
-      </ul>
+  <!-- ── Paso 1 ──────────────────────────────────────────────────────────── -->
+  <section class="step" id="paso-1" aria-labelledby="paso-1-t">
+    <div class="wrap">
+      <header class="step-head">
+        <span class="step-n" aria-hidden="true">1</span>
+        <div>
+          <p class="step-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span></p>
+          <h2 id="paso-1-t" class="h2"><span lang="es">Instala Narelia para Mac</span><span lang="en">Install Narelia for Mac</span></h2>
+        </div>
+      </header>
+      <div class="step-body">
+        <ol class="do">
+          <li><span lang="es">Descarga el .dmg de la última versión:</span><span lang="en">Download the .dmg of the latest version:</span>
+            <a class="btn btn-teal btn-inline" href="{{RELEASE}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg><span lang="es">Descargar para macOS</span><span lang="en">Download for macOS</span></a></li>
+          <li><span lang="es">Ábrelo y arrastra Narelia a la carpeta Aplicaciones.</span><span lang="en">Open it and drag Narelia to the Applications folder.</span></li>
+          <li><span lang="es"><b>La primera vez, ábrela con clic derecho.</b> La app aún no está firmada ni notarizada, así que macOS avisa de que no puede comprobarla. En Aplicaciones, haz clic derecho (o Control-clic) sobre Narelia → «Abrir» → «Abrir» (1.1).</span><span lang="en"><b>The first time, open it with a right-click.</b> The app is not signed or notarized yet, so macOS warns that it cannot check it. In Applications, right-click (or Control-click) Narelia → “Open” → “Open” (1.1).</span></li>
+          <li><span lang="es">Si en macOS 15 o posterior sólo sale «Hecho», ve a Ajustes del Sistema → Privacidad y seguridad, baja hasta el aviso de Narelia y pulsa «Abrir igualmente» (1.2). Sólo hace falta una vez.</span><span lang="en">If macOS 15 or later only shows “Done”, go to System Settings → Privacy &amp; Security, scroll down to the Narelia notice and click “Open Anyway” (1.2). You only need to do this once.</span></li>
+        </ol>
+        <div class="caps caps-2">
+          <figure class="cap">
+            <span class="cap-n">1.1</span>
+            <div class="mock mock-menu" aria-hidden="true">
+              <div class="mock-file"><span class="mock-icon"></span>Narelia</div>
+              <ul class="mock-list">
+                <li class="is-on"><span lang="es">Abrir</span><span lang="en">Open</span></li>
+                <li><span lang="es">Mostrar contenido del paquete</span><span lang="en">Show Package Contents</span></li>
+                <li class="sep"></li>
+                <li><span lang="es">Trasladar a la papelera</span><span lang="en">Move to Trash</span></li>
+                <li class="sep"></li>
+                <li><span lang="es">Obtener información</span><span lang="en">Get Info</span></li>
+              </ul>
+            </div>
+            <figcaption><span lang="es">Clic derecho sobre Narelia → «Abrir». Ilustración del menú de macOS.</span><span lang="en">Right-click Narelia → “Open”. Illustration of the macOS menu.</span></figcaption>
+          </figure>
+          <figure class="cap">
+            <span class="cap-n">1.2</span>
+            <div class="mock mock-settings" aria-hidden="true">
+              <p class="mock-h"><span lang="es">Privacidad y seguridad</span><span lang="en">Privacy &amp; Security</span></p>
+              <p class="mock-sub"><span lang="es">Seguridad</span><span lang="en">Security</span></p>
+              <div class="mock-row">
+                <span><span lang="es">Se ha bloqueado «Narelia» para proteger tu Mac.</span><span lang="en">“Narelia” was blocked to protect your Mac.</span></span>
+                <span class="mock-btn"><span lang="es">Abrir igualmente</span><span lang="en">Open Anyway</span></span>
+              </div>
+            </div>
+            <figcaption><span lang="es">Sólo si macOS no ofrece «Abrir». Ilustración de Ajustes del Sistema.</span><span lang="en">Only if macOS doesn’t offer “Open”. Illustration of System Settings.</span></figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Los pasos, tal como los hace la app (ConectarIAViews.swift en el iPhone y primera.slint en
-       el Mac). Los rótulos entre comillas son los de la propia app. -->
-  <section class="guide-sec" id="pasos" aria-labelledby="pasos-title">
+  <!-- ── Paso 2 ──────────────────────────────────────────────────────────── -->
+  <section class="step" id="paso-2" aria-labelledby="paso-2-t">
     <div class="wrap">
-      <h2 id="pasos-title" class="h2"><span lang="es">Los pasos</span><span lang="en">The steps</span><span lang="fr">Les étapes</span></h2>
-      <ol class="walk">
-        <li>
-          <div class="walk-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span><span lang="fr">Sur le Mac</span></div>
-          <h3><span lang="es">Descarga Narelia para Mac</span><span lang="en">Download Narelia for Mac</span><span lang="fr">Téléchargez Narelia pour Mac</span></h3>
-          <p><span lang="es">Llévala a Aplicaciones. Como aún no está firmada, la primera vez se abre con clic derecho → «Abrir» (<a href="{{URL:escritorio}}#primera-vez">cómo, paso a paso</a>).</span><span lang="en">Move it to Applications. As it is not signed yet, the first time you open it with right-click → “Open” (<a href="{{URL:escritorio}}#primera-vez">how, step by step</a>).</span><span lang="fr">Placez-la dans Applications. Comme elle n’est pas encore signée, la première fois elle s’ouvre par clic droit → « Ouvrir » (<a href="{{URL:escritorio}}#primera-vez">comment, pas à pas</a>).</span></p>
-        </li>
-        <li>
-          <div class="walk-where"><span lang="es">En el iPhone</span><span lang="en">On the iPhone</span><span lang="fr">Sur l’iPhone</span></div>
-          <h3><span lang="es">Empareja el iPhone: carpeta y contraseña</span><span lang="en">Pair the iPhone: folder and password</span><span lang="fr">Associez l’iPhone : dossier et mot de passe</span></h3>
-          <p><span lang="es">En Narelia, ve a Ajustes → «Conectar con tu IA». Lee las condiciones y pulsa «Aceptar y continuar». Pulsa «Usar iCloud Drive › Narelia» y Narelia crea la carpeta. Después, «Poner contraseña»: al menos 8 caracteres. Cifra el fichero antes de que salga de Narelia y la vas a escribir igual en el Mac. Guárdala: Narelia no puede recuperarla.</span><span lang="en">In Narelia, go to Settings → “Connect with your AI”. Read the conditions and tap “Accept and continue”. Tap “Use iCloud Drive › Narelia” and Narelia creates the folder. Then “Set password”: at least 8 characters. It encrypts the file before it leaves Narelia, and you will type the same one on the Mac. Keep it: Narelia cannot recover it.</span><span lang="fr">Dans Narelia, allez dans Réglages → « Connexion à votre IA ». Lisez les conditions et touchez « Accepter et continuer ». Touchez « Utiliser iCloud Drive › Narelia » et Narelia crée le dossier. Puis « Définir le mot de passe » : au moins 8 caractères. Il chiffre le fichier avant qu’il ne quitte Narelia, et vous taperez le même sur le Mac. Gardez-le : Narelia ne peut pas le récupérer.</span></p>
-          <p class="walk-note"><span lang="es">En «Lo que tu IA puede ver» decides qué categorías se exportan. Puedes cambiarlo o parar cuando quieras.</span><span lang="en">In “What your AI can see” you decide which categories are exported. You can change it or stop at any time.</span><span lang="fr">Dans « Ce que votre IA peut voir », vous décidez quelles catégories sont exportées. Vous pouvez changer ou arrêter à tout moment.</span></p>
-        </li>
-        <li>
-          <div class="walk-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span><span lang="fr">Sur le Mac</span></div>
-          <h3><span lang="es">Abre Narelia: la carpeta y la misma contraseña</span><span lang="en">Open Narelia: the folder and the same password</span><span lang="fr">Ouvrez Narelia : le dossier et le même mot de passe</span></h3>
-          <p><span lang="es">La primera vez son tres pasos. Narelia busca la carpeta sola («Encontré tu carpeta de Narelia») y pulsas «Usar esta carpeta». Luego escribes la contraseña del iPhone; se guarda en el Llavero de macOS, nunca en un fichero ni en la configuración de tus apps.</span><span lang="en">The first time there are three steps. Narelia finds the folder by itself and you click “Use this folder”. Then you type the iPhone’s password; it is kept in the macOS Keychain, never in a file or in your apps’ configuration.</span><span lang="fr">La première fois, il y a trois étapes. Narelia trouve le dossier toute seule et vous cliquez sur « Use this folder ». Ensuite, vous tapez le mot de passe de l’iPhone ; il est gardé dans le trousseau de macOS, jamais dans un fichier ni dans la configuration de vos apps.</span></p>
-        </li>
-        <li>
-          <div class="walk-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span><span lang="fr">Sur le Mac</span></div>
-          <h3><span lang="es">Elige tu IA y pulsa «Conectar»</span><span lang="en">Pick your AI and click “Connect”</span><span lang="fr">Choisissez votre IA et cliquez sur « Connect »</span></h3>
-          <p><span lang="es">Narelia añade su entrada al fichero de configuración de esa app y guarda antes una copia a su lado (<code>*.narelia-copia.*</code>). Cierra la app de IA y vuelve a abrirla para que vea Narelia. En las siete de paso a mano, Narelia te enseña el texto ya con tu carpeta y dónde pegarlo.</span><span lang="en">Narelia adds its entry to that app’s configuration file, saving a copy next to it first (<code>*.narelia-copia.*</code>). Quit the AI app and open it again so it sees Narelia. For the seven by-hand apps, Narelia shows you the text, already with your folder, and where to paste it.</span><span lang="fr">Narelia ajoute son entrée au fichier de configuration de cette app, après en avoir gardé une copie à côté (<code>*.narelia-copia.*</code>). Quittez l’app d’IA et rouvrez-la pour qu’elle voie Narelia. Pour les sept apps à la main, Narelia vous montre le texte, déjà avec votre dossier, et où le coller.</span></p>
-        </li>
-        <li>
-          <div class="walk-where"><span lang="es">En tu IA</span><span lang="en">In your AI</span><span lang="fr">Dans votre IA</span></div>
-          <h3><span lang="es">Pregúntale</span><span lang="en">Ask it</span><span lang="fr">Demandez-lui</span></h3>
-          <div class="asks">
-            <p class="ask"><span lang="es">¿Cómo dormí esta semana frente a mi normal?</span><span lang="en">How did I sleep this week compared with my usual?</span><span lang="fr">Comment ai-je dormi cette semaine par rapport à d’habitude ?</span></p>
-            <p class="ask"><span lang="es">Compara mi variabilidad de este mes con la del mes pasado.</span><span lang="en">Compare my variability this month with last month.</span><span lang="fr">Compare ma variabilité de ce mois-ci avec celle du mois dernier.</span></p>
-            <p class="ask"><span lang="es">Apunta un café.</span><span lang="en">Log a coffee.</span><span lang="fr">Note un café.</span></p>
-          </div>
-          <p><span lang="es">Lo que tu IA pide anotar aparece en el iPhone, en «Pendientes de tu IA», y no se guarda hasta que lo confirmas. Desde el iPhone, para registrar, sigue usando Siri: las apps de IA del teléfono no llegan a un servidor de tu ordenador.</span><span lang="en">Whatever your AI asks to log shows up on the iPhone under “Pending from your AI”, and is not saved until you confirm it. On the iPhone itself, keep using Siri to log: AI apps on a phone cannot reach a server on your computer.</span><span lang="fr">Ce que votre IA demande de noter apparaît sur l’iPhone, dans « En attente de votre IA », et n’est enregistré qu’une fois confirmé. Sur l’iPhone, pour noter, continuez d’utiliser Siri : les apps d’IA du téléphone n’atteignent pas un serveur sur votre ordinateur.</span></p>
-        </li>
-      </ol>
+      <header class="step-head">
+        <span class="step-n" aria-hidden="true">2</span>
+        <div>
+          <p class="step-where"><span lang="es">En el iPhone, luego en el Mac</span><span lang="en">On the iPhone, then on the Mac</span></p>
+          <h2 id="paso-2-t" class="h2"><span lang="es">Empareja el Mac con el iPhone</span><span lang="en">Pair the Mac with the iPhone</span></h2>
+        </div>
+      </header>
+      <div class="step-body">
+        <p class="step-lede"><span lang="es">El iPhone y el Mac no se hablan directamente: comparten una carpeta de iCloud Drive y una contraseña. El iPhone deja allí un fichero cifrado y el Mac lo abre con esa misma contraseña.</span><span lang="en">The iPhone and the Mac don’t talk to each other directly: they share an iCloud Drive folder and a password. The iPhone leaves an encrypted file there and the Mac opens it with that same password.</span></p>
+        <ol class="do">
+          <li><span lang="es">En el iPhone, abre Narelia → Ajustes → «Conectar con tu IA». Elige lo que tu IA puede ver y pulsa «Aceptar y continuar» (2.1).</span><span lang="en">On the iPhone, open Narelia → Settings → “Connect with your AI”. Choose what your AI can see and tap “Accept and continue” (2.1).</span></li>
+          <li><span lang="es">Pulsa «Usar iCloud Drive › Narelia»: Narelia crea la carpeta sola. Luego «Poner contraseña», de al menos 8 caracteres. Guárdala: Narelia no puede recuperarla (2.2).</span><span lang="en">Tap “Use iCloud Drive › Narelia”: Narelia creates the folder for you. Then “Set password”, at least 8 characters. Keep it: Narelia cannot recover it (2.2).</span></li>
+          <li><span lang="es">En el Mac, abre Narelia. Encuentra la carpeta sola; pulsa «Usar esta carpeta» (2.3).</span><span lang="en">On the Mac, open Narelia. It finds the folder by itself; click “Use this folder” (2.3).</span></li>
+          <li><span lang="es">Escribe la misma contraseña del iPhone y pulsa «Continuar». Se guarda en el Llavero de macOS, nunca en un fichero (2.4).</span><span lang="en">Type the same password as on the iPhone and click “Continue”. It is kept in the macOS Keychain, never in a file (2.4).</span></li>
+        </ol>
+        <div class="caps caps-phones">
+          <figure class="cap">
+            <span class="cap-n">2.1</span>
+            <div class="phone"><picture><source srcset="{{BASE}}assets/guia/iphone-1-permiso-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/iphone-1-permiso-{{SHOTLANG}}-claro.jpg" width="804" height="1700" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">iPhone: «Antes de conectar». Eliges qué ve tu IA.</span><span lang="en">iPhone: “Before you connect”. You choose what your AI sees.</span></figcaption>
+          </figure>
+          <figure class="cap">
+            <span class="cap-n">2.2</span>
+            <div class="phone"><picture><source srcset="{{BASE}}assets/guia/iphone-2-carpeta-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/iphone-2-carpeta-{{SHOTLANG}}-claro.jpg" width="804" height="1700" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">iPhone: carpeta y contraseña listas; el archivo va cifrado.</span><span lang="en">iPhone: folder and password set; the file is encrypted.</span></figcaption>
+          </figure>
+        </div>
+        <div class="caps caps-1">
+          <figure class="cap">
+            <span class="cap-n">2.3</span>
+            <div class="window"><div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="{{BASE}}assets/guia/mac-1-carpeta-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/mac-1-carpeta-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">Mac, paso 1 de 3: «Encontré tu carpeta de Narelia» → «Usar esta carpeta».</span><span lang="en">Mac, step 1 of 3: Narelia found your folder → “Use this folder”.</span></figcaption>
+          </figure>
+          <figure class="cap">
+            <span class="cap-n">2.4</span>
+            <div class="window"><div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="{{BASE}}assets/guia/mac-2-contrasena-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/mac-2-contrasena-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">Mac, paso 2 de 3: la contraseña del iPhone. La marca verde dice que abre tu fichero.</span><span lang="en">Mac, step 2 of 3: the iPhone’s password. The green tick means it opens your file.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Paso 3 ──────────────────────────────────────────────────────────── -->
+  <section class="step" id="paso-3" aria-labelledby="paso-3-t">
+    <div class="wrap">
+      <header class="step-head">
+        <span class="step-n" aria-hidden="true">3</span>
+        <div>
+          <p class="step-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span></p>
+          <h2 id="paso-3-t" class="h2"><span lang="es">Elige tu IA</span><span lang="en">Pick your AI</span></h2>
+        </div>
+      </header>
+      <div class="step-body">
+        <ol class="do">
+          <li><span lang="es">Narelia enseña primero las apps de IA que encuentra en este Mac (3.1). Las demás siguen en la lista, en «Conectar con tu IA».</span><span lang="en">Narelia first shows the AI apps it finds on this Mac (3.1). The rest stay on the list, under “Connect with your AI”.</span></li>
+          <li><span lang="es">¿La tuya no sale? Ábrela una vez en este Mac y vuelve a Narelia. Mira su ficha en <a href="#apps">las 22 apps</a>.</span><span lang="en">Yours isn’t there? Open it once on this Mac and come back to Narelia. See its card in <a href="#apps">the 22 apps</a>.</span></li>
+        </ol>
+        <div class="caps caps-1">
+          <figure class="cap">
+            <span class="cap-n">3.1</span>
+            <div class="window"><div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="{{BASE}}assets/guia/mac-3-ia-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/mac-3-ia-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">Mac, paso 3 de 3: las apps de IA de este ordenador, cada una con su botón.</span><span lang="en">Mac, step 3 of 3: the AI apps on this computer, each with its button.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Paso 4 ──────────────────────────────────────────────────────────── -->
+  <section class="step" id="paso-4" aria-labelledby="paso-4-t">
+    <div class="wrap">
+      <header class="step-head">
+        <span class="step-n" aria-hidden="true">4</span>
+        <div>
+          <p class="step-where"><span lang="es">En el Mac</span><span lang="en">On the Mac</span></p>
+          <h2 id="paso-4-t" class="h2"><span lang="es">Pulsa «Conectar» o copia el fragmento</span><span lang="en">Click “Connect” or copy the snippet</span></h2>
+        </div>
+      </header>
+      <div class="step-body">
+        <ol class="do">
+          <li><span lang="es"><b>15 apps se configuran solas.</b> Pulsa «Conectar»: Narelia añade su entrada al fichero de configuración de esa app y guarda antes una copia a su lado (<code>*.narelia-copia.*</code>). Después, cierra la app de IA del todo y vuelve a abrirla (4.1).</span><span lang="en"><b>15 apps are set up for you.</b> Click “Connect”: Narelia adds its entry to that app’s configuration file, saving a copy next to it first (<code>*.narelia-copia.*</code>). Then quit the AI app completely and open it again (4.1).</span></li>
+          <li><span lang="es"><b>7 se configuran a mano</b> (Claude Code, OpenClaw, Zed, Jan, Msty Studio, Cherry Studio y Chatbox). Pulsa «Ver cómo»: Narelia te da el texto ya con tu carpeta y dónde pegarlo, con un botón «Copiar». El mismo texto, con un hueco para tu usuario, está en <a href="#apps">su ficha</a>.</span><span lang="en"><b>7 are set up by hand</b> (Claude Code, OpenClaw, Zed, Jan, Msty Studio, Cherry Studio and Chatbox). Click “Show how”: Narelia gives you the text, already with your folder, and where to paste it, with a “Copy” button. The same text, with a placeholder for your user, is on <a href="#apps">its card</a>.</span></li>
+        </ol>
+        <div class="caps caps-1">
+          <figure class="cap">
+            <span class="cap-n">4.1</span>
+            <div class="window"><div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="{{BASE}}assets/guia/mac-4-conectar-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/mac-4-conectar-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">«Conectar con tu IA»: Claude Desktop ya conectada; «Conectar» en las que se configuran solas y «Ver cómo» en las de a mano.</span><span lang="en">“Connect with your AI”: Claude Desktop already connected; “Connect” for the ones set up for you and “Show how” for the ones by hand.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Paso 5 ──────────────────────────────────────────────────────────── -->
+  <section class="step" id="paso-5" aria-labelledby="paso-5-t">
+    <div class="wrap">
+      <header class="step-head">
+        <span class="step-n" aria-hidden="true">5</span>
+        <div>
+          <p class="step-where"><span lang="es">En tu IA, luego en el iPhone</span><span lang="en">In your AI, then on the iPhone</span></p>
+          <h2 id="paso-5-t" class="h2"><span lang="es">Compruébalo con una pregunta</span><span lang="en">Check it with a question</span></h2>
+        </div>
+      </header>
+      <div class="step-body">
+        <ol class="do">
+          <li><span lang="es">Abre una conversación nueva en tu IA y pregúntale algo de tus cifras. Si contesta con ellas, está conectada.</span><span lang="en">Start a new conversation in your AI and ask about your figures. If it answers with them, it’s connected.</span>
+            <div class="asks">
+              <p class="ask"><span lang="es">¿Cómo dormí esta semana frente a mi normal?</span><span lang="en">How did I sleep this week compared with my usual?</span></p>
+              <p class="ask"><span lang="es">Compara mi variabilidad de este mes con la del mes pasado.</span><span lang="en">Compare my variability this month with last month.</span></p>
+            </div>
+          </li>
+          <li><span lang="es">Pídele que apunte algo, por ejemplo «Apunta un café». La petición aparece en «Pendientes» del Mac (5.1) y en el iPhone, en «Pendientes de tu IA» (5.2). No se guarda nada hasta que pulsas «Confirmar» en el iPhone.</span><span lang="en">Ask it to log something, for example “Log a coffee”. The request shows up under “Pending” on the Mac (5.1) and on the iPhone under “Pending from your AI” (5.2). Nothing is saved until you tap “Confirm” on the iPhone.</span></li>
+        </ol>
+        <div class="caps caps-mixed">
+          <figure class="cap">
+            <span class="cap-n">5.1</span>
+            <div class="window"><div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source srcset="{{BASE}}assets/guia/mac-5-pendientes-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/mac-5-pendientes-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">Mac: lo que tu IA ha pedido espera en el iPhone. Desde aquí puedes anularlo.</span><span lang="en">Mac: what your AI asked for waits on the iPhone. You can cancel it from here.</span></figcaption>
+          </figure>
+          <figure class="cap">
+            <span class="cap-n">5.2</span>
+            <div class="phone"><picture><source srcset="{{BASE}}assets/guia/iphone-3-pendientes-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)"><img src="{{BASE}}assets/guia/iphone-3-pendientes-{{SHOTLANG}}-claro.jpg" width="804" height="1750" alt="" loading="lazy"></picture></div>
+            <figcaption><span lang="es">iPhone: «Confirmar» o «Descartar».</span><span lang="en">iPhone: “Confirm” or “Discard”.</span></figcaption>
+          </figure>
+        </div>
+        <p class="note"><span lang="es">Las capturas usan datos de ejemplo. Desde el iPhone, para registrar, sigue usando Siri: las apps de IA del teléfono no llegan a un servidor de tu Mac.</span><span lang="en">The screenshots use sample data. On the iPhone itself, keep using Siri to log: AI apps on a phone cannot reach a server on your Mac.</span></p>
+      </div>
     </div>
   </section>
 
@@ -97,10 +251,10 @@
   <section class="guide-sec" id="apps" aria-labelledby="apps-title">
     <div class="wrap">
       <div class="split split-top">
-        <h2 id="apps-title" class="h2"><span lang="es">Las 22 apps</span><span lang="en">The 22 apps</span><span lang="fr">Les 22 apps</span></h2>
+        <h2 id="apps-title" class="h2"><span lang="es">Las 22 apps, una a una</span><span lang="en">The 22 apps, one by one</span></h2>
         <div>
-          <p class="body-lg"><span lang="es">Quince se configuran solas con «Conectar»: Narelia escribe su entrada en el fichero que se indica. Siete se configuran desde su propia ventana o su terminal, y para ésas va aquí el texto exacto.</span><span lang="en">Fifteen are set up for you with “Connect”: Narelia writes its entry in the file shown. Seven are set up from their own window or terminal, and for those the exact text is here.</span><span lang="fr">Quinze se configurent seules avec « Connect » : Narelia écrit son entrée dans le fichier indiqué. Sept se configurent depuis leur propre fenêtre ou leur terminal, et pour celles-là le texte exact est ici.</span></p>
-          <p class="note"><span lang="es">En los textos, cambia <code>TU_USUARIO</code> por tu nombre de usuario del Mac. La app te los da ya con tu carpeta en «Conectar con tu IA». Ninguno lleva la contraseña.</span><span lang="en">In the snippets, replace <code>YOUR_USER</code> with your Mac user name. The app gives them to you with your folder already filled in, under “Connect with your AI”. None of them contains the password.</span><span lang="fr">Dans les extraits, remplacez <code>VOTRE_UTILISATEUR</code> par votre nom d’utilisateur du Mac. L’app vous les donne déjà avec votre dossier, dans « Connect with your AI ». Aucun ne contient le mot de passe.</span></p>
+          <p class="body-lg"><span lang="es">Dónde está la configuración de cada una en el Mac y qué hacer. En las de a mano va el texto exacto que genera Narelia.</span><span lang="en">Where each one keeps its configuration on the Mac and what to do. For the by-hand ones, here is the exact text Narelia generates.</span></p>
+          <p class="note"><span lang="es">En los textos, cambia <code>TU_USUARIO</code> por tu nombre de usuario del Mac, o cópialos desde la app, que ya los trae con tu carpeta. Ninguno lleva la contraseña.</span><span lang="en">In the snippets, replace <code>YOUR_USER</code> with your Mac user name, or copy them from the app, which fills in your folder. None of them contains the password.</span></p>
         </div>
       </div>
       <div class="apps-list">
@@ -111,23 +265,35 @@
 
   <section class="guide-sec" id="problemas" aria-labelledby="problemas-title">
     <div class="wrap split split-top">
-      <h2 id="problemas-title" class="h2"><span lang="es">Si algo no va</span><span lang="en">If something’s off</span><span lang="fr">En cas de souci</span></h2>
+      <h2 id="problemas-title" class="h2"><span lang="es">Si no funciona</span><span lang="en">If it doesn’t work</span></h2>
       <dl class="facts facts-1">
         <div>
-          <dt><span lang="es">Tu IA no ve Narelia</span><span lang="en">Your AI doesn’t see Narelia</span><span lang="fr">Votre IA ne voit pas Narelia</span></dt>
-          <dd><span lang="es">Cierra la app de IA del todo y vuelve a abrirla: casi todas leen su configuración sólo al arrancar. En Claude Code, abre otra sesión.</span><span lang="en">Quit the AI app completely and open it again: most read their configuration only at launch. In Claude Code, start a new session.</span><span lang="fr">Quittez complètement l’app d’IA et rouvrez-la : la plupart ne lisent leur configuration qu’au démarrage. Dans Claude Code, ouvrez une nouvelle session.</span></dd>
+          <dt><span lang="es">macOS no deja abrir Narelia</span><span lang="en">macOS won’t open Narelia</span></dt>
+          <dd><span lang="es">Es porque aún no está firmada. Usa clic derecho → «Abrir», o Ajustes del Sistema → Privacidad y seguridad → «Abrir igualmente» (<a href="#paso-1">paso 1</a>).</span><span lang="en">That’s because it isn’t signed yet. Use right-click → “Open”, or System Settings → Privacy &amp; Security → “Open Anyway” (<a href="#paso-1">step 1</a>).</span></dd>
         </div>
         <div>
-          <dt><span lang="es">«No he tocado nada»</span><span lang="en">“I haven’t touched anything”</span><span lang="fr">« Je n’ai rien touché »</span></dt>
-          <dd><span lang="es">Si el fichero de configuración no es JSON, TOML o YAML válido, Narelia no lo cambia y te dice la línea. Corrígelo y vuelve a pulsar «Conectar». Si tu OpenCode usa <code>opencode.jsonc</code>, con comentarios, añade la entrada a mano en <code>mcp.servers</code>.</span><span lang="en">If the configuration file is not valid JSON, TOML or YAML, Narelia leaves it alone and tells you the line. Fix it and click “Connect” again. If your OpenCode uses <code>opencode.jsonc</code>, with comments, add the entry by hand under <code>mcp.servers</code>.</span><span lang="fr">Si le fichier de configuration n’est pas du JSON, TOML ou YAML valide, Narelia n’y touche pas et vous indique la ligne. Corrigez-le et cliquez de nouveau sur « Connect ». Si votre OpenCode utilise <code>opencode.jsonc</code>, avec des commentaires, ajoutez l’entrée à la main dans <code>mcp.servers</code>.</span></dd>
+          <dt><span lang="es">El Mac no encuentra la carpeta</span><span lang="en">The Mac can’t find the folder</span></dt>
+          <dd><span lang="es">Abre Narelia en el iPhone, en «Conectar con tu IA», para que la cree y escriba. Comprueba que iCloud Drive está activo en los dos con la misma cuenta, y espera a que se sincronice. Si en el iPhone elegiste otra carpeta, elige la misma con «Elegir otra carpeta…».</span><span lang="en">Open Narelia on the iPhone, under “Connect with your AI”, so it creates the folder and writes to it. Check that iCloud Drive is on for both with the same account, and wait for it to sync. If you picked another folder on the iPhone, choose the same one with “Choose another folder…”.</span></dd>
         </div>
         <div>
-          <dt><span lang="es">El Mac pide permiso para el Llavero</span><span lang="en">The Mac asks for Keychain access</span><span lang="fr">Le Mac demande l’accès au trousseau</span></dt>
-          <dd><span lang="es">Es narelia-mcp leyendo tu contraseña. Mientras la app no esté firmada, puede pasar una vez por versión: pulsa «Permitir siempre».</span><span lang="en">That is narelia-mcp reading your password. While the app is unsigned, it can happen once per version: click “Always Allow”.</span><span lang="fr">C’est narelia-mcp qui lit votre mot de passe. Tant que l’app n’est pas signée, cela peut arriver une fois par version : cliquez sur « Toujours autoriser ».</span></dd>
+          <dt><span lang="es">La contraseña no abre el fichero</span><span lang="en">The password doesn’t open the file</span></dt>
+          <dd><span lang="es">Tiene que ser exactamente la del iPhone. Si no la recuerdas, cámbiala en el iPhone («Cambiar contraseña») y escribe la nueva en el Mac.</span><span lang="en">It has to be exactly the iPhone’s. If you don’t remember it, change it on the iPhone (“Change password”) and type the new one on the Mac.</span></dd>
         </div>
         <div>
-          <dt><span lang="es">Quitar la conexión</span><span lang="en">Removing the connection</span><span lang="fr">Retirer la connexion</span></dt>
-          <dd><span lang="es">En el Mac, «Quitar» borra sólo la entrada de Narelia de esa app. En el iPhone, «Parar y borrar» borra los ficheros que Narelia escribió en tu carpeta y olvida carpeta y contraseña. Lo que tu IA ya recibió se queda en esa IA.</span><span lang="en">On the Mac, “Remove” deletes only Narelia’s entry from that app. On the iPhone, “Stop and delete” deletes the files Narelia wrote in your folder and forgets the folder and password. What your AI already received stays with that AI.</span><span lang="fr">Sur le Mac, « Remove » ne supprime que l’entrée de Narelia dans cette app. Sur l’iPhone, « Arrêter et supprimer » efface les fichiers que Narelia a écrits dans votre dossier et oublie le dossier et le mot de passe. Ce que votre IA a déjà reçu reste chez cette IA.</span></dd>
+          <dt><span lang="es">Tu IA no ve Narelia</span><span lang="en">Your AI doesn’t see Narelia</span></dt>
+          <dd><span lang="es">Cierra la app de IA del todo y vuelve a abrirla: casi todas leen su configuración sólo al arrancar. En Claude Code, abre otra sesión. En las de a mano, comprueba que pegaste el texto donde dice su ficha.</span><span lang="en">Quit the AI app completely and open it again: most read their configuration only at launch. In Claude Code, start a new session. For the by-hand ones, check that you pasted the text where its card says.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">«No he tocado nada»</span><span lang="en">“I haven’t touched anything”</span></dt>
+          <dd><span lang="es">Si el fichero de configuración no es JSON, TOML o YAML válido, Narelia no lo cambia y te dice la línea. Corrígelo y vuelve a pulsar «Conectar». Si tu OpenCode usa <code>opencode.jsonc</code>, añade la entrada a mano en <code>mcp.servers</code>.</span><span lang="en">If the configuration file is not valid JSON, TOML or YAML, Narelia leaves it alone and tells you the line. Fix it and click “Connect” again. If your OpenCode uses <code>opencode.jsonc</code>, add the entry by hand under <code>mcp.servers</code>.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">El Mac pide permiso para el Llavero</span><span lang="en">The Mac asks for Keychain access</span></dt>
+          <dd><span lang="es">Es narelia-mcp leyendo tu contraseña. Mientras la app no esté firmada, puede pasar una vez por versión: pulsa «Permitir siempre».</span><span lang="en">That is narelia-mcp reading your password. While the app is unsigned, it can happen once per version: click “Always Allow”.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Quitar la conexión</span><span lang="en">Removing the connection</span></dt>
+          <dd><span lang="es">En el Mac, «Quitar» borra sólo la entrada de Narelia de esa app. En el iPhone, «Parar y borrar» borra los ficheros que Narelia escribió en tu carpeta y olvida carpeta y contraseña. Lo que tu IA ya recibió se queda en esa IA.</span><span lang="en">On the Mac, “Remove” deletes only Narelia’s entry from that app. On the iPhone, “Stop and delete” deletes the files Narelia wrote in your folder and forgets the folder and password. What your AI already received stays with that AI.</span></dd>
         </div>
       </dl>
     </div>
@@ -135,15 +301,15 @@
 
   <section class="promise promise-tight" aria-labelledby="fine-title">
     <div class="wrap">
-      <h2 id="fine-title" class="h2"><span lang="es">Lo que conviene saber</span><span lang="en">Worth knowing</span><span lang="fr">À savoir</span></h2>
+      <h2 id="fine-title" class="h2"><span lang="es">Lo que conviene saber</span><span lang="en">Worth knowing</span></h2>
       <div class="cols">
-        <p><span lang="es">El fichero va cifrado con AES-256-GCM y una clave que sale de tu contraseña (PBKDF2-SHA256, 600 000 vueltas). En iCloud Drive, el cifrado no se puede apagar.</span><span lang="en">The file is encrypted with AES-256-GCM and a key derived from your password (PBKDF2-SHA256, 600,000 rounds). In iCloud Drive, encryption cannot be turned off.</span><span lang="fr">Le fichier est chiffré en AES-256-GCM avec une clé tirée de votre mot de passe (PBKDF2-SHA256, 600 000 itérations). Dans iCloud Drive, le chiffrement ne peut pas être désactivé.</span></p>
-        <p><span lang="es">Al conectar una IA, eres tú quien le da esos datos; desde ahí los trata esa empresa con sus condiciones, no las de Narelia. Si usas un modelo local, como en LM Studio o Jan, no salen de tu Mac.</span><span lang="en">When you connect an AI, you are the one giving it that data; from then on that company handles it under its own terms, not Narelia’s. With a local model, as in LM Studio or Jan, it doesn’t leave your Mac.</span><span lang="fr">En connectant une IA, c’est vous qui lui donnez ces données ; ensuite, cette entreprise les traite selon ses conditions, pas celles de Narelia. Avec un modèle local, comme dans LM Studio ou Jan, elles ne quittent pas votre Mac.</span></p>
-        <p><span lang="es">Tu IA no es Narelia: lo que conteste puede estar mal y no es consejo médico ni un diagnóstico. Para cualquier duda de salud, pregunta a un profesional.</span><span lang="en">Your AI is not Narelia: what it answers may be wrong, and it is not medical advice or a diagnosis. For any health question, ask a professional.</span><span lang="fr">Votre IA n’est pas Narelia : ce qu’elle répond peut être faux, et ce n’est ni un avis médical ni un diagnostic. Pour toute question de santé, demandez à un professionnel.</span></p>
+        <p><span lang="es">El fichero va cifrado con AES-256-GCM y una clave que sale de tu contraseña (PBKDF2-SHA256, 600 000 vueltas). En iCloud Drive, el cifrado no se puede apagar.</span><span lang="en">The file is encrypted with AES-256-GCM and a key derived from your password (PBKDF2-SHA256, 600,000 rounds). In iCloud Drive, encryption cannot be turned off.</span></p>
+        <p><span lang="es">Al conectar una IA, eres tú quien le da esos datos; desde ahí los trata esa empresa con sus condiciones, no las de Narelia. Con un modelo local, como en LM Studio o Jan, no salen de tu Mac.</span><span lang="en">When you connect an AI, you are the one giving it that data; from then on that company handles it under its own terms, not Narelia’s. With a local model, as in LM Studio or Jan, it doesn’t leave your Mac.</span></p>
+        <p><span lang="es">Tu IA no es Narelia: lo que conteste puede estar mal y no es consejo médico ni un diagnóstico. Para cualquier duda de salud, pregunta a un profesional.</span><span lang="en">Your AI is not Narelia: what it answers may be wrong, and it is not medical advice or a diagnosis. For any health question, ask a professional.</span></p>
       </div>
     </div>
   </section>
 
 </main>
 
-{{FOOT}}
+{{FOOTMIN}}

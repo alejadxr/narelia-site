@@ -39,7 +39,6 @@ APP_ID = "6809521455"
 APPSTORE = f"https://apps.apple.com/app/narelia/id{APP_ID}"
 PRIVACY = "https://alejadxr.github.io/narelia-privacy/"
 RELEASE = "https://github.com/alejadxr/narelia-site/releases/latest"
-TESTFLIGHT = "https://testflight.apple.com/join/KAwauxRQ"
 LAUNCH_DATE = "2026-10-04"
 
 LANGS = ["es", "en", "fr"]
@@ -51,7 +50,8 @@ LANG_GROUP = {"es": "Idioma", "en": "Language", "fr": "Langue"}
 # Carpeta de cada página en cada idioma.
 SLUG = {
     "inicio": {"es": "", "en": "", "fr": ""},
-    "guia": {"es": "conecta-tu-ia/", "en": "connect-your-ai/", "fr": "connecter-votre-ia/"},
+    # La guía es una página suelta, para mandarla por enlace; sólo en español e inglés.
+    "guia": {"es": "guia-ia.html", "en": "guia-ia.html"},
     "escritorio": {"es": "escritorio/", "en": "desktop/", "fr": "bureau/"},
 }
 
@@ -137,10 +137,10 @@ ALT = {
         "en": "Narelia on an iPhone, showing the Today screen.",
         "fr": "Narelia sur un iPhone, avec l’écran Aujourd’hui.",
     },
-    "3d-escritorio": {
-        "es": "La ventana de Narelia para Mac, en la pantalla Hoy: Readiness, recuperación y las cifras de la semana, con datos de ejemplo.",
-        "en": "The Narelia for Mac window on its Today screen: Readiness, recovery and the week’s figures, with sample data.",
-        "fr": "La fenêtre de Narelia pour Mac sur l’écran Aujourd’hui : Readiness, récupération et les chiffres de la semaine, avec des données d’exemple.",
+    "mac-conectar": {
+        "es": "La ventana de Narelia para Mac en «Conectar con tu IA»: Claude Desktop conectada; LM Studio, Hermes Agent y Cursor con su botón «Conectar»; Claude Code y OpenClaw, a mano.",
+        "en": "The Narelia for Mac window on “Connect with your AI”: Claude Desktop connected; LM Studio, Hermes Agent and Cursor with their “Connect” button; Claude Code and OpenClaw, by hand.",
+        "fr": "La fenêtre de Narelia pour Mac sur « Connect with your AI » : Claude Desktop connectée ; LM Studio, Hermes Agent et Cursor avec leur bouton « Connect » ; Claude Code et OpenClaw, à la main.",
     },
     "slint": {
         "es": "Hecho con Slint",
@@ -188,11 +188,29 @@ DONDE_FR = {
 }
 SOLA = {"es": "Se configura sola", "en": "Set up for you", "fr": "Configurée pour vous"}
 A_MANO = {"es": "A mano", "en": "By hand", "fr": "À la main"}
-FICHERO = {"es": "Narelia escribe en", "en": "Narelia writes to", "fr": "Narelia écrit dans"}
+QUE_HACER = {
+    "es": "En Narelia para Mac, pulsa «Conectar» junto a {}; después ciérrala del todo y vuelve a abrirla.",
+    "en": "In Narelia for Mac, click “Connect” next to {}; then quit it completely and open it again.",
+    "fr": "Dans Narelia pour Mac, cliquez sur « Connect » à côté de {} ; puis quittez-la complètement et rouvrez-la.",
+}
+FICHERO = {"es": "Su configuración:", "en": "Its configuration:", "fr": "Sa configuration :"}
+
+
+def langs_of(page: str) -> list:
+    return [l for l in LANGS if l in SLUG[page]]
 
 
 def page_dir(page: str, lang: str) -> str:
+    """La ruta de la página desde la raíz del sitio. Si la página no existe en ese idioma (la
+    guía en francés), la inglesa."""
+    if lang not in SLUG[page]:
+        lang = "en"
     return ROOTDIR[lang] + SLUG[page][lang]
+
+
+def out_file(page: str, lang: str) -> Path:
+    d = page_dir(page, lang)
+    return ROOT / (d if d.endswith(".html") else d + "index.html")
 
 
 def base_of(page: str, lang: str) -> str:
@@ -202,11 +220,12 @@ def base_of(page: str, lang: str) -> str:
 def head(page: str, lang: str, base: str) -> str:
     url = SITE + page_dir(page, lang)
     alternates = "\n".join(
-        f'<link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}">' for l in LANGS
+        f'<link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}">' for l in langs_of(page)
     ) + f'\n<link rel="alternate" hreflang="x-default" href="{SITE + page_dir(page, "es")}">'
     og_alternates = "\n".join(
-        f'<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in LANGS if l != lang
+        f'<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in langs_of(page) if l != lang
     )
+    og = SITE + ("assets/og.jpg" if lang == "es" else "assets/og-en.jpg")
     if page == "inicio":
         data = {
             "@context": "https://schema.org",
@@ -218,7 +237,7 @@ def head(page: str, lang: str, base: str) -> str:
             "operatingSystem": "iOS 26",
             "applicationCategory": "HealthApplication",
             "applicationSubCategory": "Apple Watch",
-            "image": SITE + "assets/og.jpg",
+            "image": og,
             "screenshot": [SITE + f"assets/screens/{lang}/{s}.webp" for s in SHOTS],
             "installUrl": APPSTORE,
             "downloadUrl": APPSTORE,
@@ -272,7 +291,7 @@ def head(page: str, lang: str, base: str) -> str:
 <meta property="og:title" content="{OG_TITLE[page][lang]}">
 <meta property="og:description" content="{DESCRIPTION[page][lang]}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}assets/og.jpg">
+<meta property="og:image" content="{og}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="{LOCALE[lang]}">
@@ -280,7 +299,7 @@ def head(page: str, lang: str, base: str) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{OG_TITLE[page][lang]}">
 <meta name="twitter:description" content="{DESCRIPTION[page][lang]}">
-<meta name="twitter:image" content="{SITE}assets/og.jpg">
+<meta name="twitter:image" content="{og}">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)">
@@ -298,7 +317,7 @@ def head(page: str, lang: str, base: str) -> str:
 
 def language_links(page: str, lang: str, base: str) -> str:
     links = []
-    for l in LANGS:
+    for l in langs_of(page):
         current = ' aria-current="page"' if l == lang else ""
         href = (base + page_dir(page, l)) or "./"
         links.append(f'<a href="{href}" hreflang="{l}" lang="{l}" title="{NAME[l]}"{current}>{l.upper()}</a>')
@@ -330,9 +349,11 @@ def clientes(lang: str) -> str:
   <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copiar"><span class="copy-label">{UI["Copiar"][lang]}</span></button><pre><code>{html.escape(a["texto"][lang])}</code></pre></div>
 </li>""")
             else:
-                filas.append(f"""<li class="app app-sola">
+                ident = "app-" + re.sub(r"[^a-z0-9]+", "-", a["nombre"].lower()).strip("-")
+                filas.append(f"""<li class="app app-sola" id="{ident}">
   <div class="app-head"><h4>{nombre}</h4><span class="tag tag-sola">{SOLA[lang]}</span></div>
   <p class="app-where">{FICHERO[lang]} <code>{html.escape(a["fichero"])}</code></p>
+  <p class="app-do">{QUE_HACER[lang].format(nombre)}</p>
 </li>""")
         out.append(f'<section class="apps-group" aria-label="{GRUPO[grupo][lang]}"><h3 class="apps-group-title">{GRUPO[grupo][lang]}</h3><ul class="apps">{"".join(filas)}</ul></section>')
     return "\n".join(out)
@@ -345,6 +366,7 @@ def include(name: str) -> str:
 def render(page: str, lang: str) -> str:
     base = base_of(page, lang)
     t = (ROOT / "src" / f"{page}.html").read_text(encoding="utf-8")
+    t = t.replace("{{TOPMIN}}", include("cabecera-min")).replace("{{FOOTMIN}}", include("pie-min"))
     t = t.replace("{{TOP}}", include("cabecera")).replace("{{FOOT}}", include("pie"))
     t = t.replace("{{HEAD}}", head(page, lang, base))
     t = t.replace("{{CLIENTES}}", clientes(lang))
@@ -353,7 +375,7 @@ def render(page: str, lang: str) -> str:
     t = t.replace("{{LANGS}}", language_links(page, lang, base))
     t = re.sub(r"\{\{URL:(\w+)\}\}", lambda m: (base + page_dir(m.group(1), lang)) or "./", t)
     t = t.replace("{{APPSTORE}}", APPSTORE).replace("{{BADGEW}}", badge_width(lang))
-    t = t.replace("{{RELEASE}}", RELEASE).replace("{{TESTFLIGHT}}", TESTFLIGHT).replace("{{PRIVACY}}", PRIVACY)
+    t = t.replace("{{RELEASE}}", RELEASE).replace("{{PRIVACY}}", PRIVACY)
     t = t.replace("{{BASE}}", base).replace("{{LANG}}", lang).replace("{{PAGE}}", page)
     t = t.replace("{{SHOTLANG}}", "es" if lang == "es" else "en")
     t = re.sub(r"\{\{ALT:([^}]+)\}\}", lambda m: ALT[m.group(1)][lang], t)
@@ -375,9 +397,9 @@ def render(page: str, lang: str) -> str:
 def sitemap() -> str:
     entries = []
     for page in SLUG:
-        for lang in LANGS:
+        for lang in langs_of(page):
             alternates = "\n".join(
-                f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}"/>' for l in LANGS
+                f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}"/>' for l in langs_of(page)
             )
             entries.append(f"""  <url>
     <loc>{SITE + page_dir(page, lang)}</loc>
@@ -395,8 +417,8 @@ PROHIBIDO = re.compile(r"\b(thc|cannabis|alcohol|alcool|marihuana|marijuana)\b",
 
 def main() -> None:
     for page in SLUG:
-        for lang in LANGS:
-            out = ROOT / page_dir(page, lang) / "index.html"
+        for lang in langs_of(page):
+            out = out_file(page, lang)
             out.parent.mkdir(parents=True, exist_ok=True)
             text = render(page, lang)
             bad = PROHIBIDO.search(text)

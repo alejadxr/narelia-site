@@ -22,25 +22,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/"/>
   </url>
   <url>
-    <loc>https://alejadxr.github.io/narelia-site/conecta-tu-ia/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/connect-your-ai/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
+    <loc>https://alejadxr.github.io/narelia-site/guia-ia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/guia-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/guia-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/guia-ia.html"/>
   </url>
   <url>
-    <loc>https://alejadxr.github.io/narelia-site/en/connect-your-ai/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/connect-your-ai/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
-  </url>
-  <url>
-    <loc>https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/connect-your-ai/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/"/>
+    <loc>https://alejadxr.github.io/narelia-site/en/guia-ia.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/guia-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/guia-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/guia-ia.html"/>
   </url>
   <url>
     <loc>https://alejadxr.github.io/narelia-site/escritorio/</loc>

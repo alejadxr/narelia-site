@@ -4,7 +4,7 @@
 
 <main id="main">
 
-  <!-- El héroe. A la derecha, el hueco del iPhone en 3D (img/3d-iphone.webp): si el fichero
+  <!-- El héroe. A la derecha, el iPhone en 3D (img/3d-iphone.png, de SutoScreen): si el fichero
        está, se ve él; si no, la captura de la ficha. Ver «Huecos 3D» en el README. -->
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
@@ -43,8 +43,8 @@
         </p>
       </div>
 
-      <figure class="slot slot-iphone" data-slot="img/3d-iphone.webp">
-        <img class="slot-3d" src="{{BASE}}img/3d-iphone.webp" alt="{{ALT:3d-iphone}}" onload="this.parentNode.classList.add('has-3d')">
+      <figure class="slot slot-iphone" data-slot="img/3d-iphone.png">
+        <img class="slot-3d" src="{{BASE}}img/3d-iphone.png" alt="{{ALT:3d-iphone}}" onload="this.parentNode.classList.add('has-3d')">
         <img class="slot-fallback shot" src="{{BASE}}assets/screens/{{LANG}}/1-hoy.webp" width="663" height="1300" alt="{{ALT:1-hoy}}" fetchpriority="high">
       </figure>
     </div>
@@ -209,17 +209,16 @@
     </div>
   </section>
 
-  <!-- Narelia para Mac. A la izquierda, el hueco de la ventana en 3D (img/3d-escritorio.webp);
-       mientras no está, la ventana real renderizada con datos de ejemplo. -->
+  <!-- Narelia para Mac. A la izquierda, la ventana montada en HTML y CSS con perspectiva, con la
+       captura real de «Conectar con tu IA» (arnés de maquetas de narelia-escritorio, datos de ejemplo). -->
   <section class="desk" id="mac" aria-labelledby="desk-title">
     <div class="wrap desk-grid">
-      <figure class="slot slot-window" data-slot="img/3d-escritorio.webp">
-        <img class="slot-3d" src="{{BASE}}img/3d-escritorio.webp" alt="{{ALT:3d-escritorio}}" onload="this.parentNode.classList.add('has-3d')">
-        <div class="slot-fallback window">
+      <figure class="mac3d">
+        <div class="window">
           <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
           <picture>
-            <source srcset="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)">
-            <img src="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-claro.jpg" width="1920" height="1080" alt="{{ALT:3d-escritorio}}" loading="lazy">
+            <source srcset="{{BASE}}assets/guia/mac-4-conectar-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="{{BASE}}assets/guia/mac-4-conectar-{{SHOTLANG}}-claro.jpg" width="1600" height="900" alt="{{ALT:mac-conectar}}" loading="lazy">
           </picture>
         </div>
       </figure>
