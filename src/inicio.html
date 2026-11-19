@@ -44,7 +44,10 @@
       </div>
 
       <figure class="slot slot-iphone" data-slot="img/3d-iphone.png">
-        <img class="slot-3d" src="{{BASE}}img/3d-iphone.png" alt="{{ALT:3d-iphone}}" onload="this.parentNode.classList.add('has-3d')">
+        <picture class="slot-3d">
+          <source srcset="{{BASE}}img/3d-iphone-frente.png" media="(max-width: 860px)">
+          <img src="{{BASE}}img/3d-iphone.png" width="900" height="1575" alt="{{ALT:3d-iphone}}" fetchpriority="high" onload="this.closest('.slot').classList.add('has-3d')">
+        </picture>
         <img class="slot-fallback shot" src="{{BASE}}assets/screens/{{LANG}}/1-hoy.webp" width="663" height="1300" alt="{{ALT:1-hoy}}" fetchpriority="high">
       </figure>
     </div>

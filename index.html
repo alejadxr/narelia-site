@@ -34,7 +34,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/screens/es/1-hoy.webp" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -143,7 +142,10 @@
       </div>
 
       <figure class="slot slot-iphone" data-slot="img/3d-iphone.png">
-        <img class="slot-3d" src="img/3d-iphone.png" alt="Narelia en un iPhone, con la pantalla Hoy." onload="this.parentNode.classList.add('has-3d')">
+        <picture class="slot-3d">
+          <source srcset="img/3d-iphone-frente.png" media="(max-width: 860px)">
+          <img src="img/3d-iphone.png" width="900" height="1575" alt="Narelia en un iPhone, con la pantalla Hoy: Readiness, lo tuyo y tu día, con datos de ejemplo." fetchpriority="high" onload="this.closest('.slot').classList.add('has-3d')">
+        </picture>
         <img class="slot-fallback shot" src="assets/screens/es/1-hoy.webp" width="663" height="1300" alt="Pantalla Hoy de Narelia en un iPhone: la cifra de Readiness en su dial y el pulso del día." fetchpriority="high">
       </figure>
     </div>

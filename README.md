@@ -25,7 +25,7 @@ Tres páginas, en es (raíz), en (`/en/`) y fr (`/fr/`):
 
 ## Imágenes
 
-- **El iPhone del héroe** es `img/3d-iphone.png` (PNG transparente de SutoScreen, 1600 px): basta con dejarlo en `img/`. Mientras no está, se ve la captura de la ficha; en local (`localhost`), el hueco lleva una etiqueta con el nombre del fichero.
+- **El iPhone del héroe**: `img/3d-iphone.png` (girado) y, por debajo de 860 px, `img/3d-iphone-frente.png` (de frente). Son los PNG transparentes de SutoScreen, reducidos con `sips -Z 1575` a 900 × 1575 (unos 420 KB cada uno). Si faltaran, se vería la captura de la ficha.
 - **La ventana de Mac** no es un render 3D: es una ventana montada en HTML y CSS (`.mac3d`, perspectiva sutil) con la captura real de «Conectar con tu IA».
 - **Capturas de la guía** (`assets/guia/`): las del Mac salen del arnés de maquetas de narelia-escritorio (`NARELIA_PROMO=1 target/release/examples/maquetas <carpeta>`, datos de ejemplo, sin tocar la app instalada); las del iPhone, de los renders de «1.1.21 Conectar con tu IA» en iCloud, recortadas por arriba con ffmpeg (`crop=804:1700:0:0`; `sips --cropOffset` recorta centrado). No se usa `conectar-a-mano`, porque enseña la ruta con el usuario de la demo. Ninguna enseña THC ni alcohol.
 - **og.jpg / og-en.jpg**: 1200 × 630, con el diseño actual y sin cifras de salud; la inglesa sirve a /en/ y /fr/.

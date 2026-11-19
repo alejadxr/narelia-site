@@ -133,9 +133,9 @@ ALT = {
         "fr": "Télécharger dans l’App Store",
     },
     "3d-iphone": {
-        "es": "Narelia en un iPhone, con la pantalla Hoy.",
-        "en": "Narelia on an iPhone, showing the Today screen.",
-        "fr": "Narelia sur un iPhone, avec l’écran Aujourd’hui.",
+        "es": "Narelia en un iPhone, con la pantalla Hoy: Readiness, lo tuyo y tu día, con datos de ejemplo.",
+        "en": "Narelia on an iPhone, showing the Today screen (in Spanish): Readiness, your own figures and your day, with sample data.",
+        "fr": "Narelia sur un iPhone, avec l’écran Aujourd’hui (en espagnol) : Readiness, vos chiffres et votre journée, avec des données d’exemple.",
     },
     "mac-conectar": {
         "es": "La ventana de Narelia para Mac en «Conectar con tu IA»: Claude Desktop conectada; LM Studio, Hermes Agent y Cursor con su botón «Conectar»; Claude Code y OpenClaw, a mano.",
@@ -275,7 +275,7 @@ def head(page: str, lang: str, base: str) -> str:
     fonts = ("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700"
              "&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500"
              "&family=JetBrains+Mono:wght@400;500&display=swap")
-    preload = f'<link rel="preload" as="image" href="{base}assets/screens/{lang}/1-hoy.webp" fetchpriority="high">\n' if page == "inicio" else ""
+    preload = ""
     itunes = f'<meta name="apple-itunes-app" content="app-id={APP_ID}">\n' if page == "inicio" else ""
     return f"""<!doctype html>
 <html lang="{lang}">

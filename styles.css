@@ -269,6 +269,8 @@ html.borrador .slot:not(.has-3d)::after {
 }
 
 .slot-iphone { justify-self: center; width: min(100%, 360px); }
+.slot-iphone.has-3d { width: min(100%, 470px); }
+.slot-3d img { width: 100%; }
 .shot { width: 100%; }
 
 .window {
@@ -659,6 +661,7 @@ html.js .range.is-live .range-reading { animation: reading-in 0.5s ease-out 1.3s
   .top-in { justify-content: space-between; }
   .hero-grid, .split, .route-head, .route-foot { grid-template-columns: 1fr; }
   .slot-iphone { width: min(76%, 320px); }
+  .slot-iphone.has-3d { width: min(88%, 380px); }
   .cols, .facts-3 { grid-template-columns: 1fr; }
   .homescreen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wall-grid > div { grid-template-columns: 1fr; }
