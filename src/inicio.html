@@ -1,0 +1,355 @@
+{{HEAD}}
+<body class="p-inicio">
+{{TOP}}
+
+<main id="main">
+
+  <!-- El héroe. A la derecha, el hueco del iPhone en 3D (img/3d-iphone.webp): si el fichero
+       está, se ve él; si no, la captura de la ficha. Ver «Huecos 3D» en el README. -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">
+          <span lang="es">iPhone · Apple Watch · y ahora, Mac</span>
+          <span lang="en">iPhone · Apple Watch · and now, Mac</span>
+          <span lang="fr">iPhone · Apple Watch · et désormais, Mac</span>
+        </p>
+        <h1 class="display">
+          <span lang="es">Tus datos, <em>no los de nadie.</em></span>
+          <span lang="en">Your data, <em>measured against you.</em></span>
+          <span lang="fr">Vos données, <em>comparées à vous.</em></span>
+        </h1>
+        <p class="lede">
+          <span lang="es">Narelia lee tu Apple Watch y te compara contigo, dentro del iPhone y sin cuenta. Y ahora, desde tu Mac, puede llevar tus cifras a la IA que ya usas. Sin un servidor de Narelia de por medio, porque no existe.</span>
+          <span lang="en">Narelia reads your Apple Watch and compares you with yourself, on the iPhone and with no account. And now, from your Mac, it can bring your figures to the AI you already use. With no Narelia server in between, because there isn’t one.</span>
+          <span lang="fr">Narelia lit votre Apple Watch et vous compare à vous-même, dans l’iPhone et sans compte. Et désormais, depuis votre Mac, elle peut apporter vos chiffres à l’IA que vous utilisez déjà. Sans serveur Narelia entre les deux, parce qu’il n’y en a pas.</span>
+        </p>
+        <div class="hero-actions">
+          <!-- La insignia oficial de Apple, sin tocar: una por página, negra, a 54 px de alto
+               y con su espacio libre de un cuarto de su alto. -->
+          <a class="badge" href="{{APPSTORE}}">
+            <img src="{{BASE}}assets/badges/{{LANG}}.svg" width="{{BADGEW}}" height="54" alt="{{ALT:badge}}">
+          </a>
+          <a class="btn btn-line" href="{{URL:escritorio}}">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg>
+            <span lang="es">Narelia para Mac</span><span lang="en">Narelia for Mac</span><span lang="fr">Narelia pour Mac</span>
+          </a>
+        </div>
+        <p class="fine">
+          <span lang="es">La app del iPhone es gratis y sin cuenta, con iOS 26. Se recomienda un Apple Watch.</span>
+          <span lang="en">The iPhone app is free with no account, on iOS 26. Apple Watch recommended.</span>
+          <span lang="fr">L’app iPhone est gratuite et sans compte, sous iOS 26. Apple Watch recommandée.</span>
+        </p>
+      </div>
+
+      <figure class="slot slot-iphone" data-slot="img/3d-iphone.webp">
+        <img class="slot-3d" src="{{BASE}}img/3d-iphone.webp" alt="{{ALT:3d-iphone}}" onload="this.parentNode.classList.add('has-3d')">
+        <img class="slot-fallback shot" src="{{BASE}}assets/screens/{{LANG}}/1-hoy.webp" width="663" height="1300" alt="{{ALT:1-hoy}}" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <!-- La firma de la página: el camino que hacen tus cifras. Es literal: el iPhone escribe un
+       fichero cifrado en tu carpeta, tu ordenador lo lee y se lo da a tu IA; lo que tu IA pide
+       vuelve al iPhone y espera tu confirmación. El servidor de Narelia aparece tachado porque
+       no existe. -->
+  <section class="route" id="camino" aria-labelledby="route-title">
+    <div class="wrap">
+      <div class="route-head">
+        <h2 id="route-title" class="h2">
+          <span lang="es">El camino de tus cifras.</span>
+          <span lang="en">The path your figures take.</span>
+          <span lang="fr">Le chemin de vos chiffres.</span>
+        </h2>
+        <p>
+          <span lang="es">Cuatro paradas, todas tuyas. Lo que tu IA propone vuelve por el mismo camino y espera en el iPhone hasta que dices que sí.</span>
+          <span lang="en">Four stops, all of them yours. What your AI proposes comes back the same way and waits on the iPhone until you say yes.</span>
+          <span lang="fr">Quatre étapes, toutes à vous. Ce que votre IA propose revient par le même chemin et attend sur l’iPhone jusqu’à ce que vous disiez oui.</span>
+        </p>
+      </div>
+
+      <ol class="route-line" data-route>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M10.5 5h3"/></svg></span>
+          <h3><span lang="es">Tu iPhone</span><span lang="en">Your iPhone</span><span lang="fr">Votre iPhone</span></h3>
+          <p><span lang="es">Narelia calcula todo aquí y escribe sólo las cifras que eliges, cifradas con tu contraseña.</span><span lang="en">Narelia works everything out here and writes only the figures you choose, encrypted with your password.</span><span lang="fr">Narelia calcule tout ici et n’écrit que les chiffres que vous choisissez, chiffrés avec votre mot de passe.</span></p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+          <h3><span lang="es">Tu carpeta</span><span lang="en">Your folder</span><span lang="fr">Votre dossier</span></h3>
+          <p><span lang="es">iCloud Drive › Narelia, en tu propia cuenta. Narelia la crea sola desde el iPhone.</span><span lang="en">iCloud Drive › Narelia, in your own account. Narelia creates it for you from the iPhone.</span><span lang="fr">iCloud Drive › Narelia, sur votre propre compte. Narelia le crée pour vous depuis l’iPhone.</span></p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg></span>
+          <h3><span lang="es">Tu Mac</span><span lang="en">Your Mac</span><span lang="fr">Votre Mac</span></h3>
+          <p><span lang="es">Narelia para Mac abre el fichero con la contraseña que guarda tu Llavero, y lo sirve con narelia-mcp.</span><span lang="en">Narelia for Mac opens the file with the password kept in your Keychain, and serves it through narelia-mcp.</span><span lang="fr">Narelia pour Mac ouvre le fichier avec le mot de passe gardé dans votre trousseau, et le sert via narelia-mcp.</span></p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span>
+          <h3><span lang="es">Tu IA</span><span lang="en">Your AI</span><span lang="fr">Votre IA</span></h3>
+          <p><span lang="es">Claude, Codex, Cursor, OpenClaw… La que ya usas lee tus cifras y puede proponer un registro.</span><span lang="en">Claude, Codex, Cursor, OpenClaw… The one you already use reads your figures and can propose a log.</span><span lang="fr">Claude, Codex, Cursor, OpenClaw… Celle que vous utilisez déjà lit vos chiffres et peut proposer un enregistrement.</span></p>
+        </li>
+        <!-- El sobre que recorre la línea: un adorno con propósito (explica el camino), una vez. -->
+        <li class="envelope" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></li>
+      </ol>
+
+      <div class="route-foot">
+        <p class="route-back">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M10 7l-5 5 5 5"/></svg>
+          <span lang="es">Lo que tu IA pide anotar vuelve al iPhone y no se guarda hasta que lo confirmas allí.</span>
+          <span lang="en">Anything your AI asks to log goes back to the iPhone and is not saved until you confirm it there.</span>
+          <span lang="fr">Ce que votre IA demande de noter revient à l’iPhone et n’est enregistré que lorsque vous le confirmez là-bas.</span>
+        </p>
+        <p class="route-ghost">
+          <s><span lang="es">Servidor de Narelia</span><span lang="en">Narelia server</span><span lang="fr">Serveur Narelia</span></s>
+          <span lang="es">No existe: no hay cuenta que crear ni copia nuestra de nada tuyo.</span>
+          <span lang="en">There isn’t one: no account to create and no copy of anything of yours on our side.</span>
+          <span lang="fr">Il n’existe pas : aucun compte à créer, aucune copie de vos données chez nous.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- La app del iPhone: el instrumento de la casa (la barra de rango personal), las capturas y
+       lo que hay dentro. -->
+  <section class="app-sec" id="app" aria-labelledby="app-title">
+    <div class="wrap split">
+      <div>
+        <p class="kicker"><span lang="es">La app</span><span lang="en">The app</span><span lang="fr">L’app</span></p>
+        <h2 id="app-title" class="h2">
+          <span lang="es">Cada cifra, frente a tu propia historia.</span>
+          <span lang="en">Every figure, against your own history.</span>
+          <span lang="fr">Chaque chiffre, face à votre propre histoire.</span>
+        </h2>
+        <p class="body-lg">
+          <span lang="es">Narelia no te compara con una tabla de población. Te compara con tus noches y tus semanas, y dice cuánto se movió cada señal, sin afirmar más de lo que los datos sostienen.</span>
+          <span lang="en">Narelia does not compare you with a population chart. It compares you with your own nights and weeks, says how much each signal moved, and never claims more than the data supports.</span>
+          <span lang="fr">Narelia ne vous compare pas à une table de population. Elle vous compare à vos nuits et à vos semaines, dit de combien chaque signal a bougé, et n’affirme jamais plus que ce que les données permettent.</span>
+        </p>
+      </div>
+
+      <figure class="range" aria-labelledby="range-caption">
+        <div class="range-figure" aria-hidden="true">
+          <div class="range-track"></div>
+          <div class="range-band"></div>
+          <div class="range-dot"><span class="range-reading"><b>48</b><small>ms</small></span></div>
+        </div>
+        <figcaption id="range-caption" class="range-caption">
+          <span class="range-key range-key-band"><span lang="es">Tu rango habitual, de tus propias noches</span><span lang="en">Your usual range, from your own nights</span><span lang="fr">Votre plage habituelle, selon vos nuits</span></span>
+          <span class="range-key range-key-dot"><span lang="es">Tu variabilidad de hoy (ejemplo)</span><span lang="en">Today’s variability (example)</span><span lang="fr">Votre variabilité du jour (exemple)</span></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="strip-wrap">
+      <ol class="strip" tabindex="0" aria-label="Capturas">
+        <li>
+          <p class="strip-caption"><span lang="es">Tus cifras, frente a tu propia historia</span><span lang="en">Your numbers against your own history</span><span lang="fr">Vos chiffres face à votre propre histoire</span></p>
+          <img class="shot" src="{{BASE}}assets/screens/{{LANG}}/1-hoy.webp" width="663" height="1300" alt="{{ALT:1-hoy}}" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Tu estrés a lo largo del día, y la noche aparte</span><span lang="en">Your stress through the day, the night kept apart</span><span lang="fr">Votre stress au fil de la journée, la nuit à part</span></p>
+          <img class="shot" src="{{BASE}}assets/screens/{{LANG}}/3-noche.webp" width="663" height="1300" alt="{{ALT:3-noche}}" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Tu esfuerzo, medido contra tus propias semanas</span><span lang="en">Your effort against your own weeks</span><span lang="fr">Votre effort face à vos propres semaines</span></p>
+          <img class="shot" src="{{BASE}}assets/screens/{{LANG}}/4-forma-fisica.webp" width="663" height="1300" alt="{{ALT:4-forma-fisica}}" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Tus recipientes y tus cantidades rápidas</span><span lang="en">Your vessels and your quick amounts</span><span lang="fr">Vos récipients et vos quantités rapides</span></p>
+          <img class="shot" src="{{BASE}}assets/screens/{{LANG}}/5-registro.webp" width="663" height="1300" alt="{{ALT:5-registro}}" loading="lazy">
+        </li>
+        <li>
+          <p class="strip-caption"><span lang="es">Sin cuenta y sin servidores; iCloud, sólo si lo enciendes</span><span lang="en">No account, no server; iCloud only if you turn it on</span><span lang="fr">Sans compte, sans serveur ; iCloud seulement si vous l’activez</span></p>
+          <img class="shot" src="{{BASE}}assets/screens/{{LANG}}/6-privacidad.webp" width="663" height="1300" alt="{{ALT:6-privacidad}}" loading="lazy">
+        </li>
+      </ol>
+      <div class="strip-nav">
+        <button type="button" class="round-btn" data-strip="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="round-btn" data-strip="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <dl class="facts">
+        <div>
+          <dt><span lang="es">Readiness</span><span lang="en">Readiness</span><span lang="fr">Readiness</span></dt>
+          <dd><span lang="es">Parte de tu recuperación de la mañana y se mueve con lo que el reloj mide durante el día. Si dormiste sin el reloj, lo dice: «Sólo de día».</span><span lang="en">It starts from your morning recovery and moves with what the watch measures through the day. If you slept without the watch, it says so: “Daytime only”.</span><span lang="fr">Elle part de votre récupération du matin et bouge avec ce que la montre mesure dans la journée. Si vous avez dormi sans la montre, elle l’indique : « De jour seulement ».</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Recuperación</span><span lang="en">Recovery</span><span lang="fr">Récupération</span></dt>
+          <dd><span lang="es">Variabilidad, pulso en reposo, respiración y sueño frente a tus propias noches, con lo que movió cada señal.</span><span lang="en">Variability, resting heart rate, breathing and sleep against your own nights, with how much each signal moved.</span><span lang="fr">Variabilité, pouls au repos, respiration et sommeil face à vos propres nuits, avec ce que chaque signal a déplacé.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Noche, estrés y constantes</span><span lang="en">Night, stress and vitals</span><span lang="fr">Nuit, stress et constantes</span></dt>
+          <dd><span lang="es">La noche por fases, el estrés a lo largo del día y cada constante sobre su rango personal.</span><span lang="en">The night by stage, stress through the day and each vital on its personal range.</span><span lang="fr">La nuit par phases, le stress au fil de la journée et chaque constante sur sa plage personnelle.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Forma física</span><span lang="en">Fitness</span><span lang="fr">Forme physique</span></dt>
+          <dd><span lang="es">El esfuerzo de la semana frente a tus semanas habituales, con tus entrenos y tus sesiones de fuerza.</span><span lang="en">The week’s effort against your usual weeks, with your workouts and strength sessions.</span><span lang="fr">L’effort de la semaine face à vos semaines habituelles, avec vos entraînements et vos séances de force.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Comidas con una foto</span><span lang="en">Meals from a photo</span><span lang="fr">Des repas à partir d’une photo</span></dt>
+          <dd><span lang="es">Narelia propone qué hay en el plato y tú lo confirmas. Se interpreta dentro del iPhone, con Apple Intelligence en los modelos compatibles.</span><span lang="en">Narelia suggests what is on the plate and you confirm it. It is read on the iPhone itself, with Apple Intelligence on compatible models.</span><span lang="fr">Narelia propose ce qu’il y a dans l’assiette et vous confirmez. C’est lu sur l’iPhone même, avec Apple Intelligence sur les modèles compatibles.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Agua y cafeína, en 3D</span><span lang="en">Water and caffeine, in 3D</span><span lang="fr">Eau et caféine, en 3D</span></dt>
+          <dd><span lang="es">Con tu botella, tu taza o tu lata: arrastras el nivel sobre el propio recipiente. También creatina y proteína.</span><span lang="en">With your bottle, cup or can: drag the level on the vessel itself. Creatine and protein too.</span><span lang="fr">Avec votre bouteille, votre tasse ou votre canette : faites glisser le niveau sur le récipient lui-même. Créatine et protéines aussi.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Siri y Apple Intelligence</span><span lang="en">Siri and Apple Intelligence</span><span lang="fr">Siri et Apple Intelligence</span></dt>
+          <dd><span lang="es">Pregunta por tu variabilidad, tu recuperación o la noche, y contesta como su pantalla, sin red. Atajos ofrece «Obtener datos de Narelia».</span><span lang="en">Ask for your variability, recovery or the night, and it answers like its screen does, without a network. Shortcuts offers “Get Narelia data”.</span><span lang="fr">Demandez votre variabilité, votre récupération ou la nuit : elle répond comme son écran, sans réseau. Raccourcis propose « Obtenir les données de Narelia ».</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Reloj y widgets</span><span lang="en">Watch and widgets</span><span lang="fr">Montre et widgets</span></dt>
+          <dd><span lang="es">El Apple Watch tiene su propia app y sus complicaciones; el iPhone, widgets en cuatro estilos.</span><span lang="en">Apple Watch has its own app and complications; the iPhone, widgets in four styles.</span><span lang="fr">L’Apple Watch a sa propre app et ses complications ; l’iPhone, des widgets en quatre styles.</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Narelia para Mac. A la izquierda, el hueco de la ventana en 3D (img/3d-escritorio.webp);
+       mientras no está, la ventana real renderizada con datos de ejemplo. -->
+  <section class="desk" id="mac" aria-labelledby="desk-title">
+    <div class="wrap desk-grid">
+      <figure class="slot slot-window" data-slot="img/3d-escritorio.webp">
+        <img class="slot-3d" src="{{BASE}}img/3d-escritorio.webp" alt="{{ALT:3d-escritorio}}" onload="this.parentNode.classList.add('has-3d')">
+        <div class="slot-fallback window">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <picture>
+            <source srcset="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-claro.jpg" width="1920" height="1080" alt="{{ALT:3d-escritorio}}" loading="lazy">
+          </picture>
+        </div>
+      </figure>
+      <div class="desk-copy">
+        <p class="kicker"><span lang="es">Nuevo · Narelia para Mac</span><span lang="en">New · Narelia for Mac</span><span lang="fr">Nouveau · Narelia pour Mac</span></p>
+        <h2 id="desk-title" class="h2">
+          <span lang="es">Tu IA, con tus cifras delante.</span>
+          <span lang="en">Your AI, with your figures in front of it.</span>
+          <span lang="fr">Votre IA, avec vos chiffres sous les yeux.</span>
+        </h2>
+        <ul class="ticks">
+          <li><b><span lang="es">Hoy.</span><span lang="en">Today.</span><span lang="fr">Aujourd’hui.</span></b> <span lang="es">Las cifras que escribió tu iPhone, con su semana y tu rango.</span><span lang="en">The figures your iPhone wrote, with their week and your range.</span><span lang="fr">Les chiffres écrits par votre iPhone, avec leur semaine et votre plage.</span></li>
+          <li><b><span lang="es">Pendientes.</span><span lang="en">Pending.</span><span lang="fr">En attente.</span></b> <span lang="es">Lo que tu IA ha pedido anotar y espera en el iPhone.</span><span lang="en">What your AI has asked to log, waiting on the iPhone.</span><span lang="fr">Ce que votre IA a demandé de noter, en attente sur l’iPhone.</span></li>
+          <li><b><span lang="es">Conectar con tu IA.</span><span lang="en">Connect with your AI.</span><span lang="fr">Connexion à votre IA.</span></b> <span lang="es">22 apps y agentes; 15 se configuran con un botón.</span><span lang="en">22 apps and agents; 15 are set up with one button.</span><span lang="fr">22 apps et agents ; 15 se configurent d’un bouton.</span></li>
+        </ul>
+        <div class="row">
+          <a class="btn btn-teal" href="{{URL:escritorio}}"><span lang="es">Descargar para Mac</span><span lang="en">Download for Mac</span><span lang="fr">Télécharger pour Mac</span></a>
+          <a class="link-arrow" href="{{URL:guia}}"><span lang="es">Cómo conectar tu IA</span><span lang="en">How to connect your AI</span><span lang="fr">Comment connecter votre IA</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El muro de nombres: las 22 apps de clientes.rs, en su grupo. El punto lleno es «se
+       configura sola»; el anillo, «a mano». -->
+  <section class="wall" aria-labelledby="wall-title">
+    <div class="wrap">
+      <h2 id="wall-title" class="h2">
+        <span lang="es">Con la IA que ya usas.</span>
+        <span lang="en">With the AI you already use.</span>
+        <span lang="fr">Avec l’IA que vous utilisez déjà.</span>
+      </h2>
+      <div class="wall-grid">
+        <div>
+          <h3 class="wall-label"><span lang="es">Apps de chat</span><span lang="en">Chat apps</span><span lang="fr">Apps de discussion</span></h3>
+          <p class="names"><span class="n">Claude Desktop</span> <span class="n">LM Studio</span> <span class="n">AnythingLLM</span> <span class="n m">Jan</span> <span class="n m">Msty Studio</span> <span class="n m">Cherry Studio</span> <span class="n m">Chatbox</span></p>
+        </div>
+        <div>
+          <h3 class="wall-label"><span lang="es">Agentes</span><span lang="en">Agents</span><span lang="fr">Agents</span></h3>
+          <p class="names"><span class="n">Codex</span> <span class="n m">Claude Code</span> <span class="n">Gemini CLI</span> <span class="n">Antigravity</span> <span class="n">OpenCode</span> <span class="n">Goose</span> <span class="n">Hermes Agent</span> <span class="n m">OpenClaw</span> <span class="n">Muse Code</span> <span class="n">Copilot CLI</span> <span class="n">Cline</span></p>
+        </div>
+        <div>
+          <h3 class="wall-label"><span lang="es">Editores</span><span lang="en">Editors</span><span lang="fr">Éditeurs</span></h3>
+          <p class="names"><span class="n">Cursor</span> <span class="n">VS Code</span> <span class="n">Devin Desktop</span> <span class="n m">Zed</span></p>
+        </div>
+      </div>
+      <div class="wall-foot">
+        <p class="legend">
+          <span class="lg lg-sola"><span lang="es">Se configura sola, con «Conectar»</span><span lang="en">Set up for you with “Connect”</span><span lang="fr">Configurée pour vous avec « Connecter »</span></span>
+          <span class="lg lg-mano"><span lang="es">A mano: Narelia te da lo que hay que pegar</span><span lang="en">By hand: Narelia gives you what to paste</span><span lang="fr">À la main : Narelia vous donne quoi coller</span></span>
+        </p>
+        <a class="link-arrow" href="{{URL:guia}}"><span lang="es">La guía, paso a paso</span><span lang="en">The step-by-step guide</span><span lang="fr">Le guide pas à pas</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Los widgets, sobre un fondo como el de una pantalla de inicio. -->
+  <section class="widgets" aria-labelledby="widgets-title">
+    <div class="wrap">
+      <h2 id="widgets-title" class="h2">
+        <span lang="es">Más allá de la app.</span>
+        <span lang="en">Beyond the app.</span>
+        <span lang="fr">Au-delà de l’app.</span>
+      </h2>
+      <p class="body-lg">
+        <span lang="es">Readiness, pulso hora a hora, estrés, sueño, constantes, agua y actividad, en la pantalla de inicio, en la de bloqueo y en el Apple Watch. En cuatro estilos: Narelia, Noche, Editorial y Clásico.</span>
+        <span lang="en">Readiness, hourly heart rate, stress, sleep, vitals, water and activity, on your Home Screen, Lock Screen and Apple Watch. In four styles: Narelia, Night, Editorial and Classic.</span>
+        <span lang="fr">Readiness, pouls heure par heure, stress, sommeil, constantes, eau et activité, sur l’écran d’accueil, l’écran verrouillé et l’Apple Watch. En quatre styles : Narelia, Nuit, Éditorial et Classique.</span>
+      </p>
+    </div>
+    <div class="homescreen">
+      <img class="w w-m" src="{{BASE}}assets/widgets/pulso-mediano-noche.webp" width="1014" height="474" alt="{{ALTW:pulso-mediano-noche}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/readiness-pequeno-clasico.webp" width="474" height="474" alt="{{ALTW:readiness-pequeno-clasico}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/estres-pequeno-narelia.webp" width="474" height="474" alt="{{ALTW:estres-pequeno-narelia}}" loading="lazy">
+      <img class="w w-m" src="{{BASE}}assets/widgets/sueno-mediano-narelia.webp" width="1014" height="474" alt="{{ALTW:sueno-mediano-narelia}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/agua-pequeno-noche.webp" width="474" height="474" alt="{{ALTW:agua-pequeno-noche}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/actividad-pequeno-editorial.webp" width="474" height="474" alt="{{ALTW:actividad-pequeno-editorial}}" loading="lazy">
+      <img class="w w-m" src="{{BASE}}assets/widgets/vitales-mediano-clasico.webp" width="1014" height="474" alt="{{ALTW:vitales-mediano-clasico}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/pulso-pequeno-clasico.webp" width="474" height="474" alt="{{ALTW:pulso-pequeno-clasico}}" loading="lazy">
+      <img class="w w-s" src="{{BASE}}assets/widgets/sueno-pequeno-noche.webp" width="474" height="474" alt="{{ALTW:sueno-pequeno-noche}}" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Privacidad y Pro, dichos con lo que es literalmente cierto. -->
+  <section class="promise" aria-labelledby="promise-title">
+    <div class="wrap">
+      <h2 id="promise-title" class="display display-sm">
+        <span lang="es">Sin cuenta. <em>Sin servidor.</em></span>
+        <span lang="en">No account. <em>No server.</em></span>
+        <span lang="fr">Sans compte. <em>Sans serveur.</em></span>
+      </h2>
+      <div class="cols">
+        <p>
+          <span lang="es">Todo el análisis se hace en tu iPhone. Tus datos viven allí y en la app Salud; la copia en iCloud es opcional, va a tu cuenta y está apagada hasta que la enciendes.</span>
+          <span lang="en">All analysis happens on your iPhone. Your data lives there and in the Health app; the iCloud copy is optional, goes to your own account and is off until you turn it on.</span>
+          <span lang="fr">Toute l’analyse se fait sur votre iPhone. Vos données y restent, avec l’app Santé ; la copie iCloud est facultative, va sur votre compte et reste désactivée tant que vous ne l’activez pas.</span>
+        </p>
+        <p>
+          <span lang="es">Con tu IA, tú eliges qué cifras ve y cuándo deja de verlas. Quien las recibe es esa IA, con sus propias condiciones: léelas antes de conectarla.</span>
+          <span lang="en">With your AI, you choose which figures it sees and when it stops seeing them. The one receiving them is that AI, under its own terms: read them before you connect it.</span>
+          <span lang="fr">Avec votre IA, vous choisissez quels chiffres elle voit et quand elle cesse de les voir. Celle qui les reçoit, c’est cette IA, selon ses propres conditions : lisez-les avant de la connecter.</span>
+        </p>
+        <p>
+          <span lang="es">Sin analítica ni identificadores publicitarios. Tus propias cifras nunca quedan detrás de un pago; <strong>Narelia Pro</strong> suma herramientas como los experimentos guiados, el informe en PDF y Conectar con tu IA. <a href="{{PRIVACY}}">Lee la política de privacidad.</a></span>
+          <span lang="en">No analytics and no advertising identifiers. Your own figures never sit behind a payment; <strong>Narelia Pro</strong> adds tools such as guided experiments, the PDF report and Connect your AI. <a href="{{PRIVACY}}">Read the privacy policy.</a></span>
+          <span lang="fr">Pas d’analytique ni d’identifiants publicitaires. Vos propres chiffres ne passent jamais derrière un paiement ; <strong>Narelia Pro</strong> ajoute des outils comme les expériences guidées, le rapport PDF et la connexion à votre IA. <a href="{{PRIVACY}}">Lisez la politique de confidentialité.</a></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <div class="wrap">
+      <h2 id="closing-title" class="h2">
+        <span lang="es">Empieza por el iPhone.</span>
+        <span lang="en">Start with the iPhone.</span>
+        <span lang="fr">Commencez par l’iPhone.</span>
+      </h2>
+      <p class="body-lg">
+        <span lang="es">Tus líneas base empiezan a formarse con las primeras noches con el reloj puesto. El Mac y tu IA, cuando quieras.</span>
+        <span lang="en">Your baselines start forming with your first nights wearing the watch. The Mac and your AI, whenever you like.</span>
+        <span lang="fr">Vos références commencent à se former dès vos premières nuits avec la montre. Le Mac et votre IA, quand vous voulez.</span>
+      </p>
+      <div class="row row-center">
+        <a class="btn btn-ink" href="{{APPSTORE}}"><span lang="es">Ver en la App Store</span><span lang="en">View on the App Store</span><span lang="fr">Voir sur l’App Store</span></a>
+        <a class="btn btn-line" href="{{URL:escritorio}}"><span lang="es">Narelia para Mac</span><span lang="en">Narelia for Mac</span><span lang="fr">Narelia pour Mac</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{FOOT}}

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Connecter Narelia à votre IA : Claude, Codex, Cursor, OpenClaw et 18 autres</title>
+<meta name="description" content="Comment connecter Narelia à Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI et 15 autres apps avec narelia-mcp, le serveur MCP de Narelia pour ordinateur. Pas à pas, avec la configuration exacte.">
+<link rel="canonical" href="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/">
+<link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/">
+<link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/connect-your-ai/">
+<link rel="alternate" hreflang="fr" href="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/">
+<link rel="alternate" hreflang="x-default" href="https://alejadxr.github.io/narelia-site/conecta-tu-ia/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Narelia">
+<meta property="og:title" content="Narelia · Connectez votre IA">
+<meta property="og:description" content="Comment connecter Narelia à Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI et 15 autres apps avec narelia-mcp, le serveur MCP de Narelia pour ordinateur. Pas à pas, avec la configuration exacte.">
+<meta property="og:url" content="https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/">
+<meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Narelia · Connectez votre IA">
+<meta name="twitter:description" content="Comment connecter Narelia à Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI et 15 autres apps avec narelia-mcp, le serveur MCP de Narelia pour ordinateur. Pas à pas, avec la configuration exacte.">
+<meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Connecter Narelia à votre IA : Claude, Codex, Cursor, OpenClaw et 18 autres",
+  "url": "https://alejadxr.github.io/narelia-site/fr/connecter-votre-ia/",
+  "description": "Comment connecter Narelia à Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI et 15 autres apps avec narelia-mcp, le serveur MCP de Narelia pour ordinateur. Pas à pas, avec la configuration exacte.",
+  "inLanguage": "fr",
+  "about": "Model Context Protocol (MCP)"
+}
+</script>
+</head>
+<body class="p-guia">
+<a class="skip" href="#main">
+  Aller au contenu
+</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../../fr/" aria-label="Narelia">
+      <img src="../../assets/mark.svg" alt="" width="26" height="26">
+      <span>Narelia</span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="../../fr/">L’app</a>
+      <a href="../../fr/bureau/">Pour Mac</a>
+      <a href="../../fr/connecter-votre-ia/" aria-current="page">Connecter votre IA</a>
+    </nav>
+    <div class="top-actions">
+      <div class="langs" role="group" aria-label="Langue"><a href="../../conecta-tu-ia/" hreflang="es" lang="es" title="Español">ES</a><a href="../../en/connect-your-ai/" hreflang="en" lang="en" title="English">EN</a><a href="../../fr/connecter-votre-ia/" hreflang="fr" lang="fr" title="Français" aria-current="page">FR</a></div>
+      <a class="btn btn-ink btn-sm" href="https://github.com/alejadxr/narelia-site/releases/latest">
+        Télécharger
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+  <section class="hero hero-guide">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker">Guide · narelia-mcp</p>
+      <h1 class="display">
+        
+        
+        Connectez Narelia <em>à votre IA.</em>
+      </h1>
+      <p class="lede">
+        
+        
+        Narelia pour Mac est livrée avec narelia-mcp, un serveur MCP que votre app d’IA lance sur votre propre ordinateur, en stdio. Avec lui, l’IA que vous utilisez déjà lit vos chiffres Narelia et peut proposer des enregistrements, qui ne sont gardés que lorsque vous les confirmez sur l’iPhone.
+      </p>
+      <nav class="toc" aria-label="Navigation">
+        <a href="#antes">Avant de commencer</a>
+        <a href="#pasos">Les étapes</a>
+        <a href="#apps">Les 22 apps</a>
+        <a href="#problemas">En cas de souci</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="guide-sec" id="antes" aria-labelledby="antes-title">
+    <div class="wrap split split-top">
+      <h2 id="antes-title" class="h2">Avant de commencer</h2>
+      <ul class="needs">
+        <li>
+          <b>Narelia 1.1.21 ou ultérieure sur l’iPhone, avec Narelia Pro.</b>
+          La connexion à votre IA arrive avec cette version. En attendant sa sortie sur l’App Store, elle est dans la <a href="https://testflight.apple.com/join/KAwauxRQ">bêta TestFlight</a>.
+        </li>
+        <li>
+          <b>Narelia pour Mac.</b>
+          <a href="../../fr/bureau/">Téléchargez-la ici</a> ; elle contient la fenêtre et narelia-mcp.
+        </li>
+        <li>
+          <b>iCloud Drive sur les deux, avec le même compte Apple.</b>
+          C’est par là que voyage le fichier chiffré. Un autre dossier de Fichiers que votre Mac synchronise, comme Dropbox, convient aussi.
+        </li>
+        <li>
+          <b>Une app d’IA compatible MCP.</b>
+          N’importe laquelle des <a href="#apps">22 de la liste</a>.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Los pasos, tal como los hace la app (ConectarIAViews.swift en el iPhone y primera.slint en
+       el Mac). Los rótulos entre comillas son los de la propia app. -->
+  <section class="guide-sec" id="pasos" aria-labelledby="pasos-title">
+    <div class="wrap">
+      <h2 id="pasos-title" class="h2">Les étapes</h2>
+      <ol class="walk">
+        <li>
+          <div class="walk-where">Sur le Mac</div>
+          <h3>Téléchargez Narelia pour Mac</h3>
+          <p>Placez-la dans Applications. Comme elle n’est pas encore signée, la première fois elle s’ouvre par clic droit → « Ouvrir » (<a href="../../fr/bureau/#primera-vez">comment, pas à pas</a>).</p>
+        </li>
+        <li>
+          <div class="walk-where">Sur l’iPhone</div>
+          <h3>Associez l’iPhone : dossier et mot de passe</h3>
+          <p>Dans Narelia, allez dans Réglages → « Connexion à votre IA ». Lisez les conditions et touchez « Accepter et continuer ». Touchez « Utiliser iCloud Drive › Narelia » et Narelia crée le dossier. Puis « Définir le mot de passe » : au moins 8 caractères. Il chiffre le fichier avant qu’il ne quitte Narelia, et vous taperez le même sur le Mac. Gardez-le : Narelia ne peut pas le récupérer.</p>
+          <p class="walk-note">Dans « Ce que votre IA peut voir », vous décidez quelles catégories sont exportées. Vous pouvez changer ou arrêter à tout moment.</p>
+        </li>
+        <li>
+          <div class="walk-where">Sur le Mac</div>
+          <h3>Ouvrez Narelia : le dossier et le même mot de passe</h3>
+          <p>La première fois, il y a trois étapes. Narelia trouve le dossier toute seule et vous cliquez sur « Use this folder ». Ensuite, vous tapez le mot de passe de l’iPhone ; il est gardé dans le trousseau de macOS, jamais dans un fichier ni dans la configuration de vos apps.</p>
+        </li>
+        <li>
+          <div class="walk-where">Sur le Mac</div>
+          <h3>Choisissez votre IA et cliquez sur « Connect »</h3>
+          <p>Narelia ajoute son entrée au fichier de configuration de cette app, après en avoir gardé une copie à côté (<code>*.narelia-copia.*</code>). Quittez l’app d’IA et rouvrez-la pour qu’elle voie Narelia. Pour les sept apps à la main, Narelia vous montre le texte, déjà avec votre dossier, et où le coller.</p>
+        </li>
+        <li>
+          <div class="walk-where">Dans votre IA</div>
+          <h3>Demandez-lui</h3>
+          <div class="asks">
+            <p class="ask">Comment ai-je dormi cette semaine par rapport à d’habitude ?</p>
+            <p class="ask">Compare ma variabilité de ce mois-ci avec celle du mois dernier.</p>
+            <p class="ask">Note un café.</p>
+          </div>
+          <p>Ce que votre IA demande de noter apparaît sur l’iPhone, dans « En attente de votre IA », et n’est enregistré qu’une fois confirmé. Sur l’iPhone, pour noter, continuez d’utiliser Siri : les apps d’IA du téléphone n’atteignent pas un serveur sur votre ordinateur.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- La lista sale de src/clientes.json, que genera tools/fragmentos con el código de
+       clientes.rs: mismas rutas, mismas claves y el mismo texto que enseña la app. -->
+  <section class="guide-sec" id="apps" aria-labelledby="apps-title">
+    <div class="wrap">
+      <div class="split split-top">
+        <h2 id="apps-title" class="h2">Les 22 apps</h2>
+        <div>
+          <p class="body-lg">Quinze se configurent seules avec « Connect » : Narelia écrit son entrée dans le fichier indiqué. Sept se configurent depuis leur propre fenêtre ou leur terminal, et pour celles-là le texte exact est ici.</p>
+          <p class="note">Dans les extraits, remplacez <code>VOTRE_UTILISATEUR</code> par votre nom d’utilisateur du Mac. L’app vous les donne déjà avec votre dossier, dans « Connect with your AI ». Aucun ne contient le mot de passe.</p>
+        </div>
+      </div>
+      <div class="apps-list">
+<section class="apps-group" aria-label="Apps de discussion"><h3 class="apps-group-title">Apps de discussion</h3><ul class="apps"><li class="app app-sola">
+  <div class="app-head"><h4>Claude Desktop</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>LM Studio</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.lmstudio/mcp.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>AnythingLLM</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/Library/Application Support/anythingllm-desktop/storage/plugins/anythingllm_mcp_servers.json</code></p>
+</li><li class="app app-mano" id="app-jan">
+  <div class="app-head"><h4>Jan</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans Jan : Settings → MCP Servers → « + ». Copiez la commande, les arguments et la variable NARELIA_DIR.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>{
+  &quot;command&quot;: &quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,
+  &quot;args&quot;: [],
+  &quot;env&quot;: {
+    &quot;NARELIA_DIR&quot;: &quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;
+  }
+}</code></pre></div>
+</li><li class="app app-mano" id="app-msty-studio">
+  <div class="app-head"><h4>Msty Studio</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans Msty Studio : Toolbox → Tools → Add New Tool → STDIO / JSON, puis collez-le.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>{
+  &quot;command&quot;: &quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,
+  &quot;args&quot;: [],
+  &quot;env&quot;: {
+    &quot;NARELIA_DIR&quot;: &quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;
+  }
+}</code></pre></div>
+</li><li class="app app-mano" id="app-cherry-studio">
+  <div class="app-head"><h4>Cherry Studio</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans Cherry Studio : Settings → MCP → MCP Servers → Add → Import from JSON, puis collez-le.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>{
+  &quot;mcpServers&quot;: {
+    &quot;narelia&quot;: {
+      &quot;command&quot;: &quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,
+      &quot;args&quot;: [],
+      &quot;env&quot;: {
+        &quot;NARELIA_DIR&quot;: &quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;
+      }
+    }
+  }
+}</code></pre></div>
+</li><li class="app app-mano" id="app-chatbox">
+  <div class="app-head"><h4>Chatbox</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans Chatbox : Settings → MCP → ajouter, « Local (stdio) ». Copiez la commande et la variable NARELIA_DIR, puis appuyez sur « Test ».</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>{
+  &quot;command&quot;: &quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,
+  &quot;args&quot;: [],
+  &quot;env&quot;: {
+    &quot;NARELIA_DIR&quot;: &quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;
+  }
+}</code></pre></div>
+</li></ul></section>
+<section class="apps-group" aria-label="Agents"><h3 class="apps-group-title">Agents</h3><ul class="apps"><li class="app app-sola">
+  <div class="app-head"><h4>Codex</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.codex/config.toml</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Gemini CLI</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.gemini/settings.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Antigravity</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.gemini/config/mcp_config.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>OpenCode</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.config/opencode/opencode.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Goose</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.config/goose/config.yaml</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Hermes Agent</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.hermes/config.yaml</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Muse Code</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.config/muse/settings.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Copilot CLI</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.copilot/mcp-config.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Cline</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.cline/data/settings/cline_mcp_settings.json</code></p>
+</li><li class="app app-mano" id="app-claude-code">
+  <div class="app-head"><h4>Claude Code</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans un terminal. Ensuite, ouvrez une nouvelle session de Claude Code.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>claude mcp add-json --scope user narelia &#x27;{&quot;type&quot;:&quot;stdio&quot;,&quot;command&quot;:&quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,&quot;args&quot;:[],&quot;env&quot;:{&quot;NARELIA_DIR&quot;:&quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;}}&#x27;</code></pre></div>
+</li><li class="app app-mano" id="app-openclaw">
+  <div class="app-head"><h4>OpenClaw</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans un terminal, sur l’ordinateur où tourne le Gateway d’OpenClaw.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>openclaw mcp add narelia --command &#x27;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&#x27; --env &#x27;NARELIA_DIR=/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&#x27;</code></pre></div>
+</li></ul></section>
+<section class="apps-group" aria-label="Éditeurs de code"><h3 class="apps-group-title">Éditeurs de code</h3><ul class="apps"><li class="app app-sola">
+  <div class="app-head"><h4>Cursor</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.cursor/mcp.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>VS Code</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/Library/Application Support/Code/User/mcp.json</code></p>
+</li><li class="app app-sola">
+  <div class="app-head"><h4>Devin Desktop</h4><span class="tag tag-sola">Configurée pour vous</span></div>
+  <p class="app-where">Narelia écrit dans <code>~/.config/devin/mcp_config.json</code></p>
+</li><li class="app app-mano" id="app-zed">
+  <div class="app-head"><h4>Zed</h4><span class="tag tag-mano">À la main</span></div>
+  <p class="app-where">Dans Zed : « zed: open settings file », puis collez-le à l’intérieur des accolades extérieures.</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copier"><span class="copy-label">Copier</span></button><pre><code>{
+  &quot;context_servers&quot;: {
+    &quot;narelia&quot;: {
+      &quot;command&quot;: &quot;/Applications/Narelia.app/Contents/MacOS/narelia-mcp&quot;,
+      &quot;args&quot;: [],
+      &quot;env&quot;: {
+        &quot;NARELIA_DIR&quot;: &quot;/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents&quot;
+      }
+    }
+  }
+}</code></pre></div>
+</li></ul></section>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-sec" id="problemas" aria-labelledby="problemas-title">
+    <div class="wrap split split-top">
+      <h2 id="problemas-title" class="h2">En cas de souci</h2>
+      <dl class="facts facts-1">
+        <div>
+          <dt>Votre IA ne voit pas Narelia</dt>
+          <dd>Quittez complètement l’app d’IA et rouvrez-la : la plupart ne lisent leur configuration qu’au démarrage. Dans Claude Code, ouvrez une nouvelle session.</dd>
+        </div>
+        <div>
+          <dt>« Je n’ai rien touché »</dt>
+          <dd>Si le fichier de configuration n’est pas du JSON, TOML ou YAML valide, Narelia n’y touche pas et vous indique la ligne. Corrigez-le et cliquez de nouveau sur « Connect ». Si votre OpenCode utilise <code>opencode.jsonc</code>, avec des commentaires, ajoutez l’entrée à la main dans <code>mcp.servers</code>.</dd>
+        </div>
+        <div>
+          <dt>Le Mac demande l’accès au trousseau</dt>
+          <dd>C’est narelia-mcp qui lit votre mot de passe. Tant que l’app n’est pas signée, cela peut arriver une fois par version : cliquez sur « Toujours autoriser ».</dd>
+        </div>
+        <div>
+          <dt>Retirer la connexion</dt>
+          <dd>Sur le Mac, « Remove » ne supprime que l’entrée de Narelia dans cette app. Sur l’iPhone, « Arrêter et supprimer » efface les fichiers que Narelia a écrits dans votre dossier et oublie le dossier et le mot de passe. Ce que votre IA a déjà reçu reste chez cette IA.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="promise promise-tight" aria-labelledby="fine-title">
+    <div class="wrap">
+      <h2 id="fine-title" class="h2">À savoir</h2>
+      <div class="cols">
+        <p>Le fichier est chiffré en AES-256-GCM avec une clé tirée de votre mot de passe (PBKDF2-SHA256, 600 000 itérations). Dans iCloud Drive, le chiffrement ne peut pas être désactivé.</p>
+        <p>En connectant une IA, c’est vous qui lui donnez ces données ; ensuite, cette entreprise les traite selon ses conditions, pas celles de Narelia. Avec un modèle local, comme dans LM Studio ou Jan, elles ne quittent pas votre Mac.</p>
+        <p>Votre IA n’est pas Narelia : ce qu’elle répond peut être faux, et ce n’est ni un avis médical ni un diagnostic. Pour toute question de santé, demandez à un professionnel.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../../assets/mark.svg" alt="" width="22" height="22">
+      <span>Narelia</span>
+    </div>
+    <nav class="foot-links" aria-label="Navigation">
+      <a href="../../fr/">L’app</a>
+      <a href="../../fr/bureau/">Narelia pour Mac</a>
+      <a href="../../fr/connecter-votre-ia/">Connecter votre IA</a>
+      <a href="https://alejadxr.github.io/narelia-privacy/">Confidentialité</a>
+      <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources et responsabilité</a>
+    </nav>
+    <p class="disclaimer">
+      
+      
+      Narelia n’est pas un dispositif médical et son auteur n’est pas professionnel de santé. Rien de ce qu’elle affiche, ni de ce que répond une IA qui y est connectée, n’est un diagnostic ni un conseil clinique : les chiffres viennent d’une montre grand public et servent à vous comparer à vous-même dans le temps.
+    </p>
+    <p class="credit">
+      
+      
+      Apple, le logo Apple, iPhone, Apple Watch, Mac, macOS et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays. App Store est une marque de service d’Apple Inc. Les noms des apps d’IA appartiennent à leurs propriétaires ; Narelia n’est affiliée à aucune.
+    </p>
+    <p class="colophon">© 2026 Narelia</p>
+  </div>
+</footer>
+
+<script src="../../main.js" defer></script>
+</body>
+</html>
+

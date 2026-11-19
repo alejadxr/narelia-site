@@ -1,0 +1,190 @@
+[
+  {
+    "nombre": "Claude Desktop",
+    "grupo": "Chat",
+    "a_mano": false,
+    "fichero": "~/Library/Application Support/Claude/claude_desktop_config.json"
+  },
+  {
+    "nombre": "Cursor",
+    "grupo": "Editor",
+    "a_mano": false,
+    "fichero": "~/.cursor/mcp.json"
+  },
+  {
+    "nombre": "LM Studio",
+    "grupo": "Chat",
+    "a_mano": false,
+    "fichero": "~/.lmstudio/mcp.json"
+  },
+  {
+    "nombre": "Codex",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.codex/config.toml"
+  },
+  {
+    "nombre": "Claude Code",
+    "grupo": "Agente",
+    "a_mano": true,
+    "texto": {
+      "es": "claude mcp add-json --scope user narelia '{\"type\":\"stdio\",\"command\":\"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\"args\":[],\"env\":{\"NARELIA_DIR\":\"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"}}'",
+      "en": "claude mcp add-json --scope user narelia '{\"type\":\"stdio\",\"command\":\"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\"args\":[],\"env\":{\"NARELIA_DIR\":\"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"}}'",
+      "fr": "claude mcp add-json --scope user narelia '{\"type\":\"stdio\",\"command\":\"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\"args\":[],\"env\":{\"NARELIA_DIR\":\"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"}}'"
+    },
+    "donde": {
+      "es": "En un terminal. Después, abre otra sesión de Claude Code.",
+      "en": "In a terminal. Then start a new Claude Code session."
+    }
+  },
+  {
+    "nombre": "Gemini CLI",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.gemini/settings.json"
+  },
+  {
+    "nombre": "Antigravity",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.gemini/config/mcp_config.json"
+  },
+  {
+    "nombre": "OpenCode",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.config/opencode/opencode.json"
+  },
+  {
+    "nombre": "Goose",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.config/goose/config.yaml"
+  },
+  {
+    "nombre": "Hermes Agent",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.hermes/config.yaml"
+  },
+  {
+    "nombre": "OpenClaw",
+    "grupo": "Agente",
+    "a_mano": true,
+    "texto": {
+      "es": "openclaw mcp add narelia --command '/Applications/Narelia.app/Contents/MacOS/narelia-mcp' --env 'NARELIA_DIR=/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents'",
+      "en": "openclaw mcp add narelia --command '/Applications/Narelia.app/Contents/MacOS/narelia-mcp' --env 'NARELIA_DIR=/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents'",
+      "fr": "openclaw mcp add narelia --command '/Applications/Narelia.app/Contents/MacOS/narelia-mcp' --env 'NARELIA_DIR=/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents'"
+    },
+    "donde": {
+      "es": "En un terminal, en el ordenador donde corre el Gateway de OpenClaw.",
+      "en": "In a terminal, on the computer that runs the OpenClaw Gateway."
+    }
+  },
+  {
+    "nombre": "Muse Code",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.config/muse/settings.json"
+  },
+  {
+    "nombre": "Copilot CLI",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.copilot/mcp-config.json"
+  },
+  {
+    "nombre": "Cline",
+    "grupo": "Agente",
+    "a_mano": false,
+    "fichero": "~/.cline/data/settings/cline_mcp_settings.json"
+  },
+  {
+    "nombre": "VS Code",
+    "grupo": "Editor",
+    "a_mano": false,
+    "fichero": "~/Library/Application Support/Code/User/mcp.json"
+  },
+  {
+    "nombre": "Devin Desktop",
+    "grupo": "Editor",
+    "a_mano": false,
+    "fichero": "~/.config/devin/mcp_config.json"
+  },
+  {
+    "nombre": "Zed",
+    "grupo": "Editor",
+    "a_mano": true,
+    "texto": {
+      "es": "{\n  \"context_servers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}",
+      "en": "{\n  \"context_servers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}",
+      "fr": "{\n  \"context_servers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}"
+    },
+    "donde": {
+      "es": "En Zed: «zed: open settings file» y pégalo dentro de las llaves de fuera.",
+      "en": "In Zed: «zed: open settings file» and paste it inside the outer braces."
+    }
+  },
+  {
+    "nombre": "AnythingLLM",
+    "grupo": "Chat",
+    "a_mano": false,
+    "fichero": "~/Library/Application Support/anythingllm-desktop/storage/plugins/anythingllm_mcp_servers.json"
+  },
+  {
+    "nombre": "Jan",
+    "grupo": "Chat",
+    "a_mano": true,
+    "texto": {
+      "es": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "en": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "fr": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}"
+    },
+    "donde": {
+      "es": "En Jan: Ajustes → MCP Servers → «+». Copia el comando, los argumentos y la variable NARELIA_DIR.",
+      "en": "In Jan: Settings → MCP Servers → «+». Copy the command, arguments and the NARELIA_DIR variable."
+    }
+  },
+  {
+    "nombre": "Msty Studio",
+    "grupo": "Chat",
+    "a_mano": true,
+    "texto": {
+      "es": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "en": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "fr": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}"
+    },
+    "donde": {
+      "es": "En Msty Studio: Toolbox → Tools → Add New Tool → STDIO / JSON, y pégalo.",
+      "en": "In Msty Studio: Toolbox → Tools → Add New Tool → STDIO / JSON, and paste it."
+    }
+  },
+  {
+    "nombre": "Cherry Studio",
+    "grupo": "Chat",
+    "a_mano": true,
+    "texto": {
+      "es": "{\n  \"mcpServers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}",
+      "en": "{\n  \"mcpServers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}",
+      "fr": "{\n  \"mcpServers\": {\n    \"narelia\": {\n      \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"NARELIA_DIR\": \"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n      }\n    }\n  }\n}"
+    },
+    "donde": {
+      "es": "En Cherry Studio: Ajustes → MCP → MCP Servers → Añadir → Importar desde JSON, y pégalo.",
+      "en": "In Cherry Studio: Settings → MCP → MCP Servers → Add → Import from JSON, and paste it."
+    }
+  },
+  {
+    "nombre": "Chatbox",
+    "grupo": "Chat",
+    "a_mano": true,
+    "texto": {
+      "es": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/TU_USUARIO/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "en": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/YOUR_USER/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}",
+      "fr": "{\n  \"command\": \"/Applications/Narelia.app/Contents/MacOS/narelia-mcp\",\n  \"args\": [],\n  \"env\": {\n    \"NARELIA_DIR\": \"/Users/VOTRE_UTILISATEUR/Library/Mobile Documents/iCloud~com~diego~myhealth/Documents\"\n  }\n}"
+    },
+    "donde": {
+      "es": "En Chatbox: Ajustes → MCP → añadir, «Local (stdio)». Copia el comando y la variable NARELIA_DIR, y pulsa «Test».",
+      "en": "In Chatbox: Settings → MCP → add, «Local (stdio)». Copy the command and the NARELIA_DIR variable, then press «Test»."
+    }
+  }
+]

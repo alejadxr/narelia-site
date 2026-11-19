@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Narelia : l’app santé Apple Watch qui vous compare à vous</title>
-<meta name="description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.">
+<meta name="description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique. Toute l’analyse sur votre iPhone, sans compte. Et désormais, Narelia pour Mac apporte vos chiffres à l’IA que vous utilisez déjà, sans serveur entre les deux.">
 <link rel="canonical" href="https://alejadxr.github.io/narelia-site/fr/">
 <link rel="alternate" hreflang="es" href="https://alejadxr.github.io/narelia-site/">
 <link rel="alternate" hreflang="en" href="https://alejadxr.github.io/narelia-site/en/">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Narelia">
 <meta property="og:title" content="Narelia · Vos données, comparées à vous">
-<meta property="og:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.">
+<meta property="og:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique. Toute l’analyse sur votre iPhone, sans compte. Et désormais, Narelia pour Mac apporte vos chiffres à l’IA que vous utilisez déjà, sans serveur entre les deux.">
 <meta property="og:url" content="https://alejadxr.github.io/narelia-site/fr/">
 <meta property="og:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -23,15 +23,17 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Narelia · Vos données, comparées à vous">
-<meta name="twitter:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.">
+<meta name="twitter:description" content="Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique. Toute l’analyse sur votre iPhone, sans compte. Et désormais, Narelia pour Mac apporte vos chiffres à l’IA que vous utilisez déjà, sans serveur entre les deux.">
 <meta name="twitter:image" content="https://alejadxr.github.io/narelia-site/assets/og.jpg">
-<meta name="theme-color" content="#F5F6F8">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)">
 <meta name="apple-itunes-app" content="app-id=6809521455">
 <link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="../assets/screens/fr/1-hoy.webp" fetchpriority="high">
 <link rel="stylesheet" href="../styles.css">
 <script type="application/ld+json">
@@ -40,7 +42,7 @@
   "@type": "MobileApplication",
   "name": "Narelia",
   "url": "https://alejadxr.github.io/narelia-site/fr/",
-  "description": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.",
+  "description": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique. Toute l’analyse sur votre iPhone, sans compte. Et désormais, Narelia pour Mac apporte vos chiffres à l’IA que vous utilisez déjà, sans serveur entre les deux.",
   "inLanguage": "fr",
   "operatingSystem": "iOS 26",
   "applicationCategory": "HealthApplication",
@@ -48,7 +50,6 @@
   "image": "https://alejadxr.github.io/narelia-site/assets/og.jpg",
   "screenshot": [
     "https://alejadxr.github.io/narelia-site/assets/screens/fr/1-hoy.webp",
-    "https://alejadxr.github.io/narelia-site/assets/screens/fr/2-recuperacion.webp",
     "https://alejadxr.github.io/narelia-site/assets/screens/fr/3-noche.webp",
     "https://alejadxr.github.io/narelia-site/assets/screens/fr/4-forma-fisica.webp",
     "https://alejadxr.github.io/narelia-site/assets/screens/fr/5-registro.webp",
@@ -60,7 +61,6 @@
     "https://apps.apple.com/app/narelia/id6809521455"
   ],
   "datePublished": "2026-10-04",
-  "softwareVersion": "1.0",
   "isAccessibleForFree": true,
   "offers": [
     {
@@ -70,278 +70,325 @@
       "priceCurrency": "USD",
       "url": "https://apps.apple.com/app/narelia/id6809521455",
       "availability": "https://schema.org/InStock"
-    },
-    {
-      "@type": "Offer",
-      "name": "Narelia Pro",
-      "price": "4.99",
-      "priceCurrency": "USD",
-      "url": "https://apps.apple.com/app/narelia/id6809521455",
-      "availability": "https://schema.org/InStock",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "4.99",
-        "priceCurrency": "USD",
-        "billingDuration": "P1M"
-      }
     }
   ]
 }
 </script>
 </head>
-<body>
-
+<body class="p-inicio">
 <a class="skip" href="#main">
   Aller au contenu
 </a>
 
 <header class="top">
-  <a class="brand" href="./" aria-label="Narelia">
-    <img src="../assets/mark.svg" alt="" width="28" height="28">
-    <span>Narelia</span>
-  </a>
-  <nav class="top-actions" aria-label="Langue et téléchargement">
-    <div class="langs" role="group" aria-label="Langue"><a href="../" hreflang="es" lang="es" title="Español">ES</a><a href="../en/" hreflang="en" lang="en" title="English">EN</a><a href="../fr/" hreflang="fr" lang="fr" title="Français" aria-current="page">FR</a></div>
-    <a class="cta cta-small" href="https://apps.apple.com/app/narelia/id6809521455">
-      Télécharger
+  <div class="top-in">
+    <a class="brand" href="../fr/" aria-label="Narelia">
+      <img src="../assets/mark.svg" alt="" width="26" height="26">
+      <span>Narelia</span>
     </a>
-  </nav>
+    <nav class="nav" aria-label="Navigation">
+      <a href="../fr/" aria-current="page">L’app</a>
+      <a href="../fr/bureau/">Pour Mac</a>
+      <a href="../fr/connecter-votre-ia/">Connecter votre IA</a>
+    </nav>
+    <div class="top-actions">
+      <div class="langs" role="group" aria-label="Langue"><a href="../" hreflang="es" lang="es" title="Español">ES</a><a href="../en/" hreflang="en" lang="en" title="English">EN</a><a href="../fr/" hreflang="fr" lang="fr" title="Français" aria-current="page">FR</a></div>
+      <a class="btn btn-ink btn-sm" href="https://apps.apple.com/app/narelia/id6809521455">
+        Télécharger
+      </a>
+    </div>
+  </div>
 </header>
+
 
 <main id="main">
 
-  <!-- El héroe: la barra de rango personal, el instrumento que sólo tiene esta app. -->
-  <section class="hero" id="top">
-    <div class="hero-mesh" aria-hidden="true"></div>
-
-    <div class="hero-grid">
+  <!-- El héroe. A la derecha, el hueco del iPhone en 3D (img/3d-iphone.webp): si el fichero
+       está, se ve él; si no, la captura de la ficha. Ver «Huecos 3D» en el README. -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">
+        <p class="kicker">
           
           
-          Disponible dès maintenant sur l’App Store
+          iPhone · Apple Watch · et désormais, Mac
         </p>
-        <h1>
+        <h1 class="display">
           
           
-          Vos données, comparées à vous.
+          Vos données, <em>comparées à vous.</em>
         </h1>
-        <figure class="range" aria-labelledby="range-caption">
-          <div class="range-figure" aria-hidden="true">
-            <div class="range-track"></div>
-            <div class="range-band"></div>
-            <div class="range-dot">
-              <span class="range-reading"><b>48</b><small>ms</small></span>
-            </div>
-          </div>
-          <figcaption id="range-caption" class="range-caption">
-            <span class="range-key range-key-band">
-              
-              
-              Votre plage habituelle, selon vos nuits
-            </span>
-            <span class="range-key range-key-dot">
-              
-              
-              Votre variabilité du jour
-            </span>
-          </figcaption>
-        </figure>
         <p class="lede">
           
           
-          Narelia lit votre Apple Watch et vous compare à vous-même : vos nuits, vos semaines, votre plage habituelle. Pas à une table de population, et sans prétendre savoir ce qu’elle ne sait pas.
+          Narelia lit votre Apple Watch et vous compare à vous-même, dans l’iPhone et sans compte. Et désormais, depuis votre Mac, elle peut apporter vos chiffres à l’IA que vous utilisez déjà. Sans serveur Narelia entre les deux, parce qu’il n’y en a pas.
         </p>
         <div class="hero-actions">
           <!-- La insignia oficial de Apple, sin tocar: una por página, negra, a 54 px de alto
-               (el mínimo en pantalla son 40) y con su espacio libre de un cuarto de su alto. -->
+               y con su espacio libre de un cuarto de su alto. -->
           <a class="badge" href="https://apps.apple.com/app/narelia/id6809521455">
             <img src="../assets/badges/fr.svg" width="170.8" height="54" alt="Télécharger dans l’App Store">
           </a>
-          <p class="fine">
-            
-            
-            Téléchargement gratuit, sans compte. Nécessite un iPhone sous iOS 26 ; Apple Watch recommandée.
-          </p>
+          <a class="btn btn-line" href="../fr/bureau/">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg>
+            Narelia pour Mac
+          </a>
         </div>
+        <p class="fine">
+          
+          
+          L’app iPhone est gratuite et sans compte, sous iOS 26. Apple Watch recommandée.
+        </p>
       </div>
 
-      <figure class="hero-phone">
-        <img class="shot" data-shot="1-hoy" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." fetchpriority="high">
+      <figure class="slot slot-iphone" data-slot="img/3d-iphone.webp">
+        <img class="slot-3d" src="../img/3d-iphone.webp" alt="Narelia sur un iPhone, avec l’écran Aujourd’hui." onload="this.parentNode.classList.add('has-3d')">
+        <img class="slot-fallback shot" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." fetchpriority="high">
       </figure>
     </div>
-
   </section>
 
-  <!-- La película de lanzamiento (2 min 14 s, 16:9). Sin sonido y en bucle mientras está a la
-       vista; con los controles del navegador se pausa o se le da sonido. No se descarga hasta que
-       se acerca a la pantalla (main.js), y con «reducir movimiento» no arranca sola. -->
-  <section class="film" aria-labelledby="film-title">
-    <div class="section-head">
-      <h2 id="film-title">
-        
-        
-        Découvrez-la en deux minutes.
-      </h2>
-      <p>
-        
-        
-        Le film de lancement, en anglais : toute l’app, écran par écran, avec des données simulées.
-      </p>
+  <!-- La firma de la página: el camino que hacen tus cifras. Es literal: el iPhone escribe un
+       fichero cifrado en tu carpeta, tu ordenador lo lee y se lo da a tu IA; lo que tu IA pide
+       vuelve al iPhone y espera tu confirmación. El servidor de Narelia aparece tachado porque
+       no existe. -->
+  <section class="route" id="camino" aria-labelledby="route-title">
+    <div class="wrap">
+      <div class="route-head">
+        <h2 id="route-title" class="h2">
+          
+          
+          Le chemin de vos chiffres.
+        </h2>
+        <p>
+          
+          
+          Quatre étapes, toutes à vous. Ce que votre IA propose revient par le même chemin et attend sur l’iPhone jusqu’à ce que vous disiez oui.
+        </p>
+      </div>
+
+      <ol class="route-line" data-route>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M10.5 5h3"/></svg></span>
+          <h3>Votre iPhone</h3>
+          <p>Narelia calcule tout ici et n’écrit que les chiffres que vous choisissez, chiffrés avec votre mot de passe.</p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7.5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+          <h3>Votre dossier</h3>
+          <p>iCloud Drive › Narelia, sur votre propre compte. Narelia le crée pour vous depuis l’iPhone.</p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></svg></span>
+          <h3>Votre Mac</h3>
+          <p>Narelia pour Mac ouvre le fichier avec le mot de passe gardé dans votre trousseau, et le sert via narelia-mcp.</p>
+        </li>
+        <li class="stop">
+          <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l1.9 4.6 4.6 1.9-4.6 1.9L12 16.5l-1.9-4.6L5.5 10l4.6-1.9z"/><path d="M18.5 15.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span>
+          <h3>Votre IA</h3>
+          <p>Claude, Codex, Cursor, OpenClaw… Celle que vous utilisez déjà lit vos chiffres et peut proposer un enregistrement.</p>
+        </li>
+        <!-- El sobre que recorre la línea: un adorno con propósito (explica el camino), una vez. -->
+        <li class="envelope" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></li>
+      </ol>
+
+      <div class="route-foot">
+        <p class="route-back">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M10 7l-5 5 5 5"/></svg>
+          
+          
+          Ce que votre IA demande de noter revient à l’iPhone et n’est enregistré que lorsque vous le confirmez là-bas.
+        </p>
+        <p class="route-ghost">
+          <s>Serveur Narelia</s>
+          
+          
+          Il n’existe pas : aucun compte à créer, aucune copie de vos données chez nous.
+        </p>
+      </div>
     </div>
-    <figure class="film-frame">
-      <video class="film-video" width="1280" height="720" muted loop playsinline controls preload="none"
-             poster="../assets/film/narelia-en.jpg" aria-label="Film de lancement de Narelia (en anglais)" data-autoplay>
-        <source src="../assets/film/narelia-en.mp4" type="video/mp4">
-      </video>
-    </figure>
   </section>
 
-  <!-- Las seis capturas de la ficha, con los rótulos de la guía de la tienda. -->
-  <section class="screens" aria-labelledby="screens-title">
-    <div class="section-head">
-      <h2 id="screens-title">
-        
-        
-        Chaque chiffre montre le calcul qui l’a produit.
-      </h2>
-      <p>
-        
-        
-        Pas de score opaque. Chaque écran montre de quoi son chiffre est fait et à quels jours il est comparé.
-      </p>
+  <!-- La app del iPhone: el instrumento de la casa (la barra de rango personal), las capturas y
+       lo que hay dentro. -->
+  <section class="app-sec" id="app" aria-labelledby="app-title">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">L’app</p>
+        <h2 id="app-title" class="h2">
+          
+          
+          Chaque chiffre, face à votre propre histoire.
+        </h2>
+        <p class="body-lg">
+          
+          
+          Narelia ne vous compare pas à une table de population. Elle vous compare à vos nuits et à vos semaines, dit de combien chaque signal a bougé, et n’affirme jamais plus que ce que les données permettent.
+        </p>
+      </div>
+
+      <figure class="range" aria-labelledby="range-caption">
+        <div class="range-figure" aria-hidden="true">
+          <div class="range-track"></div>
+          <div class="range-band"></div>
+          <div class="range-dot"><span class="range-reading"><b>48</b><small>ms</small></span></div>
+        </div>
+        <figcaption id="range-caption" class="range-caption">
+          <span class="range-key range-key-band">Votre plage habituelle, selon vos nuits</span>
+          <span class="range-key range-key-dot">Votre variabilité du jour (exemple)</span>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="strip-wrap">
       <ol class="strip" tabindex="0" aria-label="Captures de Narelia">
         <li>
           <p class="strip-caption">Vos chiffres face à votre propre histoire</p>
-          <img class="shot" data-shot="1-hoy" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." loading="lazy">
-        </li>
-        <li>
-          <p class="strip-caption">Chaque chiffre avec son calcul</p>
-          <img class="shot" data-shot="2-recuperacion" src="../assets/screens/fr/2-recuperacion.webp" width="663" height="1300" alt="Écran de récupération : le chiffre, les signaux qui le composent et son évolution jour après jour." loading="lazy">
+          <img class="shot" src="../assets/screens/fr/1-hoy.webp" width="663" height="1300" alt="L’écran Aujourd’hui de Narelia sur un iPhone : le chiffre Readiness sur son cadran et le pouls de la journée." loading="lazy">
         </li>
         <li>
           <p class="strip-caption">Votre stress au fil de la journée, la nuit à part</p>
-          <img class="shot" data-shot="3-noche" src="../assets/screens/fr/3-noche.webp" width="663" height="1300" alt="Écran de stress : la journée mesure par mesure le long de l’horloge, avec les repères de ce que vous avez noté et la nuit mesurée à part." loading="lazy">
+          <img class="shot" src="../assets/screens/fr/3-noche.webp" width="663" height="1300" alt="Écran de stress : la journée mesure par mesure le long de l’horloge, avec les repères de ce que vous avez noté et la nuit mesurée à part." loading="lazy">
         </li>
         <li>
           <p class="strip-caption">Votre effort face à vos propres semaines</p>
-          <img class="shot" data-shot="4-forma-fisica" src="../assets/screens/fr/4-forma-fisica.webp" width="663" height="1300" alt="Écran de forme : l’effort de la semaine face à vos semaines habituelles." loading="lazy">
+          <img class="shot" src="../assets/screens/fr/4-forma-fisica.webp" width="663" height="1300" alt="Écran de forme : l’effort de la semaine face à vos semaines habituelles." loading="lazy">
         </li>
         <li>
           <p class="strip-caption">Vos récipients et vos quantités rapides</p>
-          <img class="shot" data-shot="5-registro" src="../assets/screens/fr/5-registro.webp" width="663" height="1300" alt="Journal d’eau : vos récipients (verre avec paille, bouteille, thermos, canette, tasse) et les quantités rapides." loading="lazy">
+          <img class="shot" src="../assets/screens/fr/5-registro.webp" width="663" height="1300" alt="Journal d’eau : vos récipients (verre avec paille, bouteille, thermos, canette, tasse) et les quantités rapides." loading="lazy">
         </li>
         <li>
           <p class="strip-caption">Sans compte, sans serveur ; iCloud seulement si vous l’activez</p>
-          <img class="shot" data-shot="6-privacidad" src="../assets/screens/fr/6-privacidad.webp" width="663" height="1300" alt="Réglages de Narelia, section Données et confidentialité : synchroniser avec iCloud, désactivé, et la politique de confidentialité." loading="lazy">
+          <img class="shot" src="../assets/screens/fr/6-privacidad.webp" width="663" height="1300" alt="Réglages de Narelia, section Données et confidentialité : synchroniser avec iCloud, désactivé, et la politique de confidentialité." loading="lazy">
         </li>
       </ol>
       <div class="strip-nav">
-        <button type="button" class="strip-btn" data-strip="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button type="button" class="strip-btn" data-strip="1" aria-label="Suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button type="button" class="round-btn" data-strip="-1" aria-label="Précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="round-btn" data-strip="1" aria-label="Suivant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <dl class="facts">
+        <div>
+          <dt>Readiness</dt>
+          <dd>Elle part de votre récupération du matin et bouge avec ce que la montre mesure dans la journée. Si vous avez dormi sans la montre, elle l’indique : « De jour seulement ».</dd>
+        </div>
+        <div>
+          <dt>Récupération</dt>
+          <dd>Variabilité, pouls au repos, respiration et sommeil face à vos propres nuits, avec ce que chaque signal a déplacé.</dd>
+        </div>
+        <div>
+          <dt>Nuit, stress et constantes</dt>
+          <dd>La nuit par phases, le stress au fil de la journée et chaque constante sur sa plage personnelle.</dd>
+        </div>
+        <div>
+          <dt>Forme physique</dt>
+          <dd>L’effort de la semaine face à vos semaines habituelles, avec vos entraînements et vos séances de force.</dd>
+        </div>
+        <div>
+          <dt>Des repas à partir d’une photo</dt>
+          <dd>Narelia propose ce qu’il y a dans l’assiette et vous confirmez. C’est lu sur l’iPhone même, avec Apple Intelligence sur les modèles compatibles.</dd>
+        </div>
+        <div>
+          <dt>Eau et caféine, en 3D</dt>
+          <dd>Avec votre bouteille, votre tasse ou votre canette : faites glisser le niveau sur le récipient lui-même. Créatine et protéines aussi.</dd>
+        </div>
+        <div>
+          <dt>Siri et Apple Intelligence</dt>
+          <dd>Demandez votre variabilité, votre récupération ou la nuit : elle répond comme son écran, sans réseau. Raccourcis propose « Obtenir les données de Narelia ».</dd>
+        </div>
+        <div>
+          <dt>Montre et widgets</dt>
+          <dd>L’Apple Watch a sa propre app et ses complications ; l’iPhone, des widgets en quatre styles.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Narelia para Mac. A la izquierda, el hueco de la ventana en 3D (img/3d-escritorio.webp);
+       mientras no está, la ventana real renderizada con datos de ejemplo. -->
+  <section class="desk" id="mac" aria-labelledby="desk-title">
+    <div class="wrap desk-grid">
+      <figure class="slot slot-window" data-slot="img/3d-escritorio.webp">
+        <img class="slot-3d" src="../img/3d-escritorio.webp" alt="La fenêtre de Narelia pour Mac sur l’écran Aujourd’hui : Readiness, récupération et les chiffres de la semaine, avec des données d’exemple." onload="this.parentNode.classList.add('has-3d')">
+        <div class="slot-fallback window">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <picture>
+            <source srcset="../assets/escritorio/inicio-en-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="../assets/escritorio/inicio-en-claro.jpg" width="1920" height="1080" alt="La fenêtre de Narelia pour Mac sur l’écran Aujourd’hui : Readiness, récupération et les chiffres de la semaine, avec des données d’exemple." loading="lazy">
+          </picture>
+        </div>
+      </figure>
+      <div class="desk-copy">
+        <p class="kicker">Nouveau · Narelia pour Mac</p>
+        <h2 id="desk-title" class="h2">
+          
+          
+          Votre IA, avec vos chiffres sous les yeux.
+        </h2>
+        <ul class="ticks">
+          <li><b>Aujourd’hui.</b> Les chiffres écrits par votre iPhone, avec leur semaine et votre plage.</li>
+          <li><b>En attente.</b> Ce que votre IA a demandé de noter, en attente sur l’iPhone.</li>
+          <li><b>Connexion à votre IA.</b> 22 apps et agents ; 15 se configurent d’un bouton.</li>
+        </ul>
+        <div class="row">
+          <a class="btn btn-teal" href="../fr/bureau/">Télécharger pour Mac</a>
+          <a class="link-arrow" href="../fr/connecter-votre-ia/">Comment connecter votre IA</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Lo que hay dentro. Todo lo de aquí está en la versión de la App Store; lo que sólo
-       llega con la próxima actualización va entre las marcas «next» (ver README) y `tools/build.py`
-       lo omite hasta que se publique. -->
-  <section class="features" aria-labelledby="features-title">
-    <div class="section-head">
-      <h2 id="features-title">
+  <!-- El muro de nombres: las 22 apps de clientes.rs, en su grupo. El punto lleno es «se
+       configura sola»; el anillo, «a mano». -->
+  <section class="wall" aria-labelledby="wall-title">
+    <div class="wrap">
+      <h2 id="wall-title" class="h2">
         
         
-        Ce que vous y trouverez.
+        Avec l’IA que vous utilisez déjà.
       </h2>
-      <p>
-        
-        
-        Les chiffres de votre montre et ce que vous notez, toujours face à votre propre histoire.
-      </p>
-    </div>
-    <div class="feature-grid">
-      <div class="feature">
-        <h3>Readiness : où vous en êtes aujourd’hui</h3>
-        <p>Elle part de votre récupération du matin et bouge avec ce que votre montre mesure dans la journée. Touchez-la pour voir le chemin de la journée, pas seulement son point d’arrivée. Si vous avez dormi sans la montre, elle l’indique : « De jour seulement ».</p>
+      <div class="wall-grid">
+        <div>
+          <h3 class="wall-label">Apps de discussion</h3>
+          <p class="names"><span class="n">Claude Desktop</span> <span class="n">LM Studio</span> <span class="n">AnythingLLM</span> <span class="n m">Jan</span> <span class="n m">Msty Studio</span> <span class="n m">Cherry Studio</span> <span class="n m">Chatbox</span></p>
+        </div>
+        <div>
+          <h3 class="wall-label">Agents</h3>
+          <p class="names"><span class="n">Codex</span> <span class="n m">Claude Code</span> <span class="n">Gemini CLI</span> <span class="n">Antigravity</span> <span class="n">OpenCode</span> <span class="n">Goose</span> <span class="n">Hermes Agent</span> <span class="n m">OpenClaw</span> <span class="n">Muse Code</span> <span class="n">Copilot CLI</span> <span class="n">Cline</span></p>
+        </div>
+        <div>
+          <h3 class="wall-label">Éditeurs</h3>
+          <p class="names"><span class="n">Cursor</span> <span class="n">VS Code</span> <span class="n">Devin Desktop</span> <span class="n m">Zed</span></p>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Récupération face à votre propre référence</h3>
-        <p>Chaque matin, votre variabilité, votre pouls au repos, votre respiration et votre sommeil sont comparés à vos propres nuits, et l’écran indique ce que chaque signal a déplacé. Si un chiffre de la nuit tombe « bien en dehors de votre plage habituelle », elle le signale, sans dire ce que cela signifie.</p>
+      <div class="wall-foot">
+        <p class="legend">
+          <span class="lg lg-sola">Configurée pour vous avec « Connecter »</span>
+          <span class="lg lg-mano">À la main : Narelia vous donne quoi coller</span>
+        </p>
+        <a class="link-arrow" href="../fr/connecter-votre-ia/">Le guide pas à pas</a>
       </div>
-      <div class="feature">
-        <h3>Votre nuit, le stress et vos constantes</h3>
-        <p>La nuit par phases, le stress au fil de la journée et vos constantes (variabilité, pouls, respiration, oxygène), chacune sur sa plage personnelle.</p>
-      </div>
-      <div class="feature">
-        <h3>Forme physique</h3>
-        <p>L’effort de la semaine face à vos semaines habituelles, avec vos entraînements et vos séances de force.</p>
-      </div>
-      <div class="feature">
-        <h3>Des repas à partir d’une photo</h3>
-        <p>Prenez la photo et Narelia propose ce qu’il y a dans l’assiette ; vous confirmez ou corrigez. Elle est lue sur l’iPhone même, avec Vision et le modèle d’Apple Intelligence, sur les iPhone compatibles. Ou par texte, ou à la main. Sous iOS 27, le modèle de l’appareil regarde la photo elle-même.</p>
-      </div>
-      <div class="feature">
-        <h3>Vos récipients, en 3D</h3>
-        <p>L’eau et la caféine se notent avec votre bouteille, votre tasse ou votre canette, dessinées en 3D : faites glisser le niveau sur le récipient lui-même jusqu’où il arrive. Avec des quantités rapides, et la créatine et les protéines aussi.</p>
-      </div>
-      
-      <div class="feature">
-        <h3>Apple Intelligence vous donne vos chiffres</h3>
-        <p>Demandez-lui votre variabilité, votre stress, votre récupération, votre Readiness, la nuit, l’eau ou la caféine : elle répond comme son écran, sans réseau. Vous pouvez aussi noter une prise à la voix, et Raccourcis propose « Obtenir les données de Narelia ».</p>
-      </div>
-      <div class="feature">
-        <h3>Vos chiffres, sur votre iPhone</h3>
-        <p>Narelia laisse vos chiffres des 28 derniers jours dans l’index de votre iPhone pour qu’Apple Intelligence puisse les retrouver. Il reste sur l’appareil et se désactive dans Réglages, Apple Intelligence et Siri.</p>
-      </div>
-      
-    </div>
-  </section>
-
-  <!-- Lo que la hace distinta, en cuatro frases con su barra. -->
-  <section class="principles" aria-labelledby="principles-title">
-    <h2 id="principles-title" class="visually-hidden">
-      Principes
-    </h2>
-    <div class="principle" style="--tint: var(--violet); --from: .30; --to: .58">
-      <div class="mini-range" aria-hidden="true"><i></i></div>
-      <h3>Des données, pas des verdicts</h3>
-      <p>Elle écrit « 47 minutes de moins que votre médiane », pas « votre récupération est mauvaise ». L’app fait le calcul ; l’interprétation vous appartient.</p>
-    </div>
-    <div class="principle" style="--tint: var(--teal); --from: .42; --to: .70">
-      <div class="mini-range" aria-hidden="true"><i></i></div>
-      <h3>Honnête pendant qu’elle apprend</h3>
-      <p>Une référence a besoin d’historique. Tant que la vôtre se forme, l’écran compte les nuits acquises et celles qui manquent, au lieu d’afficher un chiffre qui ne veut encore rien dire.</p>
-    </div>
-    <div class="principle" style="--tint: var(--orange); --from: .22; --to: .50">
-      <div class="mini-range" aria-hidden="true"><i></i></div>
-      <h3>Vos jours, face à face</h3>
-      <p>Notez eau, caféine ou créatine, et elle met côte à côte vos jours avec et sans. Quand elle trouve une différence, elle vous montre les deux groupes de jours et la part qui peut relever du hasard.</p>
-    </div>
-    <div class="principle" style="--tint: var(--azure); --from: .36; --to: .64">
-      <div class="mini-range" aria-hidden="true"><i></i></div>
-      <h3>Elle connaît ses limites</h3>
-      <p>Un écran silencieux ne prouve pas qu’il n’y a rien. Quand les données ne suffisent pas à conclure, Narelia le dit, chiffre à l’appui, au lieu de combler le vide.</p>
     </div>
   </section>
 
   <!-- Los widgets, sobre un fondo como el de una pantalla de inicio. -->
   <section class="widgets" aria-labelledby="widgets-title">
-    <div class="section-head">
-      <h2 id="widgets-title">
+    <div class="wrap">
+      <h2 id="widgets-title" class="h2">
         
         
         Au-delà de l’app.
       </h2>
-      <p>
+      <p class="body-lg">
         
         
-        Readiness, fréquence cardiaque heure par heure, stress, sommeil, constantes, eau et activité, sur l’écran d’accueil, l’écran verrouillé et l’Apple Watch. Quatre styles au choix : Narelia, Nuit, Éditorial et Classique. Et l’Apple Watch a sa propre app, avec vos constantes, votre nuit et ce que vous avez pris, plus des complications avec votre récupération sur le cadran.
+        Readiness, pouls heure par heure, stress, sommeil, constantes, eau et activité, sur l’écran d’accueil, l’écran verrouillé et l’Apple Watch. En quatre styles : Narelia, Nuit, Éditorial et Classique.
       </p>
     </div>
-
     <div class="homescreen">
       <img class="w w-m" src="../assets/widgets/pulso-mediano-noche.webp" width="1014" height="474" alt="Widget de fréquence cardiaque : la mesure actuelle, le pic, le minimum et la journée en bougies horaires." loading="lazy">
       <img class="w w-s" src="../assets/widgets/readiness-pequeno-clasico.webp" width="474" height="474" alt="Widget Readiness en style Classique, avec son arc et l’état des constantes, du sommeil et du stress." loading="lazy">
@@ -355,97 +402,83 @@
     </div>
   </section>
 
-  <!-- Narelia Pro, dicho tal como es: lo único de pago es el tope de comidas. -->
-  <section class="pro" aria-labelledby="pro-title">
-    <h2 id="pro-title">
-      
-      
-      Gratuite, sans rogner vos chiffres.
-    </h2>
-    <div class="privacy-facts">
-      <p>
+  <!-- Privacidad y Pro, dichos con lo que es literalmente cierto. -->
+  <section class="promise" aria-labelledby="promise-title">
+    <div class="wrap">
+      <h2 id="promise-title" class="display display-sm">
         
         
-        Récupération, stress, nuit, constantes, consommation et montre sont gratuits et ne sont pas rognés. Vos propres chiffres ne passent jamais derrière un paiement.
-      </p>
-      <p>
-        
-        
-        <strong>Narelia Pro</strong> lève la seule limite : le plan gratuit note jusqu’à trois repas par jour ; avec Pro, il n’y a pas de plafond.
-      </p>
-      <p>
-        
-        
-        Pro coûte 4,99 US$ par mois, avec deux semaines d’essai gratuit. L’App Store affiche le prix de votre pays, et vous le gérez ou l’annulez dans les réglages de votre compte Apple.
-      </p>
-    </div>
-  </section>
-
-  <!-- La privacidad, dicha con lo que es literalmente cierto. -->
-  <section class="privacy" aria-labelledby="privacy-title">
-    <h2 id="privacy-title">
-      
-      
-      Sans compte. Sans serveur.
-    </h2>
-    <div class="privacy-facts">
-      <p>
-        
-        
-        Toute l’analyse se fait sur votre iPhone. Les photos de vos repas sont lues par Vision et le modèle d’Apple sur l’appareil même ; elles n’en sortent pas.
-      </p>
-      <p>
-        
-        
-        Sans compte et sans serveur propre : vos données restent sur votre iPhone et dans l’app Santé. La copie iCloud est facultative, va sur votre propre compte et reste désactivée tant que vous ne l’activez pas dans Réglages.
-      </p>
-      <p>
-        
-        
-        Pas d’analytique ni d’identifiants publicitaires. La personne qui fait l’app n’a aucune copie de vos données. <a href="https://alejadxr.github.io/narelia-privacy/">Lisez la politique de confidentialité.</a>
-      </p>
+        Sans compte. <em>Sans serveur.</em>
+      </h2>
+      <div class="cols">
+        <p>
+          
+          
+          Toute l’analyse se fait sur votre iPhone. Vos données y restent, avec l’app Santé ; la copie iCloud est facultative, va sur votre compte et reste désactivée tant que vous ne l’activez pas.
+        </p>
+        <p>
+          
+          
+          Avec votre IA, vous choisissez quels chiffres elle voit et quand elle cesse de les voir. Celle qui les reçoit, c’est cette IA, selon ses propres conditions : lisez-les avant de la connecter.
+        </p>
+        <p>
+          
+          
+          Pas d’analytique ni d’identifiants publicitaires. Vos propres chiffres ne passent jamais derrière un paiement ; <strong>Narelia Pro</strong> ajoute des outils comme les expériences guidées, le rapport PDF et la connexion à votre IA. <a href="https://alejadxr.github.io/narelia-privacy/">Lisez la politique de confidentialité.</a>
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="closing" aria-labelledby="closing-title">
-    <h2 id="closing-title">
-      
-      
-      Découvrez-la avec vos propres données.
-    </h2>
-    <a class="cta" href="https://apps.apple.com/app/narelia/id6809521455">
-      
-      
-      Disponible sur l’App Store
-    </a>
-    <p class="fine">
-      
-      
-      Gratuite, sans compte. Les références commencent à se former dès vos premières nuits avec la montre.
-    </p>
+    <div class="wrap">
+      <h2 id="closing-title" class="h2">
+        
+        
+        Commencez par l’iPhone.
+      </h2>
+      <p class="body-lg">
+        
+        
+        Vos références commencent à se former dès vos premières nuits avec la montre. Le Mac et votre IA, quand vous voulez.
+      </p>
+      <div class="row row-center">
+        <a class="btn btn-ink" href="https://apps.apple.com/app/narelia/id6809521455">Voir sur l’App Store</a>
+        <a class="btn btn-line" href="../fr/bureau/">Narelia pour Mac</a>
+      </div>
+    </div>
   </section>
 
 </main>
 
 <footer class="foot">
-  <p class="disclaimer">
-    
-    
-    Narelia n’est pas un dispositif médical et son auteur n’est pas professionnel de santé. Rien de ce qu’elle affiche n’est un diagnostic ni un conseil clinique : les chiffres viennent d’une montre grand public et servent à vous comparer à vous-même dans le temps.
-  </p>
-  <p class="foot-links">
-    <a href="https://alejadxr.github.io/narelia-privacy/">Confidentialité</a>
-    <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources et responsabilité</a>
-    <span class="contact">alejandxr@icloud.com</span>
-  </p>
-  <p class="credit">
-    
-    
-    Apple, le logo Apple, iPhone et Apple Watch sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays. App Store est une marque de service d’Apple Inc.
-  </p>
-  <p class="colophon">© 2026 Narelia</p>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <img src="../assets/mark.svg" alt="" width="22" height="22">
+      <span>Narelia</span>
+    </div>
+    <nav class="foot-links" aria-label="Navigation">
+      <a href="../fr/">L’app</a>
+      <a href="../fr/bureau/">Narelia pour Mac</a>
+      <a href="../fr/connecter-votre-ia/">Connecter votre IA</a>
+      <a href="https://alejadxr.github.io/narelia-privacy/">Confidentialité</a>
+      <a href="https://alejadxr.github.io/narelia-privacy/evidencia.html">Sources et responsabilité</a>
+    </nav>
+    <p class="disclaimer">
+      
+      
+      Narelia n’est pas un dispositif médical et son auteur n’est pas professionnel de santé. Rien de ce qu’elle affiche, ni de ce que répond une IA qui y est connectée, n’est un diagnostic ni un conseil clinique : les chiffres viennent d’une montre grand public et servent à vous comparer à vous-même dans le temps.
+    </p>
+    <p class="credit">
+      
+      
+      Apple, le logo Apple, iPhone, Apple Watch, Mac, macOS et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays. App Store est une marque de service d’Apple Inc. Les noms des apps d’IA appartiennent à leurs propriétaires ; Narelia n’est affiliée à aucune.
+    </p>
+    <p class="colophon">© 2026 Narelia</p>
+  </div>
 </footer>
 
 <script src="../main.js" defer></script>
 </body>
 </html>
+

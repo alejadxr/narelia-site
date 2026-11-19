@@ -1,0 +1,152 @@
+{{HEAD}}
+<body class="p-escritorio">
+{{TOP}}
+
+<main id="main">
+
+  <section class="hero hero-desk">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker"><span lang="es">Narelia para Mac · descarga</span><span lang="en">Narelia for Mac · download</span><span lang="fr">Narelia pour Mac · téléchargement</span></p>
+      <h1 class="display">
+        <span lang="es">Tus cifras, <em>en tu Mac.</em></span>
+        <span lang="en">Your figures, <em>on your Mac.</em></span>
+        <span lang="fr">Vos chiffres, <em>sur votre Mac.</em></span>
+      </h1>
+      <p class="lede">
+        <span lang="es">Narelia para Mac lee el fichero cifrado que tu iPhone deja en tu carpeta de iCloud Drive, te enseña las cifras de hoy y conecta tu IA con un botón. No tiene cuenta ni servidor, y no envía nada a ninguna parte.</span>
+        <span lang="en">Narelia for Mac reads the encrypted file your iPhone leaves in your iCloud Drive folder, shows you today’s figures and connects your AI with one button. It has no account and no server, and sends nothing anywhere.</span>
+        <span lang="fr">Narelia pour Mac lit le fichier chiffré que votre iPhone dépose dans votre dossier iCloud Drive, vous montre les chiffres du jour et connecte votre IA d’un bouton. Sans compte ni serveur, elle n’envoie rien nulle part.</span>
+      </p>
+
+      <!-- La descarga: siempre la última Release de GitHub del repo narelia-site. -->
+      <div class="get" id="descarga">
+        <div class="get-main">
+          <a class="btn btn-teal btn-lg" href="{{RELEASE}}">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg>
+            <span lang="es">Descargar para macOS</span><span lang="en">Download for macOS</span><span lang="fr">Télécharger pour macOS</span>
+          </a>
+          <p class="get-meta">
+            <span lang="es">La última versión, en GitHub · .dmg universal, para Apple silicon e Intel · gratis</span>
+            <span lang="en">The latest version, on GitHub · universal .dmg, for Apple silicon and Intel · free</span>
+            <span lang="fr">La dernière version, sur GitHub · .dmg universel, pour Apple silicon et Intel · gratuit</span>
+          </p>
+        </div>
+        <a class="slint" href="https://slint.dev" rel="noopener">
+          <picture>
+            <source srcset="{{BASE}}assets/slint/MadeWithSlint-logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="{{BASE}}assets/slint/MadeWithSlint-logo-light.svg" width="212" height="97" alt="{{ALT:slint}}">
+          </picture>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="desk desk-solo" aria-label="Narelia para Mac">
+    <div class="wrap">
+      <figure class="slot slot-window slot-wide" data-slot="img/3d-escritorio.webp">
+        <img class="slot-3d" src="{{BASE}}img/3d-escritorio.webp" alt="{{ALT:3d-escritorio}}" onload="this.parentNode.classList.add('has-3d')">
+        <div class="slot-fallback window">
+          <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <picture>
+            <source srcset="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-oscuro.jpg" media="(prefers-color-scheme: dark)">
+            <img src="{{BASE}}assets/escritorio/inicio-{{SHOTLANG}}-claro.jpg" width="1920" height="1080" alt="{{ALT:3d-escritorio}}">
+          </picture>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Sin firmar: dicho claro y con el camino para abrirla. En macOS 15 y posteriores el clic
+       derecho → Abrir ya no basta por sí solo; el segundo paso es el de Ajustes del Sistema. -->
+  <section class="unsigned" id="primera-vez" aria-labelledby="unsigned-title">
+    <div class="wrap split split-top">
+      <div>
+        <p class="kicker kicker-warm"><span lang="es">Antes de abrirla</span><span lang="en">Before you open it</span><span lang="fr">Avant de l’ouvrir</span></p>
+        <h2 id="unsigned-title" class="h2">
+          <span lang="es">Aún no está firmada ni notarizada.</span>
+          <span lang="en">It is not signed or notarized yet.</span>
+          <span lang="fr">Elle n’est pas encore signée ni notarisée.</span>
+        </h2>
+        <p class="body-lg">
+          <span lang="es">Narelia para Mac todavía no lleva la firma de Apple Developer ID. Por eso, la primera vez, macOS avisa de que no puede comprobar quién la hizo. La firma está prevista para una versión posterior.</span>
+          <span lang="en">Narelia for Mac does not carry an Apple Developer ID signature yet. So the first time, macOS warns that it cannot check who made it. Signing is planned for a later version.</span>
+          <span lang="fr">Narelia pour Mac ne porte pas encore de signature Apple Developer ID. La première fois, macOS prévient donc qu’il ne peut pas vérifier qui l’a faite. La signature est prévue pour une version ultérieure.</span>
+        </p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3><span lang="es">Arrástrala a Aplicaciones</span><span lang="en">Drag it to Applications</span><span lang="fr">Glissez-la dans Applications</span></h3>
+          <p><span lang="es">Abre el .dmg y lleva Narelia a la carpeta Aplicaciones.</span><span lang="en">Open the .dmg and move Narelia to the Applications folder.</span><span lang="fr">Ouvrez le .dmg et déplacez Narelia dans le dossier Applications.</span></p>
+        </li>
+        <li>
+          <h3><span lang="es">Clic derecho y «Abrir»</span><span lang="en">Right-click and “Open”</span><span lang="fr">Clic droit et « Ouvrir »</span></h3>
+          <p><span lang="es">En Aplicaciones, haz clic derecho (o Control-clic) sobre Narelia, elige «Abrir» y confirma con «Abrir». Sólo hace falta la primera vez.</span><span lang="en">In Applications, right-click (or Control-click) Narelia, choose “Open” and confirm with “Open”. You only need to do this the first time.</span><span lang="fr">Dans Applications, faites un clic droit (ou Contrôle-clic) sur Narelia, choisissez « Ouvrir » et confirmez avec « Ouvrir ». Il ne faut le faire que la première fois.</span></p>
+        </li>
+        <li>
+          <h3><span lang="es">Si macOS no ofrece «Abrir»</span><span lang="en">If macOS doesn’t offer “Open”</span><span lang="fr">Si macOS ne propose pas « Ouvrir »</span></h3>
+          <p><span lang="es">En macOS 15 y posteriores puede salir sólo «Hecho». Ve a Ajustes del Sistema → Privacidad y seguridad, baja hasta el aviso de Narelia y pulsa «Abrir igualmente».</span><span lang="en">On macOS 15 and later you may only see “Done”. Go to System Settings → Privacy &amp; Security, scroll down to the Narelia notice and click “Open Anyway”.</span><span lang="fr">Sous macOS 15 et ultérieur, seul « OK » peut apparaître. Allez dans Réglages Système → Confidentialité et sécurité, descendez jusqu’à l’avis concernant Narelia et cliquez sur « Ouvrir quand même ».</span></p>
+        </li>
+        <li>
+          <h3><span lang="es">El Llavero puede preguntar una vez</span><span lang="en">The Keychain may ask once</span><span lang="fr">Le trousseau peut demander une fois</span></h3>
+          <p><span lang="es">Tu contraseña se guarda en el Llavero de macOS. Sin firma, cuando tu IA arranca narelia-mcp por primera vez tras instalar una versión nueva, macOS puede pedir permiso: pulsa «Permitir siempre».</span><span lang="en">Your password is kept in the macOS Keychain. Without a signature, the first time your AI starts narelia-mcp after you install a new version, macOS may ask for permission: click “Always Allow”.</span><span lang="fr">Votre mot de passe est gardé dans le trousseau de macOS. Sans signature, la première fois que votre IA lance narelia-mcp après l’installation d’une nouvelle version, macOS peut demander l’autorisation : cliquez sur « Toujours autoriser ».</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="inside" aria-labelledby="inside-title">
+    <div class="wrap">
+      <h2 id="inside-title" class="h2">
+        <span lang="es">Qué trae.</span>
+        <span lang="en">What’s inside.</span>
+        <span lang="fr">Ce qu’elle contient.</span>
+      </h2>
+      <dl class="facts facts-3">
+        <div>
+          <dt><span lang="es">La ventana</span><span lang="en">The window</span><span lang="fr">La fenêtre</span></dt>
+          <dd><span lang="es">Hoy, Pendientes, Conectar con tu IA y Ajustes. Lee tu carpeta y la vigila: cuando el iPhone escribe, la ventana se pone al día.</span><span lang="en">Today, Pending, Connect your AI and Settings. It reads your folder and watches it: when the iPhone writes, the window catches up.</span><span lang="fr">Aujourd’hui, En attente, Connecter votre IA et Réglages. Elle lit votre dossier et le surveille : quand l’iPhone écrit, la fenêtre se met à jour.</span></dd>
+        </div>
+        <div>
+          <dt>narelia-mcp</dt>
+          <dd><span lang="es">El servidor MCP, por stdio, que arrancan tus apps de IA. Lee tus cifras de hoy, por días, compara periodos y propone registros que esperan tu confirmación.</span><span lang="en">The MCP server, over stdio, that your AI apps start. It reads your figures for today and by day, compares periods and proposes logs that wait for your confirmation.</span><span lang="fr">Le serveur MCP, en stdio, que lancent vos apps d’IA. Il lit vos chiffres du jour et par jour, compare des périodes et propose des enregistrements qui attendent votre confirmation.</span></dd>
+        </div>
+        <div>
+          <dt><span lang="es">Nada fuera de tu Mac</span><span lang="en">Nothing leaves your Mac</span><span lang="fr">Rien ne quitte votre Mac</span></dt>
+          <dd><span lang="es">Sólo lee y escribe en tu carpeta. La contraseña va al Llavero, nunca a un fichero ni a la configuración de tus apps. Antes de tocar una configuración, guarda una copia a su lado.</span><span lang="en">It only reads and writes in your folder. The password goes to the Keychain, never to a file or to your apps’ configuration. Before touching a configuration, it saves a copy next to it.</span><span lang="fr">Elle ne lit et n’écrit que dans votre dossier. Le mot de passe va dans le trousseau, jamais dans un fichier ni dans la configuration de vos apps. Avant de toucher une configuration, elle en garde une copie à côté.</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="next-step">
+    <div class="wrap next-grid">
+      <div>
+        <h2 class="h2">
+          <span lang="es">Después, conecta tu IA.</span>
+          <span lang="en">Then, connect your AI.</span>
+          <span lang="fr">Ensuite, connectez votre IA.</span>
+        </h2>
+        <p class="body-lg">
+          <span lang="es">Hace falta Narelia 1.1.21 o posterior en el iPhone, con Narelia Pro. Mientras llega a la App Store, puedes probarla en la beta.</span>
+          <span lang="en">You need Narelia 1.1.21 or later on the iPhone, with Narelia Pro. Until it reaches the App Store, you can try it in the beta.</span>
+          <span lang="fr">Il faut Narelia 1.1.21 ou ultérieure sur l’iPhone, avec Narelia Pro. En attendant son arrivée sur l’App Store, vous pouvez l’essayer en bêta.</span>
+        </p>
+      </div>
+      <div class="row">
+        <a class="btn btn-ink" href="{{URL:guia}}"><span lang="es">Ver la guía</span><span lang="en">Read the guide</span><span lang="fr">Lire le guide</span></a>
+        <a class="btn btn-line" href="{{TESTFLIGHT}}"><span lang="es">Beta en TestFlight</span><span lang="en">Beta on TestFlight</span><span lang="fr">Bêta sur TestFlight</span></a>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="fine slint-note">
+        <span lang="es">Narelia para Mac está hecha con <a href="https://slint.dev" rel="noopener">Slint</a>, bajo su licencia royalty-free 2.0. Código propio: MIT.</span>
+        <span lang="en">Narelia for Mac is made with <a href="https://slint.dev" rel="noopener">Slint</a>, under its royalty-free 2.0 license. Our own code: MIT.</span>
+        <span lang="fr">Narelia pour Mac est faite avec <a href="https://slint.dev" rel="noopener">Slint</a>, sous sa licence royalty-free 2.0. Notre propre code : MIT.</span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+{{FOOT}}

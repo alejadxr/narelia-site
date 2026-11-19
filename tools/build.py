@@ -1,24 +1,36 @@
 #!/usr/bin/env python3
-"""Genera las tres páginas de Narelia —español en la raíz, inglés en /en/, francés en /fr/—
-a partir de una sola plantilla, `src/page.html`.
+"""Genera la web de Narelia —tres páginas en tres idiomas— a partir de las plantillas de `src/`.
 
-Por qué tres páginas y no una con el idioma cambiado por JavaScript: un buscador lee lo que
-hay en el HTML, no lo que un script enseña después. Con los tres idiomas en una sola URL,
-Google veía una página mezclada, con un solo título y una sola descripción. Así cada idioma
-tiene su URL, su título, su descripción, su `hreflang` y su `lang`, y el texto sigue viviendo
-en un único sitio: la plantilla.
+    python3 tools/build.py
 
-    python3 tools/build.py                  # lo que lleva la versión de la App Store
-    python3 tools/build.py --actualizacion  # además, lo que sólo trae la próxima actualización
+Páginas (la plantilla y su carpeta en cada idioma):
 
-Lo que la app todavía no lleva en la tienda va en la plantilla entre `<!--next-->` y
-`<!--/next-->`: sin `--actualizacion` se quita, con ella se deja. Así la página no promete
-nada que quien la descarga hoy no encuentre.
+- `src/inicio.html`      → `/`, `/en/`, `/fr/`
+- `src/guia.html`        → `/conecta-tu-ia/`, `/en/connect-your-ai/`, `/fr/connecter-votre-ia/`
+- `src/escritorio.html`  → `/escritorio/`, `/en/desktop/`, `/fr/bureau/`
+
+Por qué una URL por idioma y no un idioma cambiado por JavaScript: un buscador lee lo que hay
+en el HTML. Cada página lleva su `lang`, su título, su descripción, su `hreflang` y su
+`canonical`, y el texto sigue viviendo en un único sitio: la plantilla, con los tres idiomas de
+cada frase uno junto a otro (`<span lang="es">…</span><span lang="en">…</span>…`).
+
+Marcadores de las plantillas:
+
+- `{{HEAD}}`, `{{TOP}}`, `{{FOOT}}`: la cabecera del documento, la barra de arriba y el pie.
+- `{{BASE}}`: ruta relativa a la raíz del sitio (`""`, `"../"`, `"../../"`).
+- `{{URL:inicio}}`, `{{URL:guia}}`, `{{URL:escritorio}}`: enlace relativo a esa página en el
+  mismo idioma.
+- `{{APPSTORE}}`, `{{RELEASE}}`, `{{TESTFLIGHT}}`, `{{PRIVACY}}`, `{{LANG}}`, `{{BADGEW}}`.
+- `{{ALT:clave}}`, `{{ALTW:clave}}`: textos alternativos de capturas y widgets.
+- `{{CLIENTES}}`: la lista de las 22 apps de IA, de `src/clientes.json` (ver más abajo).
+
+`src/clientes.json` sale del propio código de Narelia para escritorio (`clientes.rs`), no se
+escribe a mano: `tools/fragmentos` lo genera con la función `a_mano` de verdad (ver README).
 """
 
+import html
 import json
 import re
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -26,32 +38,62 @@ SITE = "https://alejadxr.github.io/narelia-site/"
 APP_ID = "6809521455"
 APPSTORE = f"https://apps.apple.com/app/narelia/id{APP_ID}"
 PRIVACY = "https://alejadxr.github.io/narelia-privacy/"
+RELEASE = "https://github.com/alejadxr/narelia-site/releases/latest"
+TESTFLIGHT = "https://testflight.apple.com/join/KAwauxRQ"
 LAUNCH_DATE = "2026-10-04"
-PRO_PRICE = "4.99"
 
 LANGS = ["es", "en", "fr"]
-PATH = {"es": "", "en": "en/", "fr": "fr/"}
+ROOTDIR = {"es": "", "en": "en/", "fr": "fr/"}
 LOCALE = {"es": "es_ES", "en": "en_US", "fr": "fr_FR"}
 NAME = {"es": "Español", "en": "English", "fr": "Français"}
+LANG_GROUP = {"es": "Idioma", "en": "Language", "fr": "Langue"}
 
-# El título lleva la marca y lo que es la app, con las palabras que alguien busca de verdad
-# («app de salud», «Apple Watch»). Alrededor de sesenta caracteres, para que no se corte.
+# Carpeta de cada página en cada idioma.
+SLUG = {
+    "inicio": {"es": "", "en": "", "fr": ""},
+    "guia": {"es": "conecta-tu-ia/", "en": "connect-your-ai/", "fr": "connecter-votre-ia/"},
+    "escritorio": {"es": "escritorio/", "en": "desktop/", "fr": "bureau/"},
+}
+
 TITLE = {
-    "es": "Narelia: app de salud para Apple Watch que te compara contigo",
-    "en": "Narelia: the Apple Watch health app measured against you",
-    "fr": "Narelia : l’app santé Apple Watch qui vous compare à vous",
+    "inicio": {
+        "es": "Narelia: app de salud para Apple Watch que te compara contigo",
+        "en": "Narelia: the Apple Watch health app measured against you",
+        "fr": "Narelia : l’app santé Apple Watch qui vous compare à vous",
+    },
+    "guia": {
+        "es": "Conecta Narelia con tu IA: Claude, Codex, Cursor, OpenClaw y 18 más",
+        "en": "Connect Narelia to your AI: Claude, Codex, Cursor, OpenClaw and 18 more",
+        "fr": "Connecter Narelia à votre IA : Claude, Codex, Cursor, OpenClaw et 18 autres",
+    },
+    "escritorio": {
+        "es": "Narelia para Mac: tus cifras de salud y tu IA, sin servidor",
+        "en": "Narelia for Mac: your health figures and your AI, no server",
+        "fr": "Narelia pour Mac : vos chiffres de santé et votre IA, sans serveur",
+    },
 }
 DESCRIPTION = {
-    "es": "Recuperación, VFC, sueño y estrés de tu Apple Watch, medidos frente a tu propia historia y no frente a una tabla de población. Todo el análisis en tu iPhone, sin cuenta. Ya disponible en la App Store.",
-    "en": "Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history instead of a population chart. All analysis on your iPhone, no account. Now available on the App Store.",
-    "fr": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique et non à une table de population. Toute l’analyse sur votre iPhone, sans compte. Disponible sur l’App Store.",
+    "inicio": {
+        "es": "Recuperación, VFC, sueño y estrés de tu Apple Watch, medidos frente a tu propia historia. Todo el análisis en tu iPhone, sin cuenta. Y ahora, Narelia para Mac lleva tus cifras a la IA que ya usas, sin servidor de por medio.",
+        "en": "Recovery, HRV, sleep and stress from your Apple Watch, measured against your own history. All analysis on your iPhone, no account. And now Narelia for Mac brings your figures to the AI you already use, with no server in between.",
+        "fr": "Récupération, VFC, sommeil et stress de votre Apple Watch, mesurés face à votre propre historique. Toute l’analyse sur votre iPhone, sans compte. Et désormais, Narelia pour Mac apporte vos chiffres à l’IA que vous utilisez déjà, sans serveur entre les deux.",
+    },
+    "guia": {
+        "es": "Cómo conectar Narelia con Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI y 15 apps más con narelia-mcp, el servidor MCP de Narelia para escritorio. Paso a paso y con la configuración exacta.",
+        "en": "How to connect Narelia to Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI and 15 more apps with narelia-mcp, the MCP server in Narelia for desktop. Step by step, with the exact configuration.",
+        "fr": "Comment connecter Narelia à Claude Desktop, Claude Code, Codex, Cursor, OpenClaw, Hermes Agent, Gemini CLI et 15 autres apps avec narelia-mcp, le serveur MCP de Narelia pour ordinateur. Pas à pas, avec la configuration exacte.",
+    },
+    "escritorio": {
+        "es": "Descarga Narelia para macOS: tus cifras de Narelia en el Mac y la conexión con tu IA por MCP. Lee el fichero cifrado que tu iPhone deja en tu carpeta de iCloud Drive. Sin cuenta y sin servidor.",
+        "en": "Download Narelia for macOS: your Narelia figures on the Mac and the link to your AI over MCP. It reads the encrypted file your iPhone leaves in your iCloud Drive folder. No account, no server.",
+        "fr": "Téléchargez Narelia pour macOS : vos chiffres Narelia sur le Mac et la connexion à votre IA par MCP. Elle lit le fichier chiffré que votre iPhone dépose dans votre dossier iCloud Drive. Sans compte, sans serveur.",
+    },
 }
 OG_TITLE = {
-    "es": "Narelia · Tus datos, no los de nadie",
-    "en": "Narelia · Your data, measured against you",
-    "fr": "Narelia · Vos données, comparées à vous",
+    "inicio": {"es": "Narelia · Tus datos, no los de nadie", "en": "Narelia · Your data, measured against you", "fr": "Narelia · Vos données, comparées à vous"},
+    "guia": {"es": "Narelia · Conecta tu IA", "en": "Narelia · Connect your AI", "fr": "Narelia · Connectez votre IA"},
+    "escritorio": {"es": "Narelia para Mac", "en": "Narelia for Mac", "fr": "Narelia pour Mac"},
 }
-LANG_GROUP = {"es": "Idioma", "en": "Language", "fr": "Langue"}
 
 # Textos alternativos: lo que se ve en cada captura, para quien no la ve y para el buscador.
 ALT = {
@@ -85,12 +127,26 @@ ALT = {
         "en": "Narelia settings, Data and privacy section: sync with iCloud, switched off, and the privacy policy.",
         "fr": "Réglages de Narelia, section Données et confidentialité : synchroniser avec iCloud, désactivé, et la politique de confidentialité.",
     },
-}
-# El texto de la insignia oficial de Apple, tal como ella lo dice en cada idioma.
-ALT["badge"] = {
-    "es": "Descargar en el App Store",
-    "en": "Download on the App Store",
-    "fr": "Télécharger dans l’App Store",
+    "badge": {
+        "es": "Descargar en el App Store",
+        "en": "Download on the App Store",
+        "fr": "Télécharger dans l’App Store",
+    },
+    "3d-iphone": {
+        "es": "Narelia en un iPhone, con la pantalla Hoy.",
+        "en": "Narelia on an iPhone, showing the Today screen.",
+        "fr": "Narelia sur un iPhone, avec l’écran Aujourd’hui.",
+    },
+    "3d-escritorio": {
+        "es": "La ventana de Narelia para Mac, en la pantalla Hoy: Readiness, recuperación y las cifras de la semana, con datos de ejemplo.",
+        "en": "The Narelia for Mac window on its Today screen: Readiness, recovery and the week’s figures, with sample data.",
+        "fr": "La fenêtre de Narelia pour Mac sur l’écran Aujourd’hui : Readiness, récupération et les chiffres de la semaine, avec des données d’exemple.",
+    },
+    "slint": {
+        "es": "Hecho con Slint",
+        "en": "Made with Slint",
+        "fr": "Fait avec Slint",
+    },
 }
 ALTW = {
     "pulso-mediano-noche": {"es": "Widget de frecuencia cardiaca: la lectura actual, el pico, el mínimo y el día en velas por hora.", "en": "Heart rate widget: the latest reading, peak, low and the day as hourly candles.", "fr": "Widget de fréquence cardiaque : la mesure actuelle, le pic, le minimum et la journée en bougies horaires."},
@@ -103,69 +159,118 @@ ALTW = {
     "pulso-pequeno-clasico": {"es": "Widget pequeño de frecuencia cardiaca en estilo Clásico.", "en": "Small heart rate widget in the Classic style.", "fr": "Petit widget de fréquence cardiaque en style Classique."},
     "sueno-pequeno-noche": {"es": "Widget pequeño de sueño en estilo Noche.", "en": "Small sleep widget in the Night style.", "fr": "Petit widget de sommeil en style Nuit."},
 }
-# Las etiquetas para lectores de pantalla que no van en ningún texto visible.
+# Etiquetas para lectores de pantalla que no van en ningún texto visible.
 UI = {
     "Anterior": {"es": "Anterior", "en": "Previous", "fr": "Précédent"},
     "Siguiente": {"es": "Siguiente", "en": "Next", "fr": "Suivant"},
     "Capturas": {"es": "Capturas de Narelia", "en": "Narelia screenshots", "fr": "Captures de Narelia"},
-    "Idioma / Language": {"es": "Idioma y descarga", "en": "Language and download", "fr": "Langue et téléchargement"},
-    "Película": {"es": "Película de lanzamiento de Narelia", "en": "Narelia launch film", "fr": "Film de lancement de Narelia (en anglais)"},
+    "Navegación": {"es": "Navegación", "en": "Navigation", "fr": "Navigation"},
+    "Copiar": {"es": "Copiar", "en": "Copy", "fr": "Copier"},
 }
-# La película de lanzamiento (16:9, comprimida para la web en assets/film/): en español en la
-# raíz; la inglesa sirve a /en/ y a /fr/, que no tiene versión propia.
-FILM = {"es": "es", "en": "en", "fr": "en"}
-SHOTS = ["1-hoy", "2-recuperacion", "3-noche", "4-forma-fisica", "5-registro", "6-privacidad"]
+# Sin la de recuperación: su texto nombra el alcohol, que no va en la página pública.
+SHOTS = ["1-hoy", "3-noche", "4-forma-fisica", "5-registro", "6-privacidad"]
+
+# Lo que dice cada grupo de la lista de apps, y el «dónde pegarlo» en francés (clientes.rs sólo
+# lo trae en español e inglés; esto es su traducción, frase por frase).
+GRUPO = {
+    "Chat": {"es": "Apps de chat", "en": "Chat apps", "fr": "Apps de discussion"},
+    "Agente": {"es": "Agentes", "en": "Agents", "fr": "Agents"},
+    "Editor": {"es": "Editores de código", "en": "Code editors", "fr": "Éditeurs de code"},
+}
+DONDE_FR = {
+    "Claude Code": "Dans un terminal. Ensuite, ouvrez une nouvelle session de Claude Code.",
+    "OpenClaw": "Dans un terminal, sur l’ordinateur où tourne le Gateway d’OpenClaw.",
+    "Zed": "Dans Zed : « zed: open settings file », puis collez-le à l’intérieur des accolades extérieures.",
+    "Jan": "Dans Jan : Settings → MCP Servers → « + ». Copiez la commande, les arguments et la variable NARELIA_DIR.",
+    "Msty Studio": "Dans Msty Studio : Toolbox → Tools → Add New Tool → STDIO / JSON, puis collez-le.",
+    "Cherry Studio": "Dans Cherry Studio : Settings → MCP → MCP Servers → Add → Import from JSON, puis collez-le.",
+    "Chatbox": "Dans Chatbox : Settings → MCP → ajouter, « Local (stdio) ». Copiez la commande et la variable NARELIA_DIR, puis appuyez sur « Test ».",
+}
+SOLA = {"es": "Se configura sola", "en": "Set up for you", "fr": "Configurée pour vous"}
+A_MANO = {"es": "A mano", "en": "By hand", "fr": "À la main"}
+FICHERO = {"es": "Narelia escribe en", "en": "Narelia writes to", "fr": "Narelia écrit dans"}
 
 
-def head(lang: str, base: str) -> str:
-    url = SITE + PATH[lang]
+def page_dir(page: str, lang: str) -> str:
+    return ROOTDIR[lang] + SLUG[page][lang]
+
+
+def base_of(page: str, lang: str) -> str:
+    return "../" * page_dir(page, lang).count("/")
+
+
+def head(page: str, lang: str, base: str) -> str:
+    url = SITE + page_dir(page, lang)
     alternates = "\n".join(
-        f'<link rel="alternate" hreflang="{l}" href="{SITE + PATH[l]}">' for l in LANGS
-    ) + f'\n<link rel="alternate" hreflang="x-default" href="{SITE}">'
+        f'<link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}">' for l in LANGS
+    ) + f'\n<link rel="alternate" hreflang="x-default" href="{SITE + page_dir(page, "es")}">'
     og_alternates = "\n".join(
         f'<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in LANGS if l != lang
     )
-    data = {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Narelia",
-        "url": url,
-        "description": DESCRIPTION[lang],
-        "inLanguage": lang,
-        "operatingSystem": "iOS 26",
-        "applicationCategory": "HealthApplication",
-        "applicationSubCategory": "Apple Watch",
-        "image": SITE + "assets/og.jpg",
-        "screenshot": [SITE + f"assets/screens/{lang}/{s}.webp" for s in SHOTS],
-        "installUrl": APPSTORE,
-        "downloadUrl": APPSTORE,
-        "sameAs": [APPSTORE],
-        "datePublished": LAUNCH_DATE,
-        "softwareVersion": "1.0",
-        "isAccessibleForFree": True,
-        # Gratis, y la suscripción opcional que sólo quita el tope de comidas al día.
-        "offers": [
-            {"@type": "Offer", "name": "Narelia", "price": "0", "priceCurrency": "USD",
-             "url": APPSTORE, "availability": "https://schema.org/InStock"},
-            {"@type": "Offer", "name": "Narelia Pro", "price": PRO_PRICE, "priceCurrency": "USD",
-             "url": APPSTORE, "availability": "https://schema.org/InStock",
-             "priceSpecification": {"@type": "UnitPriceSpecification", "price": PRO_PRICE,
-                                    "priceCurrency": "USD", "billingDuration": "P1M"}},
-        ],
-    }
+    if page == "inicio":
+        data = {
+            "@context": "https://schema.org",
+            "@type": "MobileApplication",
+            "name": "Narelia",
+            "url": url,
+            "description": DESCRIPTION[page][lang],
+            "inLanguage": lang,
+            "operatingSystem": "iOS 26",
+            "applicationCategory": "HealthApplication",
+            "applicationSubCategory": "Apple Watch",
+            "image": SITE + "assets/og.jpg",
+            "screenshot": [SITE + f"assets/screens/{lang}/{s}.webp" for s in SHOTS],
+            "installUrl": APPSTORE,
+            "downloadUrl": APPSTORE,
+            "sameAs": [APPSTORE],
+            "datePublished": LAUNCH_DATE,
+            "isAccessibleForFree": True,
+            "offers": [{"@type": "Offer", "name": "Narelia", "price": "0", "priceCurrency": "USD",
+                        "url": APPSTORE, "availability": "https://schema.org/InStock"}],
+        }
+    elif page == "escritorio":
+        data = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Narelia para escritorio" if lang == "es" else ("Narelia for desktop" if lang == "en" else "Narelia pour ordinateur"),
+            "url": url,
+            "description": DESCRIPTION[page][lang],
+            "inLanguage": lang,
+            "operatingSystem": "macOS",
+            "applicationCategory": "HealthApplication",
+            "downloadUrl": RELEASE,
+            "isAccessibleForFree": True,
+            "license": "https://opensource.org/licenses/MIT",
+            "offers": [{"@type": "Offer", "price": "0", "priceCurrency": "USD"}],
+        }
+    else:
+        data = {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": TITLE[page][lang],
+            "url": url,
+            "description": DESCRIPTION[page][lang],
+            "inLanguage": lang,
+            "about": "Model Context Protocol (MCP)",
+        }
+    fonts = ("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700"
+             "&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500"
+             "&family=JetBrains+Mono:wght@400;500&display=swap")
+    preload = f'<link rel="preload" as="image" href="{base}assets/screens/{lang}/1-hoy.webp" fetchpriority="high">\n' if page == "inicio" else ""
+    itunes = f'<meta name="apple-itunes-app" content="app-id={APP_ID}">\n' if page == "inicio" else ""
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{TITLE[lang]}</title>
-<meta name="description" content="{DESCRIPTION[lang]}">
+<title>{TITLE[page][lang]}</title>
+<meta name="description" content="{DESCRIPTION[page][lang]}">
 <link rel="canonical" href="{url}">
 {alternates}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Narelia">
-<meta property="og:title" content="{OG_TITLE[lang]}">
-<meta property="og:description" content="{DESCRIPTION[lang]}">
+<meta property="og:title" content="{OG_TITLE[page][lang]}">
+<meta property="og:description" content="{DESCRIPTION[page][lang]}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE}assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -173,31 +278,30 @@ def head(lang: str, base: str) -> str:
 <meta property="og:locale" content="{LOCALE[lang]}">
 {og_alternates}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{OG_TITLE[lang]}">
-<meta name="twitter:description" content="{DESCRIPTION[lang]}">
+<meta name="twitter:title" content="{OG_TITLE[page][lang]}">
+<meta name="twitter:description" content="{DESCRIPTION[page][lang]}">
 <meta name="twitter:image" content="{SITE}assets/og.jpg">
-<meta name="theme-color" content="#F5F6F8">
-<meta name="apple-itunes-app" content="app-id={APP_ID}">
-<link rel="icon" href="{base}assets/mark.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c12" media="(prefers-color-scheme: dark)">
+{itunes}<link rel="icon" href="{base}assets/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{base}assets/mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="{base}assets/screens/{lang}/1-hoy.webp" fetchpriority="high">
-<link rel="stylesheet" href="{base}styles.css">
+<link href="{fonts}" rel="stylesheet">
+{preload}<link rel="stylesheet" href="{base}styles.css">
 <script type="application/ld+json">
 {json.dumps(data, ensure_ascii=False, indent=2)}
 </script>
 </head>"""
 
 
-def language_links(lang: str, base: str) -> str:
+def language_links(page: str, lang: str, base: str) -> str:
     links = []
     for l in LANGS:
         current = ' aria-current="page"' if l == lang else ""
-        links.append(
-            f'<a href="{(base + PATH[l]) or './'}" hreflang="{l}" lang="{l}" title="{NAME[l]}"{current}>{l.upper()}</a>'
-        )
+        href = (base + page_dir(page, l)) or "./"
+        links.append(f'<a href="{href}" hreflang="{l}" lang="{l}" title="{NAME[l]}"{current}>{l.upper()}</a>')
     return f'<div class="langs" role="group" aria-label="{LANG_GROUP[lang]}">' + "".join(links) + "</div>"
 
 
@@ -208,54 +312,97 @@ def badge_width(lang: str, height: int = 54) -> str:
     return f"{float(w) * height / float(h):.1f}".rstrip("0").rstrip(".")
 
 
-def render(template: str, lang: str, update: bool = False) -> str:
-    base = "" if lang == "es" else "../"
-    if update:
-        template = template.replace("<!--next-->", "").replace("<!--/next-->", "")
-    else:
-        template = re.sub(r"[ \t]*<!--next-->.*?<!--/next-->\n?", "", template, flags=re.S)
-    page = template.replace("{{HEAD}}", head(lang, base))
-    page = page.replace("{{APPSTORE}}", APPSTORE).replace("{{BADGEW}}", badge_width(lang))
-    page = page.replace("{{LANGS}}", language_links(lang, base))
-    page = page.replace("{{HOME}}", "./")
-    page = page.replace("{{BASE}}", base).replace("{{LANG}}", lang).replace("{{FILM}}", FILM[lang])
-    page = re.sub(r"\{\{ALT:([^}]+)\}\}", lambda m: ALT[m.group(1)][lang], page)
-    page = re.sub(r"\{\{ALTW:([^}]+)\}\}", lambda m: ALTW[m.group(1)][lang], page)
-    # De cada trío de traducciones, sólo la de esta página, sin su envoltorio.
-    # (con etiquetas dentro, como <strong> o un enlace, sin saltar a otro <span>)
-    page = re.sub(r'<span lang="(es|en|fr)">((?:(?!</span>).)*)</span>',
-                  lambda m: m.group(2) if m.group(1) == lang else "", page, flags=re.S)
+def clientes(lang: str) -> str:
+    """La lista de las 22 apps, agrupada como en la pantalla «Conectar» de la app."""
+    apps = json.loads((ROOT / "src" / "clientes.json").read_text(encoding="utf-8"))
+    out = []
+    for grupo in ["Chat", "Agente", "Editor"]:
+        filas = []
+        # Primero las que se configuran solas (rejilla) y después las de paso a mano (a lo ancho).
+        for a in sorted([a for a in apps if a["grupo"] == grupo], key=lambda a: a["a_mano"]):
+            nombre = html.escape(a["nombre"])
+            if a["a_mano"]:
+                donde = a["donde"].get(lang) or DONDE_FR[a["nombre"]]
+                ident = "app-" + re.sub(r"[^a-z0-9]+", "-", a["nombre"].lower()).strip("-")
+                filas.append(f"""<li class="app app-mano" id="{ident}">
+  <div class="app-head"><h4>{nombre}</h4><span class="tag tag-mano">{A_MANO[lang]}</span></div>
+  <p class="app-where">{html.escape(donde)}</p>
+  <div class="snippet"><button type="button" class="copy" data-copy aria-label="Copiar"><span class="copy-label">{UI["Copiar"][lang]}</span></button><pre><code>{html.escape(a["texto"][lang])}</code></pre></div>
+</li>""")
+            else:
+                filas.append(f"""<li class="app app-sola">
+  <div class="app-head"><h4>{nombre}</h4><span class="tag tag-sola">{SOLA[lang]}</span></div>
+  <p class="app-where">{FICHERO[lang]} <code>{html.escape(a["fichero"])}</code></p>
+</li>""")
+        out.append(f'<section class="apps-group" aria-label="{GRUPO[grupo][lang]}"><h3 class="apps-group-title">{GRUPO[grupo][lang]}</h3><ul class="apps">{"".join(filas)}</ul></section>')
+    return "\n".join(out)
+
+
+def include(name: str) -> str:
+    return (ROOT / "src" / f"_{name}.html").read_text(encoding="utf-8")
+
+
+def render(page: str, lang: str) -> str:
+    base = base_of(page, lang)
+    t = (ROOT / "src" / f"{page}.html").read_text(encoding="utf-8")
+    t = t.replace("{{TOP}}", include("cabecera")).replace("{{FOOT}}", include("pie"))
+    t = t.replace("{{HEAD}}", head(page, lang, base))
+    t = t.replace("{{CLIENTES}}", clientes(lang))
+    # El botón de la barra de arriba: la App Store en la portada; el instalador en las de escritorio.
+    t = t.replace("{{TOPCTA}}", APPSTORE if page == "inicio" else RELEASE)
+    t = t.replace("{{LANGS}}", language_links(page, lang, base))
+    t = re.sub(r"\{\{URL:(\w+)\}\}", lambda m: (base + page_dir(m.group(1), lang)) or "./", t)
+    t = t.replace("{{APPSTORE}}", APPSTORE).replace("{{BADGEW}}", badge_width(lang))
+    t = t.replace("{{RELEASE}}", RELEASE).replace("{{TESTFLIGHT}}", TESTFLIGHT).replace("{{PRIVACY}}", PRIVACY)
+    t = t.replace("{{BASE}}", base).replace("{{LANG}}", lang).replace("{{PAGE}}", page)
+    t = t.replace("{{SHOTLANG}}", "es" if lang == "es" else "en")
+    t = re.sub(r"\{\{ALT:([^}]+)\}\}", lambda m: ALT[m.group(1)][lang], t)
+    t = re.sub(r"\{\{ALTW:([^}]+)\}\}", lambda m: ALTW[m.group(1)][lang], t)
+    # De cada trío de traducciones, sólo la de esta página, sin su envoltorio (con etiquetas
+    # dentro, como <strong> o un enlace, sin saltar a otro <span>).
+    t = re.sub(r'<span lang="(es|en|fr)">((?:(?!</span>).)*)</span>',
+               lambda m: m.group(2) if m.group(1) == lang else "", t, flags=re.S)
     for key, words in UI.items():
-        page = page.replace(f'aria-label="{key}"', f'aria-label="{words[lang]}"')
-    leftover = re.findall(r"\{\{[^}]+\}\}", page)
-    assert not leftover, f"{lang}: marcadores sin resolver {leftover}"
-    return page
+        t = t.replace(f'aria-label="{key}"', f'aria-label="{words[lang]}"')
+    # La página actual, marcada en la navegación.
+    t = t.replace(f'data-nav="{page}"', 'aria-current="page"')
+    t = re.sub(r' data-nav="\w+"', "", t)
+    leftover = re.findall(r"\{\{[^}]+\}\}", t)
+    assert not leftover, f"{page}/{lang}: marcadores sin resolver {leftover}"
+    return t
 
 
 def sitemap() -> str:
     entries = []
-    for lang in LANGS:
-        alternates = "\n".join(
-            f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE + PATH[l]}"/>' for l in LANGS
-        )
-        entries.append(f"""  <url>
-    <loc>{SITE + PATH[lang]}</loc>
+    for page in SLUG:
+        for lang in LANGS:
+            alternates = "\n".join(
+                f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE + page_dir(page, l)}"/>' for l in LANGS
+            )
+            entries.append(f"""  <url>
+    <loc>{SITE + page_dir(page, lang)}</loc>
 {alternates}
-    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE + page_dir(page, "es")}"/>
   </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(entries) + "\n</urlset>\n")
 
 
+# Nada de esto puede aparecer en la web pública (norma de Narelia para la página).
+PROHIBIDO = re.compile(r"\b(thc|cannabis|alcohol|alcool|marihuana|marijuana)\b", re.I)
+
+
 def main() -> None:
-    update = "--actualizacion" in sys.argv[1:]
-    template = (ROOT / "src" / "page.html").read_text(encoding="utf-8")
-    for lang in LANGS:
-        out = ROOT / PATH[lang] / "index.html"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(render(template, lang, update), encoding="utf-8")
-        print("escrita", out.relative_to(ROOT))
+    for page in SLUG:
+        for lang in LANGS:
+            out = ROOT / page_dir(page, lang) / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            text = render(page, lang)
+            bad = PROHIBIDO.search(text)
+            assert not bad, f"{page}/{lang}: «{bad.group(0)}» no puede ir en la página pública"
+            out.write_text(text, encoding="utf-8")
+            print("escrita", out.relative_to(ROOT))
     (ROOT / "sitemap.xml").write_text(sitemap(), encoding="utf-8")
     print("escrito sitemap.xml")
 

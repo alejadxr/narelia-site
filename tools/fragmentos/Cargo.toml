@@ -1,0 +1,8 @@
+[package]
+name = "frag"
+version = "0.1.0"
+edition = "2024"
+[dependencies]
+narelia-nucleo = { path = "../../../narelia-escritorio/crates/nucleo" }
+serde_json = "*"
+[workspace]
