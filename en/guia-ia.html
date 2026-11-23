@@ -292,6 +292,12 @@
             </div>
           </li>
           <li>Ask it to log something, for example “Log a coffee”. The request shows up under “Pending” on the Mac (5.1) and on the iPhone under “Pending from your AI” (5.2). Nothing is saved until you tap “Confirm” on the iPhone.</li>
+          <li>When it logs a meal, besides calories, protein, carbs and fat, your AI can include fibre, sugar, sodium, iron, potassium, calcium and vitamin C. You see them in the proposal before you confirm it on the iPhone.
+            <div class="asks">
+              <p class="ask">Log my lentils with rice: 540 kcal, 30 g of protein, 16 g of fibre and 620 mg of sodium.</p>
+            </div>
+            <p class="note">Those nutrients need Narelia 1.1.23 or later on the iPhone and Narelia for Mac 0.1.1 or later. With earlier versions the meal is logged all the same, without them.</p>
+          </li>
         </ol>
         <div class="caps caps-mixed">
           <figure class="cap">
@@ -482,6 +488,10 @@
         <div>
           <dt>The Mac asks for Keychain access</dt>
           <dd>That is narelia-mcp reading your password. While the app is unsigned, it can happen once per version: click “Always Allow”.</dd>
+        </div>
+        <div>
+          <dt>My AI says it didn’t send the nutrients</dt>
+          <dd>Update Narelia on the iPhone to 1.1.23 or later, and Narelia for Mac to 0.1.1 or later. The meal is logged all the same; only fibre, sugar, sodium and the rest are missing (<a href="#paso-5">step 5</a>).</dd>
         </div>
         <div>
           <dt>Removing the connection</dt>
